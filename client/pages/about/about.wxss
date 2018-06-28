@@ -1,0 +1,8 @@
+page {
+    perspective: 800rpx;
+    transform-style: preserve-3d;
+}
+
+.aboutContainer {
+    
+}

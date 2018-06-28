@@ -1,0 +1,123 @@
+<import src="../../utils/towxml/entry.wxml" />
+
+<view class='container-edit'>
+  <scroll-view scroll-y class="mainWrapper">
+    <view class='menuItem {{!item.visible?"":"hide"}}' wx:for="{{fromsList}}" wx:key="index">
+      <template is="{{item.template}}" data="{{...item}}" />
+    </view>
+  </scroll-view>
+  <view class='tagWrapper {{tagViewShow?"":"hide"}}'>
+    <scroll-view scroll-y>
+      <!-- <view class='tagList'>
+        <text>已选tag</text>
+        <view wx:for="{{tagListChoose}}" wx:key="index">
+            <text>{{item.name}}</text>
+        </view>
+      </view> -->
+      <view class='tagList'>
+        <text>请选择标签</text>
+        <view wx:for="{{tagList}}" wx:key="index" data-id="{{item.id}}" catchtap="chooseTag" class="{{item.active? 'active': ''}}">
+          <text>{{item.name}}</text>
+          <i class='icon-delete' data-id="{{item.id}}" data-name="{{item.name}}" catchtap='deleteTag'></i>
+        </view>
+        <view style="width:80%;">
+          <input type="text" maxlength='30' placeholder="在此输入新标签名" bindinput="tagTextInput" value="{{tagAddStr}}"  />
+          <button catchtap="addTag">新增标签</button>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='tagSubmitWrap'>
+      <button data-type='submit' catchtap='tagSubmit'>确定</button>
+      <button data-type='cancle' catchtap='tagSubmit'>取消</button>
+    </view>
+  </view>
+  <view class='bottomBtu'>
+    <button type="default" hover-class="button-hover" bindtap='submit'>{{buttonName}}</button>
+  </view>
+</view>
+
+<template name="input">
+  <view class="formItemWrapper {{activeClass}}">
+    <text>{{title}}：</text>
+    <input type='{{type||"text"}}' value='{{value}}' data-key='{{key}}' bindinput="textInput" />
+  </view>
+</template>
+
+<template name="text">
+  <view class="formItemWrapper {{activeClass}}">
+    <text>{{title}}：</text>
+    <text>{{value}}</text>
+  </view>
+</template>
+
+
+<template name="trigger">
+  <view class="formItemWrapper {{activeClass}}">
+    <text>{{title}}：</text>
+    <view>
+      <view wx:for="{{value}}" wx:key="{{item.id}}" class='goodsTagItem'>
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+    <button data-key='{{key}}' catchtap="trigger">{{showDesc}}</button>
+  </view>
+</template>
+
+<template name="freeText">
+  <view class="formItemWrapper {{activeClass}}">
+    <text>{{title}}：</text>
+    <!-- <template is="entry" data="{{...value}}" /> 这是一个html渲染库，也许用得着-->
+    <textarea data-key='{{key}}' bindinput="textInput" value='{{value}}'></textarea>
+  </view>
+</template>
+
+<template name="imageUpload">
+  <view class="formItemWrapper {{activeClass}}">
+    <text>{{title}}：</text>
+    <view class="uploader">
+      <view class="uploader-text" data-key='{{key}}' data-max-length="{{maxLength||1}}" bindtap="doUpload">
+        <text>上传图片</text>
+      </view>
+      <view class="uploader-container" wx:if="{{value}}">
+        <view wx:if="{{!maxLength||maxLength===1}}">
+          <image class="uploader-image" src="{{value}}" data-imgurl="{{value}}" mode="widthFix" bindtap="previewImg"></image>
+        </view>
+        <view wx:else>
+          <view wx:for="{{value}}" wx:key="{{index}}" class='imageWrap'>
+            <view data-src="{{item}}" data-key='{{key}}' catchtap='btuDeleteImage' class='delImage'>
+              <icon size='20' type='cancel'></icon>
+            </view>
+            <image class="uploader-image" src="{{item}}" data-imgurl="{{item}}" mode="widthFix" bindtap="previewImg"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="select">
+  <view class='menuSelectWrap'>
+    <picker bindchange="pickerChange" data-key='{{key}}' value="{{chooseIndex}}" range="{{selectList}}" range-key="name">
+      <view class="picker">
+        {{title}}：
+        <text>{{selectList[chooseIndex].name}}▼</text>
+      </view>
+    </picker>
+  </view>
+</template>
+
+<!-- <template name="tagView">
+  <scroll-view scroll-y>
+    <view wx:for="{{value}}" wx:key="index">
+
+    </view>
+    <text>待选tag</text>
+    <view wx:for="{{tagList}}" wx:key="index">
+      <text>{{item.name}}</text>
+    </view>
+  </scroll-view>
+  <view class='tagSubmitWrap'>
+    <button data-type='submit' catchtap='tagSubmit'>确定</button>
+    <button data-type='cancle' catchtap='tagSubmit'>取消</button>
+  </view>
+</template> -->

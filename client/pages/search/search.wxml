@@ -1,0 +1,20 @@
+<view class="searchContainer {{!searchVislble&&'hide'}} {{searchisIn?'in':''}}">
+    <view class='searchWrapper'>
+        <view data-order='back' catchtap="searchOrder">
+            <i class='icon-close'></i>
+        </view>
+        <view>
+            <input type="search" bindinput="inputSearchKey" placeholder="在此搜索..." confirm-type='搜索' />
+        </view>
+        <view data-order='search' bindtap='searchOrder'>
+            <i class='icon-search'></i>
+        </view>
+    </view>
+    <view class="tagsPanel">
+        <view>
+            <i class="icon-shortcut"></i>您可能想搜索：</view>
+        <view>
+            <text wx:for="{{tagList}}" wx:key="{{item.id}}" style='-webkit-animation: tagFloat 0.25s ease-out {{0.15*index}}s forwards'>{{item.name}}</text>
+        </view>
+    </view>
+</view>

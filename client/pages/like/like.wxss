@@ -1,0 +1,99 @@
+page {
+  perspective: 800rpx;
+  transform-style: preserve-3d;
+}
+
+.likeContainer {
+}
+
+.likeListWrapper {
+  overflow: auto;
+  height: 100%;
+}
+
+.likeListItem {
+  float: left;
+  padding: 3%;
+  width: 94%;
+  border-bottom: solid 1px #c99;
+}
+
+.likeListItem i {
+  font-family: "iconfont";
+}
+
+.likeListItem .imageWapper {
+  width: 25%;
+  float: left;
+}
+
+.likeListItem .imageWapper image {
+  width: 100%;
+  height: 100%;
+  box-shadow: 1px 1px 2px #666;
+  border-radius: 15rpx;
+}
+
+.likeListItem .likeListWrapper_into {
+  width: 70%;
+  margin-left: 5%;
+  float: left;
+  position: relative;
+}
+
+.likeListWrapper_into .remvelikeWrap {
+  position: absolute;
+  width: 100rpx;
+  height: 50rpx;
+  right: 0;
+  top: 5rpx;
+  text-align: center;
+}
+
+.likeListWrapper_into .remvelikeWrap i {
+  font-size: 50rpx;
+  color: #999;
+}
+
+.likeListWrapper_into .goodTitle {
+  width: 100%;
+  font-size: 36rpx;
+}
+
+.likeListWrapper_into .goodTitle i {
+  font-size: 50rpx;
+  color: #c66;
+}
+
+.likeListWrapper_into .goodsPrice text {
+  margin: 10rpx;
+  line-height: 50rpx;
+}
+
+.likeListWrapper_into .goodsPrice text:first-child {
+  font-weight: bold;
+  color: #c33;
+}
+
+.likeListWrapper_into .goodsRemark {
+  background: #eee;
+  color: #999;
+  padding: 10rpx;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+}
+
+.likeListWrapper_into .goodsRemark i {
+  font-size: 50rpx;
+}
+
+.emptyWrap {
+  text-align: center;
+  color: #999;
+}
+
+.emptyWrap i {
+  font-family: "iconfont";
+  margin-right: 10rpx;
+}
