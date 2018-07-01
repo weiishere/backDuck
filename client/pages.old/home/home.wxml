@@ -1,0 +1,101 @@
+<view class='container'>
+  <view class="container-main {{activeTab!=='home'&&'hide'}}">
+    <view class='container-home'>
+      <view class='swiper'>
+        <swiper autoplay="{{sliderSet.autoplay}}" circular="{{sliderSet.circular}}">
+          <block wx:for="{{imgUrls}}" wx:key="{{index}}">
+            <swiper-item>
+              <image src="{{item.imageUrl}}" class="slide-image" bindtap='bindViewTap' />
+              <view class='swiperTitle'>{{item.title}}</view>
+            </swiper-item>
+          </block>
+        </swiper>
+      </view>
+      <!-- <view class='header'>
+            <text>{{showMenu.name}}</text>
+          </view> -->
+      <view class="searchBar">
+        <view bindtap='goSearch'>
+          <text>发现更多...</text>
+          <view>
+            <i class='icon-search'></i>
+          </view>
+        </view>
+      </view>
+      <view class='mainWrapper'>
+        <scroll-view class='sideBar' scroll-y>
+          <view class='menuItem {{item.isActive?"active":""}}' wx:for="{{menuList}}" wx:key="index" data-id="{{item.id}}" bindtap="chooseMenu">
+            <template is="menuItem" data="{{...item}}" />
+          </view>
+        </scroll-view>
+        <scroll-view scroll-y enable-back-to-top class='mainListWrapper' lower-threshold='30' bindscrolltolower="chooseMenu">
+          <view class="goodsItem" wx:for="{{showGoodList}}" wx:key="id">
+            <template is="goodsItem" data="{{...item}}" />
+          </view>
+          <view class="emptyWrap" wx:if="{{!isMore}}"><i class='icon-null'></i>已加载全部数据...</view><view class="emptyWrap" wx:else>数据加载中...</view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <include src="../messager/messager.wxml" />
+  <include src="../like/like.wxml" />
+  <include src="../about/about.wxml" />
+  <include src="../search/search.wxml" />
+  <view class="footer">
+    <view data-key='home' class="{{activeTab=='home'&&'active'}}" catchtap='footerChange'>
+      <view>
+        <i class="icon-home1"></i>
+      </view>
+      <text>首页</text>
+    </view>
+    <view data-key='messager' class="{{activeTab==='messager'&&'active'}}" catchtap='footerChange'>
+      <view>
+        <i class="icon-message"></i>
+      </view>
+      <text>留言墙</text>
+    </view>
+    <view data-key='like' class="{{activeTab==='like'&&'active'}}" catchtap='footerChange'>
+      <view>
+        <i class="icon-star"></i>
+      </view>
+      <text>收藏</text>
+    </view>
+    <view data-key='about' class="{{activeTab==='about'&&'active'}}" catchtap='footerChange'>
+      <view>
+        <i class="icon-about"></i>
+      </view>
+      <text>关于</text>
+    </view>
+  </view>
+</view>
+
+
+
+
+
+
+<template name="menuItem">
+  <i style="{{iconColor?'color:#'+iconColor:''}}" class="icon-{{icon}}"></i>
+  <text>{{name}}</text>
+</template>
+<template name="goodsItem">
+  <view class='imageWapper'>
+    <image src="{{mainImage}}"></image>
+  </view>
+  <view class='goodTitle'>
+    <i class="icon-product"></i>
+    <text>{{name}}</text>
+  </view>
+  <view class='goodsPrice'>
+    <text>{{price}}</text>
+    <text>单位：{{unit}}</text>
+    <view class='likeWrap' data-id="{{id}}" data-is-like='{{likeId?true:false}}' bindtap='likeHandler'>
+      <i class="{{likeId?'icon-heartcoloring':'icon-heart'}}"></i>
+    </view>
+  </view>
+  <view class='goodsRemark'>
+    <i class="icon-remark"></i>
+    <text>{{remark}}</text>
+  </view>
+
+</template>
