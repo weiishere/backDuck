@@ -7,7 +7,7 @@ const messagerManager = require('../messager/messager.js');
 const likeManager = require('../like/like.js');
 const goodsManager = require('../admin/goods.js');
 const aboutManager = require('../about/about.js');
-const { getBannerList } = require('../admin/banner');
+const { getBannerList } = require('../admin/setDatabanner');
 const defaultPgeSize = 10;
 
 Page({
