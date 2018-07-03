@@ -1,0 +1,45 @@
+.container.order {}
+
+.order_header {
+    width: 100%;
+    height: 80rpx;
+    line-height: 80rpx;
+    display: flex;
+    border-top: solid 1rpx #ccc;
+    border-bottom: solid 1rpx #ccc;
+    position: relative;
+}
+
+.order_header::after {
+    content: "";
+    position: absolute;
+    width: 20%;
+    height: 4rpx;
+    left: 0;
+    bottom: -2rpx;
+    background: #FF282B;
+    transition: all 0.2s ease-out;
+}
+.order_header .active{
+    color: #FF282B;
+}
+.order_header_active_0::after {
+    transform: translate3d(0, 0, 0);
+}
+.order_header_active_1::after {
+    transform: translate3d(100%, 0, 0);
+}
+.order_header_active_2::after {
+    transform: translate3d(200%, 0, 0);
+}
+.order_header_active_3::after {
+    transform: translate3d(300%, 0, 0);
+}
+.order_header_active_4::after {
+    transform: translate3d(400%, 0, 0);
+}
+
+.order_header>view {
+    flex: 1;
+    text-align: center;
+}

@@ -1,0 +1,19 @@
+<view class='container order'>
+    <view class='order_header order_header_active_{{chooseIndex}}'>
+        <view class="{{chooseIndex==='0'&&'active'}}" catchtap="orderTypeChoose" data-type='all' data-index="0">
+            <text>所有订单</text>
+        </view>
+        <view class="{{chooseIndex==='1'&&'active'}}" catchtap="orderTypeChoose" data-type='waitDo' data-index='1'>
+            <text>待处理</text>
+        </view>
+        <view class="{{chooseIndex==='2'&&'active'}}" catchtap="orderTypeChoose" data-type='waitOut' data-index='2'>
+            <text>待送件</text>
+        </view>
+        <view class="{{chooseIndex==='3'&&'active'}}" catchtap="orderTypeChoose" data-type='done' data-index='3'>
+            <text>已完成</text>
+        </view>
+        <view class="{{chooseIndex==='4'&&'active'}}" catchtap="orderTypeChoose" data-type='cacle' data-index='4'>
+            <text>已取消</text>
+        </view>
+    </view>
+</view>
