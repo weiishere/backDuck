@@ -1,8 +1,8 @@
 {
-  "pages": [
+  "pages": ["pages/home/home",
     "pages/orderItem/orderItem",
-    "pages/order/order",
-    "pages/home/home"
+    "pages/order/order"
+    
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

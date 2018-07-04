@@ -18,7 +18,7 @@
     </view>
     <view class='order_body'>
         <view class='order_item'>
-            <view class='order_item_header'>
+            <view class='order_item_header' catchtap='gotoPage' data-order='../orderItem/orderItem'>
                 <view><text>订单号：02564422563</text></view>
                 <view><text>已完成</text></view>
             </view>
