@@ -1,0 +1,30 @@
+.feedback{
+  width: 100%;
+}
+.feedback-topbg{
+  width: 100%;
+  height: 270rpx;
+  overflow: hidden;
+  /* display: none; */
+}
+.feedback-topbg .image{
+  width: 100%;
+  height: 270rpx;
+  display: block;
+}
+
+.feedback-wrap{
+  margin: 0px 30rpx;
+}
+.feedback-wrap .title {
+  height: 112rpx;
+  line-height: 112rpx;
+  font-size: 30rpx
+}
+.feedback-wrap .text{
+  height: 300rpx;
+  background: #f8f8f8;
+  border: #e5e5e5 1px solid;
+  padding: 20rpx;
+  box-sizing: border-box
+}
