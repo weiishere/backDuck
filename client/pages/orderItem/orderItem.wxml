@@ -1,74 +1,157 @@
 <view class='container order'>
-    <view class='order_header'>
-        <view class="order_header_main">
-            <text>正在护理中，请耐心等待</text>
-        </view>
+  <view class='order_header'>
+    <view class="order_header_main">
+      <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjE1OTFCMzQzNzc5MzExRThBQ0UyQUU4RkEzNDlEREM5IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjE1OTFCMzQ0Nzc5MzExRThBQ0UyQUU4RkEzNDlEREM5Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MTU5MUIzNDE3NzkzMTFFOEFDRTJBRThGQTM0OUREQzkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MTU5MUIzNDI3NzkzMTFFOEFDRTJBRThGQTM0OUREQzkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7+qk4lAAAMoklEQVR42uxdCVRU1xn+HHZQGXHBUUSoiRIXFEURrbjUiEetNMSlGpcTl+ZEjVGJ1mjr7olbrJoFcxQjcYvaxCpGi1ZjatDYuEI11tCKiLsgKoQdev83d8YBZpgBHrz3hved8583A7Pc+b/333v///73/vUgc2RnZ/uxSyCTDkz8mdBzHZPGTLyYuJR5Sx6TDCbpTO4xSWFyk8lVJokeHh4pcv699WRIACk/nEkfJr244sUEEXWGyWkm8YygRJWQ0gRo2KU3k1FMIpm0qOUm3GFygMk+JgmMoOI6SQgjwoddJjGZzMRXJjdoKpMYJtsYMWl1ghBGRDd2mcNkNBMHmXblRUz2MlnPiLlgl4QwIoLYZTGTCCgLB5ksZcRcsgtCGBE0JqxiMh7Kxg4m8xkxdxVJCCOCuqN3mSxj4gH7QDaTRUw2MmKKFEMII6M9u8QyCYZ94jyTiYyUa7ImhBFBn/c2kw+ZuMK+kcskikk0I6ZEdoQwMurTdJHJSNQt7KfpOyMlSzaEMDIopHGYSXvUTVDXNYyRcrO6H6QRgYwe7PJDHSYD/Lf/wHUhnYWwBgzgluEGFYQcbikna91CGBnD2eWISkYpkC6OcN3UnoVwyyAyXFQOzIKWAIZUxVI0VSCjB++mFE9G9vPnSDh5HPn5eWJ/NOnmcFXGFE0lyaDZVJy9dFNb/rIaK+fNxP7tW2qq+4rjOhOfEO5nkGU0UzIJGY8fGR936tYdzXQt0K5jYE19XTNuKfVFHUO4B75X6U7f4f178OnqZRg96S1MnDartp3H0bZ49LZayNv24IHX47dfSUlJbX/1SK7D6lsIDxTSIo3iYlM3riVhzcL3MPi1URgxYbKxy2rUuAkjp9bX5ij21c1aQFJjhQwKocdCoYHClOQbuHs7FZfOnTH+zatJUynIANdhLNepRTha+RBaz1BMCD3r2TNs2bAaHbp0xaDhr2PgsN+hoacWAZ26yKWJwVyn6yvdZfGVvhtQ0OLS2VMnsPy9GcLMaXvcCdm6P0zaWlp5rMhCVklNxrHjx5GYmFTqb+7ubhg7Zgy0Wq3w/NujcWjctBkCg0PQLbQ33vjD9JqcxooBD67bCTZbCE9IuChlqx89eoTALkFm/zfznRl4f/58JF+/hpnjXoeTszP+lnBZqrGhquhqLnHC0qC+WOrW5ubmGh/Xb6hFQ60XHJ2chOc5OTnC1ae1P3qGDcCwkWNLkVGQny/MsEqKX+S83U29hcyM9Befzz6DCJUQi22aZfG8KVml6oT0DUffwZFo0qx0UqOrmxsWrf8EU2f/sUxIZBVmTRiFr3Z+biRj6oghmPb7CKMPQtNhsi7q8iRCBNe1VQuZIzfbLiwoEO764pLyWZ7mnLzmLVvB0dERTZvr9ONO/frw1DaCt66l0ZJ0rXyFro7GHwkxp8IxhKd3pkAGGYW3b99Gj56hZv83dcpkLFu6VOiC6K7X+fjiw227legqUSqRn2naalkLmQSZpHd6enrCzc18UNnb21u4/pKVhaeZT3AvLVWKcIgYcOA6L28hPAudFunlkviMtLQ0pDJLmRG1gA3kuZg0fgz69+2NrkFB0Gg0xvGBuiStV2PBYtb+eR6CQnoZQyUKACV4+xuy7k0tpLecyBBmUT4+6BUaClePBnBydUfbdu0Q3K2bkQxCC9/WAhmE60mXhTDJ3w/sU5KV+HLdl3MMR8mlhZeTruK7788iN0+/kpeXly9cjxw7ges/JzOzrgd/P18MCx/IurUXYbYeffph1qIV8HuprfD8+bOn+OqLGISE9ccrgUFyJoV0f7psl0UbV1pI3bKtsbuxaXOMTa/1b+2L2M0bmNfuafb/cft2IXrNCrTv3BXrYnbJmZA7rMvyMRLCt5FdkbpVFy8n4c1ps4UBWqdrDr/W5nvQHOY0XrmSJLyuf1hvbFy9zOzr0h8+QMzGtegbPlSwkvy8XJw/8z06dw+BR/0GciOlM22vMxAyl3wlaT3zPIwYPxWpaXfY2NESH29aBxcXy3kUBw99g82f6S3pgyULMDT8N1a/Y+dnH2H3lk+FKPCcJR/IjZB5jJC1htGxj9St2bh5q0AGOW5Rs9+pkAzC8N8OQWCnjsLjVes/wuP0DKvfEdCpM7xbtBQCkQan0jScIjH6mM6yekndVe3ed0B4HPnacAQEtLX6HiJu9uzpcHV1xdNnz7F8zQar7wnuFYbPD/1DsBDCF9EbMXbQr4W1dhlA4EDD94E3lrKrWrRyrXC3Ulc1YfxYm9/bnDmIk97Ub8z69p8J+CZetmsgtqAxcVGPpz0elKIFpMB1m6KRnvGk1J1fWRi8dPJPaCyZ++40aD0b2vS+p08yjH6MDBBBfkgHKb75wOGjWLxynUXlVgXFxcWIO3ocPyffxK6YT+Dk5Gi125MRGYQO1GJ/Kb45emuscG3Vxh89+oaV8r6rivSHD3GSzb7IeTx1+gxeHRCmtG7Lnwjxk+Kb7z/QZxAOiozAyx3FM9J/X7iEh3fu4tbtNCgQfnRb6qRsgYOjo7if56APVhcUFCiREJ1GyhmWivIzLSLES9WDbOBFhKibbuQDF42qA3lBJUQlRIU1QvJUNcgGeURIhqoH2SCDvLJ0qZ1DS8h5lolbly/gyb00FDFHz13bCC0DOqJZm7ZKy+O1FelECB2l2lFuRJz9MhY/fXfcbLCxkc4HvcdNgV9Qd3sj5B51WSmyukVup2Dvwlm4duqYQIazUwna+heh8yuFaOKlTyUlizm8dgnO/XWnvRGSQhZyU06WEbdmCbLSH4Ei529E5GBI/3y4urywkmvJjtiyxw3/TXXAj1/vgbtnI3R6dai9EHKTLOSqXFpD3ZSBjGVzshA5OK8UGYT2LxVi9fwsdGlfKDxP2LUV2Zl2My+5SoQkysU6aMwgkGV0eLnQ4mupG4uakg13txIU5ucjMT7OXghJ1PCz0CVPvaDZlGHMoG7KGjwblGBAqP51KRf/ZRczLOLC4Kmfkbo1NFAT/HyKy3VTltCeW1Hm/bv2QMgZ09DJaalbU8QXlNxcbV9TN6T1FhUW2AMhp00JiZe6NeT0Ee48sD28lnZP/1p3T609EBJvJISXbJDU7lsE6NfVH2dohKmtTbfUj87697broHQy7hjKZpjejl9L2SLvNu0ED5xAfkZ+QcWhkWOnnXHjpn79PCBsoNIJOWB4YEqIpLtcKDZF4RACOX0rPvbA0+f1LJIRvctdeOzTsYs9hFCMujftGxKg314l2S4qUmz3yDGCB375miPeWthQmNrSbIoGcBozqJsyWIantw7hM+YqnYxUrvvShNAet+zsbMrvXypl60JGjBPCIeSB/5KTj8MnXQQpC7IMIsOtoeIH9BjTqj5lR086KpxO/5d0Jy7Fpn7VPVTwwMnpIz+DprY0m6IBnMYMO4n0FnGdwywhtF+aWQkd5TdW6pZ6aL0QOnqiIHaMvWVLK5mb9K+HitpCOV2XI4TXXDqo6qrGcdBcfStLbvFSVV81DrM6NksIP8dph6qzGsMOS0XGKgoczYf+ODoV4iKb6xaVIoSfCbhI1Z/oWFRRpTdrodWN0BfAUiEOznOdokqE8NJw5AjkqrqsNkiHE62V27O6+MBPYo5S9VltRNlSZs/W1aBo6A+UFw3O/EDL1OT/ifaZWU+fIfOxPj3A0oE0EmE/16FV2JyPyUsunINIxb/m/mk54k+cEh67uLqKkhpKhVmKi4qF8xYPfbkdPi1lkSFLVhFia1m9SmmBFyehimzVPjky40kmpkctwNWf/iPqr3dxdsbi96MwbLAsFq0eMulZmXJ6lb4teRkfurWrXWWnuLgElxKTcPfefeFxdeHu5obgroFopJVFSJ4OF+7HyKhUjpJaFKxmUHtFwfjMi75oFNTNPpbIGFXVWoZqYUnxuylpCkuaWEo/PnjVdTzkY8bJ6nyIWpxYvKmtPIoTc0uhhoSI7TwqBPu5nyHKPhvRtkVzx2c0k+moG7GvXP5bR4tVS120LstMF0ZdFx2IFWynZFDUdqItsSnJLKSMtVBDe0IflLSnRa5s/pt61gQZNWYhZayFTsummkvjFU4GLWnPr2hxSRGEmBBDh69TmZ8IhRFBGThLLa2BK5YQE2KozM8cPgFwkCkJtIhECYPrzaXq2BUhJsTQ3gMqZkKFPuRSJoMSnym/eVvZjEK7J8SEGJpYUP0Mio1FovYrNFBVCNqfQVsCEkwTn+skIWYIokoN4dCfhU7Hb4t9JiQtKdIGS9rTF2/YuSQXyP4EF34UOpFE+9YoREPPdZwoOi+y7BIARVszuOLpHJcU6E+roAMSEvk2cNni/wIMAElcJWIL9uxvAAAAAElFTkSuQmCC'>
+      </image>
+      <text>正在护理中，请耐心等待</text>
     </view>
-    <view class='order_body'>
-        <view class='order_item'>
-            <view class='order_item_header'>
-                <view>
-                    
-                </view>
-                <view>
-                    <view><text>订单号：02564422563</text></view>
-                    <view><text>已完成</text></view>
-                </view>
-            </view>
-            <view class='order_item_body'>
-                <view>
-                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
-                </view>
-                <view>
-                    <text>
-                        ARMANI JEANS 黑色上衣
-                    </text>
-                    <text  class='gray'>
-                        服务项目：洗涤
-                    </text>
-                </view>
-                <view>
-                    <text>￥ 69.00</text>
-                    <text class='gray delete'>￥ 89.00</text>
-                </view>
-            </view>
-            <view class='order_item_body'>
-                <view>
-                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
-                </view>
-                <view>
-                    <text>
-                        ARMANI JEANS 黑色上衣
-                    </text>
-                    <text  class='gray'>
-                        服务项目：洗涤
-                    </text>
-                </view>
-                <view>
-                    <text>￥ 69.00</text>
-                    <text class='gray delete'>￥ 89.00</text>
-                </view>
-            </view>
-            <view class='order_item_body'>
-                <view>
-                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
-                </view>
-                <view>
-                    <text>
-                        ARMANI JEANS 黑色上衣
-                    </text>
-                    <text  class='gray'>
-                        服务项目：洗涤
-                    </text>
-                </view>
-                <view>
-                    <text>￥ 69.00</text>
-                    <text class='gray delete'>￥ 89.00</text>
-                </view>
-            </view>
-            <view class='order_item_footer'>
-                <view><text>共3件商品 合计：</text><text class='red'>￥267.00</text></view>
-            </view>
-        </view>
+
+  </view>
+  <view class='order_header_info'>
+    <view>
+      <image 
+        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkMxMUQyRDBBNzc5MzExRThCNEY1RkY5RDkzRjNCMTQ0IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkMxMUQyRDBCNzc5MzExRThCNEY1RkY5RDkzRjNCMTQ0Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QzExRDJEMDg3NzkzMTFFOEI0RjVGRjlEOTNGM0IxNDQiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QzExRDJEMDk3NzkzMTFFOEI0RjVGRjlEOTNGM0IxNDQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5F7qnWAAAE0UlEQVR42tSZaWwVVRTHp1JrKcgSpMYA0RiQPQUB/UQoiyEoSEiIhbDIapGwFFxACELCotEIFYggKhBDKwUqCcSYIDth9YMpAazKFrZoQYIBKmuf/xP+Nzm8zJ3tTWs5yS9z582dmTP3nnPuOfelJRIJx0jLwbOc2iYnNy166Pwx5xGT9BTvfxz0Ar1BV9AKNAb1wD+gAvwODoKfwJH/S+GnQQEYC5pa+jQk8hGvgQUyw2A5+BrcrAmF64Dp4ENQX/1+D/wCToA/wV2QCZ4FncU9jJuAQjADvAO+q06FnwEloLv6bQ9YBbaAGx73tgUDwHgqLc8qBgPBOJ97IzndC+CAUrYM9AS5fLHfC38Fn4DWNKMK/p7Hj86OU+HmYAd4juefg5fB7ggmWAVWgxx1/4tgO+09ZYUzwCYqLTKNznY7RWcXO+/LZ4t0pD2npWrDsziaDh2t0KOvRItXQXuO1l/gZ85OpUv/O+BN0ILv6AcmgWVRFRYTmMn2NoYlW/haROfJcLl+BSwES2kSWirpjGV0ROm3gR8b2iQk9DwBboF8kHDpI2HrMJiolBUlLnAERZ4CS8BmywddpqmJPAnei2LDslINZ1uC/FlLn630fJFdoAdf2oIr3hBwitdfZwh0kw0cZZExjOGhFO6vFoYvLH3ep7M4VKQP2KumvZJxuytnwaHN9nR5lszeSrYb055DKdyLx+OMoW4r3tts/0ZnqbI86xoYpkxkkqXf98rs+oRVOIfHfZbrXVQO8RWXYi8Rs/iR7VcsfWQxKVexOZTCLdXo2SKIo1a9IFKmHKuRpU950vsDK9xAebCb3EpyviCik6V/LX3+VqEylMJmJatruX7Mxd79xDjbWY+VMlMt4aEUNmGsneX6aaaTDheM532UHcI00ziXTdrweCaswjt5HODx8IU8ZjEe25SWEPUN2zeZPLlJM+Vsu8IqXKqMP9ejzwo1E8cYSwdx+kcyT/6BH5XginnO8rwJSp+NYXOJfawe2nGBsKWSk+mA02jv+cRxyRneAkUeTm7i+h/MkUONsIzGx2pKbaN8nyVTLuNssjNJYr+Wcb3IJ29pwvZHXk7nla0VMRHpyOSlG2s3N9lD6tOWsxkSTwRYVDqAd1UcXhc1gZevnMLR7sTE3U9kRI+ygigLoGwdOqTJ4qb63eNXcYjtrmF7PovJOEVs/yW2i5l3p1zTFTAuZ9JMMmNStrsKjZfowLEUodfBUGZbnf1KmIDSnPVcBh1Xcu+rcZb5h2jPZmWbnIKyWVztTGk/12uhiKqwyJeqYlgcIofQkkYn68bzEtaDTnUoLPIpN/kkHK4PkEMkywfMKxxWIWMstWJsCstm3gi+pCmnNivgvVIqzWP7IvOUyrBTFGV/eCvtzlQmywPcI8v2t86D7dkqfvTlKA4QdUN7gSp5RnNqveQzFcMLwzhZXAonmI2d5/kyVUEnyzCV2EhGNzuVeJjKXwZXGJ/v0o5LXOy5vYossmy/kVRe1ajCIvvBHLbbcjtKp4yl6iPGWbYMalRhE+q2sz2Wo27irdkVWsoZcGqDwsbrzSb1SuYcg3l+wG+/rKYVFpH93lHMCxpwlM02QZ7a9ak1CjsMc3ncfLnN0CUZ2YU489F0J14pVQVstcgj90/ofwIMAFBNCVcP46uTAAAAAElFTkSuQmCC"></image>
     </view>
+    <view>
+      <view>
+        <text>罗金金 13888008899</text>
+      </view>
+      <view class='gray'>
+        <text>四川省成都市双流区临港路五段</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='order_header_info info2'>
+    <view>
+      <view>
+        <text>订单号 283998820187</text>
+      </view>
+      <view>
+        <text>下单时间：2018-6-30 16:22:51</text>
+      </view>
+    </view>
+  </view>
+
+  <view class='order_body'>
+    <view class='order_item'>
+
+      <view class='order_item_body'>
+        <view>
+          <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg"></image>
+        </view>
+        <view>
+          <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+          <text class='gray'>
+                        服务项目：洗涤
+                    </text>
+        </view>
+        <view>
+          <text>￥ 69.00</text>
+          <text class='gray delete'>￥ 89.00</text>
+        </view>
+      </view>
+      <view class='order_item_body'>
+        <view>
+          <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg"></image>
+        </view>
+        <view>
+          <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+          <text class='gray'>
+                        服务项目：洗涤
+                    </text>
+        </view>
+        <view>
+          <text>￥ 69.00</text>
+          <text class='gray delete'>￥ 89.00</text>
+        </view>
+      </view>
+      <view class='order_item_body'>
+        <view>
+          <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg"></image>
+        </view>
+        <view>
+          <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+          <text class='gray'>
+                        服务项目：洗涤
+                    </text>
+        </view>
+        <view>
+          <text>￥ 69.00</text>
+          <text class='gray delete'>￥ 89.00</text>
+        </view>
+      </view>
+      <view class='order_item_body'>
+        <view>
+          <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg"></image>
+        </view>
+        <view>
+          <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+          <text class='gray'>
+                        服务项目：洗涤
+                    </text>
+        </view>
+        <view>
+          <text>￥ 69.00</text>
+          <text class='gray delete'>￥ 89.00</text>
+        </view>
+      </view>
+      <view class='order_item_body'>
+        <view>
+          <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg"></image>
+        </view>
+        <view>
+          <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+          <text class='gray'>
+                        服务项目：洗涤
+                    </text>
+        </view>
+        <view>
+          <text>￥ 69.00</text>
+          <text class='gray delete'>￥ 89.00</text>
+        </view>
+      </view>
+      <view class='order_item_body'>
+        <view>
+          <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg"></image>
+        </view>
+        <view>
+          <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+          <text class='gray'>
+                        服务项目：洗涤
+                    </text>
+        </view>
+        <view>
+          <text>￥ 69.00</text>
+          <text class='gray delete'>￥ 89.00</text>
+        </view>
+      </view>
+      <view class='order_item_footer'>
+        <view>
+          <text>共3件商品</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class='order_footer'>
+    <view>
+      <text>金额合计：</text><text class='red'>￥ 267.00</text>
+    </view>
+    <view>
+    <text>确认签收</text>
+    </view>
+  </view>
 </view>
