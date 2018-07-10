@@ -15,5 +15,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '余额充值'
     })
-  }
+  },
+  //滚动加载更多 分页之类的
+  lower: function (e) {
+    console.log(e)
+  },
 })
