@@ -1,0 +1,21 @@
+<view class='container address-wrap'>
+  <view class='address-list'>
+    <view class='address-item'>
+      <view class='address-info'>
+        <view class='name'>罗晶晶 18998772783</view>
+        <view class='address'>四川省成都市武侯区兆景路139号</view>
+      </view>
+      <view class='address-tools'>
+        <view class='setdefault'>
+          <view class='default-icon active'></view>
+          默认地址
+        </view>
+        <view class='setedit'>编辑</view>
+        <view class='setdelete'>删除</view>
+      </view>
+    </view>
+  </view>
+  <view class='add-address'>
+    <navigator url='/pages/address/add/index'>新增收货地址</navigator>
+  </view>
+</view>

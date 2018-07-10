@@ -1,0 +1,40 @@
+.form-wrap{}
+.form-wrap .form-item{
+  display: flex;
+  line-height: 46rpx;
+  padding: 20rpx 0;
+  border-bottom: #aeaeae 1rpx solid; 
+}
+.form-wrap .form-item .form-item-label,
+.form-wrap .form-item .form-item-tools {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-wrap .form-item .form-item-label .label{
+  width: 138rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  display: block;
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #000;
+}
+.form-wrap .form-item .form-item-content{
+  flex: 1;
+}
+.form-wrap .form-item .form-input{
+  height: 46rpx;
+  line-height: 46rpx;
+}
+.form-wrap .form-item .form-item-tools{}
+.form-item .form-item-tools .sms-captcha{
+  width: 160rpx;
+  height: 46rpx;
+  line-height: 46rpx;
+  text-align: center;
+  color: #b0986a;
+  border: #b0986a 1rpx solid;
+  border-radius: 5px;
+  box-sizing: content-box
+}
