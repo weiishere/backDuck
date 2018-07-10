@@ -1,4 +1,0 @@
-<view class="container-main aboutContainer {{activeTab!=='about'&&'hide'}}">
-    关于我们
-    <navigator url="/pages/admin/admin">后台管理</navigator>
-</view>

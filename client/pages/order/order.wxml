@@ -16,4 +16,66 @@
             <text>已取消</text>
         </view>
     </view>
+    <view class='order_body'>
+        <view class='order_item'>
+            <view class='order_item_header' catchtap='gotoPage' data-order='../orderItem/orderItem'>
+                <view><text>订单号：02564422563</text></view>
+                <view><text>已完成</text></view>
+            </view>
+            <view class='order_item_body'>
+                <view>
+                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
+                </view>
+                <view>
+                    <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+                    <text  class='gray'>
+                        服务项目：洗涤
+                    </text>
+                </view>
+                <view>
+                    <text>￥ 69.00</text>
+                    <text class='gray delete'>￥ 89.00</text>
+                </view>
+            </view>
+            <view class='order_item_body'>
+                <view>
+                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
+                </view>
+                <view>
+                    <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+                    <text  class='gray'>
+                        服务项目：洗涤
+                    </text>
+                </view>
+                <view>
+                    <text>￥ 69.00</text>
+                    <text class='gray delete'>￥ 89.00</text>
+                </view>
+            </view>
+            <view class='order_item_body'>
+                <view>
+                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
+                </view>
+                <view>
+                    <text>
+                        ARMANI JEANS 黑色上衣
+                    </text>
+                    <text  class='gray'>
+                        服务项目：洗涤
+                    </text>
+                </view>
+                <view>
+                    <text>￥ 69.00</text>
+                    <text class='gray delete'>￥ 89.00</text>
+                </view>
+            </view>
+            <view class='order_item_footer'>
+                <view><text>共3件商品 合计：</text><text class='red'>￥267.00</text></view>
+            </view>
+        </view>
+    </view>
 </view>
