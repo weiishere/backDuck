@@ -1,12 +1,15 @@
-.container.order {}
+.container.order {
+    background: #F1F1F1;
+}
 
 .order_header {
     width: 100%;
     height: 80rpx;
     line-height: 80rpx;
+    background: #fff;
     display: flex;
     border-top: solid 1rpx #ccc;
-    border-bottom: solid 1rpx #ccc;
+    border-bottom: solid 1rpx #aeaeae;
     position: relative;
 }
 
@@ -20,21 +23,27 @@
     background: #FF282B;
     transition: all 0.2s ease-out;
 }
-.order_header .active{
+
+.order_header .active {
     color: #FF282B;
 }
+
 .order_header_active_0::after {
     transform: translate3d(0, 0, 0);
 }
+
 .order_header_active_1::after {
     transform: translate3d(100%, 0, 0);
 }
+
 .order_header_active_2::after {
     transform: translate3d(200%, 0, 0);
 }
+
 .order_header_active_3::after {
     transform: translate3d(300%, 0, 0);
 }
+
 .order_header_active_4::after {
     transform: translate3d(400%, 0, 0);
 }
@@ -42,4 +51,79 @@
 .order_header>view {
     flex: 1;
     text-align: center;
+}
+
+.order_body {
+    width: 100%;
+    display: inline-block;
+}
+
+.order_item {
+    padding: 0 30rpx;
+    background: #fff;
+}
+
+.order_item_header {
+    line-height: 80rpx;
+    display: flex;
+    border-bottom: solid 1rpx #ddd;
+}
+
+.order_item_header view {
+    flex: 1;
+    text-align: left
+}
+
+.order_item_header view:last-child {
+    text-align: right;
+}
+
+.order_item_body {
+    display: flex;
+    height: 90rpx;
+    padding: 20rpx 0;
+}
+
+.order_item_body view {
+    flex: 7;
+    line-height: 20rpx;
+}
+
+.order_item_body view image {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.order_item_body view .gray {
+    color: #c3c3c3;
+    font-size: 26rpx;
+}
+
+.order_item_body view .delete {
+    text-decoration: line-through;
+}
+
+.order_item_body view:first-child {
+    flex: 2;
+}
+
+.order_item_body view:last-child {
+    flex: 2;
+}
+
+.order_item_body view:last-child text {
+    width: 100%;
+    display: block;
+    line-height: 45rpx;
+}
+
+.order_item_footer {
+    border-top: solid 1rpx #ddd;
+    height: 90rpx;
+    line-height: 90rpx;
+    text-align: right;
+}
+
+.order_item_footer .red {
+    color: #FF282B;
 }
