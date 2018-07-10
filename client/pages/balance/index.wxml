@@ -4,8 +4,7 @@
     <view class='money'>1005.09</view>
     <view class='rechange-btn'>
       <image class='rechange-btn-icon' src='/assets/icon1_wallet@2x.png'></image>
-      1111充值
-      <image class='rechange-btn-icon arrow' src='/assets/icon_arrow@2x.png'></image>
+      充值
     </view>
   </view>
   <view class='balance-record-wrap'>
