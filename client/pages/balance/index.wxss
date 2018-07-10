@@ -1,0 +1,73 @@
+page{
+  background: #f0f0f0;
+}
+.balance{
+  width: 100%;
+}
+.balance-top{
+  width: 100%;
+  height: 328rpx;
+  color: #fff;
+  padding: 30rpx;
+  background: #235379;
+  box-sizing: border-box;
+  position: relative;
+}
+.balance-top .text{
+  font-size: 34rpx;
+  margin:30rpx 0 20rpx;
+}
+.balance-top .money{
+  font-size: 100rpx;
+}
+.balance-top .rechange-btn{
+  color: #000;
+  font-size: 34rpx;
+  height: 86rpx;
+  line-height: 86rpx;
+  background: #fff;
+  position: absolute;
+  left: 30rpx;
+  right: 30rpx;
+  bottom: -43rpx;
+  border: #e6e6e6 1rpx solid;
+  padding-left: 74rpx;
+  box-sizing: border-box;
+}
+.balance-top .rechange-btn .rechange-btn-icon{
+  width: 44rpx;
+  height: 44rpx;
+  display: inline-block;
+  position: absolute;
+  left: 15rpx;
+  top: 21rpx;
+}
+.balance-top .rechange-btn .rechange-btn-icon.arrow{
+  right: 0rpx;
+  top: 0px;
+}
+.balance-record-wrap{
+  margin: 70rpx 30rpx;
+  background: #fff;
+  border: #e5e5e5 1rpx solid;
+}
+.balance-record-wrap .title{
+  height: 86rpx;
+  line-height: 86rpx;
+  border-bottom: #e5e5e5 solid 1rpx;
+}
+.balance-record-wrap .balance-record-item{
+  padding: 0 20rpx;
+  border-bottom: #e5e5e5 solid 1rpx;
+  color: #353535;
+  display: flex;
+}
+.balance-record-wrap .balance-record-item .record-info{
+  flex: 1;
+}
+.balance-record-wrap .balance-record-item .time{
+  color: #353535;
+}
+.balance-record-wrap .balance-record-item .time{
+  color: #353535;
+}

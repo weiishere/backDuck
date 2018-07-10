@@ -1,0 +1,23 @@
+<view class='container'>
+  <view class='balance-top'>
+    <view class='text'>当前余额（元）</view>
+    <view class='money'>1005.09</view>
+    <view class='rechange-btn'>
+      <image class='rechange-btn-icon' src='/assets/icon1_wallet@2x.png'></image>
+      1111充值
+      <image class='rechange-btn-icon arrow' src='/assets/icon_arrow@2x.png'></image>
+    </view>
+  </view>
+  <view class='balance-record-wrap'>
+    <view class='title'>使用记录</view>
+    <view class='balance-record-item'>
+      <view class='record-info'>
+        <view class='record-type'>订单支付</view>
+        <view class='record-time'>2018-04-02 16:12:56</view>
+      </view>
+      <view class='record-amount'>
+        -58.00元
+      </view>
+    </view>
+  </view> 
+</view>
