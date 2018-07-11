@@ -1,0 +1,34 @@
+<view class='container reservation'>
+  <view class='title'>取件时间</view>
+  <view class='reservation-wrap reservation-time'>
+    <view class='left'>
+      <image class='icon' src='/assets/time.png'></image>
+    </view>
+    <view class='content'>
+      <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+    <view class="tui-picker-detail">
+      {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
+    </view>
+  </picker>
+
+      <!-- 2018-06-17 18:58:24 -->
+    </view>
+    <view class='right'>
+      <image class='icon' src='/assets/icon_arrow@2x.png'></image>
+    </view>
+  </view>
+  <view class='title'>选择地址</view>
+  <view class='reservation-wrap reservation-address' bindtap='chooseAddressEventFn'>
+    <view class='left'>
+      <image class='icon' src='/assets/address.png'></image>
+    </view>
+    <view class='content'>
+      <view class='user'>罗晶晶 18998998752</view>
+      <view class='address'>四川省成都市武侯区兆景路139号5-1-1-1101</view>
+    </view>
+    <view class='right'>
+      <image class='icon' src='/assets/icon_arrow@2x.png'></image>
+    </view>
+  </view>
+  <button class='btn'>提交</button>
+</view>

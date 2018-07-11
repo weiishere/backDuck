@@ -1,0 +1,50 @@
+<view class='container myreservation'>
+  <view class='myreservation-list'>
+    <view class='myreservation-item clearfix'>
+      <view class='title clearfix'>
+        <view class='num'>预约号：14858474415</view>
+        <view class='status delete'>待取件</view>
+      </view>
+      <view class="myreservation-info clearfix">
+        <view class='sub-title'>预约信息</view>
+        <ul class="clearfix">
+          <li class="time">
+            <image class='icon time-icon' src='/assets/time.png'></image>2018-06-19 18:29
+          </li>
+          <li class="user">
+            <image class='icon user-icon' src='/assets/user.png'></image>罗晶晶
+          </li>
+          <li class="phone">
+            <image class='icon phone-icon' src='/assets/phone.png'></image>18998761111
+          </li>
+          <li class="address">
+            <image class='icon address-icon' src='/assets/address.png'></image>四川省成都市武侯区兆景路139号5-1-1-1101
+          </li>
+        </ul>
+      </view>
+    </view>
+    <view class='myreservation-item clearfix'>
+      <view class='title clearfix'>
+        <view class='num'>预约号：14858474415</view>
+        <view class='status'>已取件</view>
+      </view>
+      <view class="myreservation-info clearfix">
+        <view class='sub-title'>预约信息</view>
+        <ul class="clearfix">
+          <li class="time">
+            <image class='icon time-icon' src='/assets/time.png'></image>2018-06-19 18:29
+          </li>
+          <li class="user">
+            <image class='icon user-icon' src='/assets/user.png'></image>罗晶晶
+          </li>
+          <li class="phone">
+            <image class='icon phone-icon' src='/assets/phone.png'></image>18998761111
+          </li>
+          <li class="address">
+            <image class='icon address-icon' src='/assets/address.png'></image>四川省成都市武侯区兆景路139号5-1-1-1101
+          </li>
+        </ul>
+      </view>
+    </view>
+  </view>
+</view>

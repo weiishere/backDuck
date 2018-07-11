@@ -1,0 +1,57 @@
+page{
+  background: #f1f1f1;
+}
+.myreservation-item{
+  background: #fff;
+  margin-bottom: 18rpx;
+}
+.myreservation-item .title{
+  display: flex;
+  padding: 0 28rpx;
+  line-height: 80rpx;
+  border-bottom: #aeaeae 1rpx solid;
+}
+.myreservation-item .title .num{
+  flex: 1;
+}
+.myreservation-item .title .status{
+  color: #e6341a;
+  padding-left: 54rpx;
+}
+.myreservation-item .title .status.delete{
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAdVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB5WX1YAAAAJnRSTlMASw6ItHhm4tIiu5mB/PXwwbexaD4IBQHdwyPXza2fi3VvRDQcE78j+XIAAADWSURBVDjL7dJJE4IwDIbhAAqipS2rgPvC9/9/oiyjDtNgb17gPWRyeCan0OzaexJ90ttbcYZPmRX7UFnYlimkVpyiGpbqB36et30HqGFROAzL+Wlgjcm0gSPEPluMyMDAg9geAHP56LEdmcsJJksM7AqFeGcUQwqXzDZwyMhB0M7/46b7tTzv/q+xYQceUREEBZGAY8FrrIhcwCVaYb3gBX/xFckbJ7hacHi6t+vl0o77qe5wyWINQUYCmsU3yLQOR9W+xI3FRQUmXRBbLspoLKNS5DSjXpt/LHV8tlzmAAAAAElFTkSuQmCC') no-repeat left center;
+  background-size: 44rpx 44rpx;
+}
+.myreservation-info {
+  margin: 0px 28rpx;
+  padding: 0;
+}
+
+.myreservation-info .sub-title{
+  line-height: 80rpx;
+  border-bottom: #d6d6d6 1rpx solid;
+}
+.myreservation-info ul{
+  margin: 26rpx 76rpx;
+  display: block;
+}
+.myreservation-info li {
+  display: block;
+  /* height: 60rpx; */
+  line-height: 70rpx;
+  padding-left: 54rpx;
+  position: relative;
+  margin-bottom: 10rpx;
+}
+.myreservation-info li .icon{
+ position: absolute;
+  width: 44rpx;
+  height: 44rpx;
+  display: inline-block;
+  left: 0;
+  top: 0;
+  margin-top: 13rpx;
+}
+.myreservation-info li.address{
+  line-height: 40rpx;
+}
