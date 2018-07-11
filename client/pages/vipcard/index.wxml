@@ -1,2 +1,73 @@
-<!--pages/vipcard/index.wxml-->
-<text>pages/vipcard/index.wxml</text>
+<view class='container vipcard-wrap clearfix'>
+  <view class='vipcard-top'>
+    <view class='user-info-wrap'>
+      <view class='user-icon-wrap'>
+        <image class='user-icon' src='/assets/user_head_default@2x.png'></image>
+      </view>
+      <view class='user-info'>
+         <!-- <view class='signin'>登陆后即可查看会员卡</view>  -->
+         <view class='signin'>
+          <view class='user-name'>Olivia Luo</view>
+          <view class='user-type'>钻石会员</view>
+        </view> 
+      </view>
+    </view>
+    <view class='vipcard-icon-wrap'>
+      <image class='vipcard-icon' src='/assets/img_vip_gold@2x.png'></image>
+    </view>
+    <view 
+      class='login-btn' 
+      data-level="{{viptype}}"
+      bindtap='userBtnEventFn'>
+      {{isLogined ? '会员升级' : '登录'}}
+    </view>
+  </view>
+  <view class='title'>
+    <image src='/assets/icon@2x.png' class='title-icon'></image>会员特权
+  </view>
+  <table class="vipcard-desc">
+    <tr>
+      <th>会员专享权益</th>
+      <th>黄金会员</th>
+      <th>铂金会员</th>
+      <th>钻石会员</th> 
+    </tr>
+    <tr>
+      <td>会员折扣</td>
+      <td>9.9折</td>
+      <td>9.5折</td>
+      <td>8.5折</td> 
+    </tr>
+    <tr>
+      <td>会员生日礼券</td>
+      <td>20元</td>
+      <td>50元</td>
+      <td>80元</td> 
+    </tr>
+    <tr>
+      <td>上门服务特权</td>
+      <td>/</td>
+      <td>每月2次</td>
+      <td>每月4次</td> 
+    </tr>
+    <tr>
+      <td>产品免费补漆</td>
+      <td>/</td>
+      <td>1次</td>
+      <td>2次</td> 
+    </tr>
+    <tr>
+      <td>VIP专享管家</td>
+      <td>/</td>
+      <td>/</td>
+      <td>有</td> 
+    </tr>
+    <tr>
+      <td>专享活动</td>
+      <td>/</td>
+      <td>有</td>
+      <td>有</td> 
+    </tr>
+  </table>
+  <view class='vipcard-tip'>PS： 以上解释权归黑鸭子所有，若有疑问,请咨询客服</view>
+</view>

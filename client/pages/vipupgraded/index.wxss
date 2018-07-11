@@ -1,1 +1,36 @@
-/* pages/vipupgraded/index.wxss */
+.vipupgraded-wrap{
+
+}
+.vipupgraded{
+  margin: 18rpx 30rpx 0 ;
+  position: relative;
+}
+.vipupgraded .vipupgraded-bg {
+  width: 100%;
+  height: 370rpx;
+  display: block;
+}
+.vipupgraded .price{
+  position: absolute;
+  bottom: 54rpx;
+  left: 50%;
+  color: #d6d8d9;
+  font-size: 30rpx;
+  transform: translateX(-50%);
+}
+.vipupgraded .buy-btn{
+  width: 126rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  border: #d6d8d9 1rpx solid;
+  border-radius: 10rpx;
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  color: #fff;
+}
+.vipupgraded.gold .buy-btn,
+.vipupgraded.gold .price{
+  color: #888;
+}
