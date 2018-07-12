@@ -9,10 +9,13 @@
     "pages/vipupgraded/index",
     "pages/vipcard/index",
     "pages/bindphone/index",
+    "pages/changephone/index",
     "pages/address/index",
     "pages/address/add/index",
     "pages/myreservation/index",
-    "pages/reservation/index"
+    "pages/reservation/index",
+    "pages/orderpay/index",
+    "pages/setup/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

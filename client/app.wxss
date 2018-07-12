@@ -56,5 +56,5 @@ page {
   background: #235379;
   margin-top: 45rpx;
   color: #fff;
-  font-size: 46rpx;
+  font-size: 32rpx;
 }

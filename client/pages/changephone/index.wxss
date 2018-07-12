@@ -1,0 +1,16 @@
+@import "../../utils/form.wxss";
+.changephone-wrap{
+  margin: 74rpx;
+}
+.changephone-wrap .form-wrap{
+  margin: 0 28rpx;
+}
+
+.changephone-wrap .btn {
+  margin-top: 84rpx;
+}
+.changephone-wrap .no-sms-captcha{
+  margin-top: 48rpx;
+  text-align: right;
+  color: #23537b
+}

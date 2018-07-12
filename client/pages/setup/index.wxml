@@ -1,0 +1,34 @@
+<view class='container address-wrap'>
+  <view class='form-wrap'>
+    <view class='form-item' data-type='changepwd' bindtap='clickEventFn'>
+      <view class='form-item-label'>
+        <view class='label'>修改支付密码</view>
+      </view>
+      <view class='form-item-content'>
+      </view>
+      <view class='form-item-tools'>
+        <view class='arrow-icon'></view>
+      </view>
+    </view>
+    <view class='form-item' data-type='forgetpwd' bindtap='clickEventFn'>
+      <view class='form-item-label'>
+        <view class='label'>忘记支付密码</view>
+      </view>
+      <view class='form-item-content'>
+      </view>
+      <view class='form-item-tools'>
+        <view class='arrow-icon'></view>
+      </view>
+    </view>
+    <view class='form-item' data-type='changephone' bindtap='clickEventFn'>
+      <view class='form-item-label'>
+        <view class='label'>修改手机号</view>
+      </view>
+      <view class='form-item-content'>
+      </view>
+      <view class='form-item-tools'>
+        <view class='arrow-icon'></view>
+      </view>
+    </view>
+  </view>
+</view>

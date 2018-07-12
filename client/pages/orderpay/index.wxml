@@ -1,0 +1,75 @@
+<view class='container orderpay-wrap'>
+  <view class='paytype-wrap order-info'>
+    <view class='paytype-item'>
+      <view class='paytype-item-left'>
+        <text class='label'>需付款</text>
+      </view>
+      <view class='paytype-item-content'></view>
+      <view class='paytype-item-right'>
+        <text class='amount'>230.00</text> 元
+      </view>
+    </view>
+    <view class='paytype-item order-info-item first'>
+      <view class='paytype-item-left'>
+        订单号码
+      </view>
+      <view class='paytype-item-content'></view>
+      <view class='paytype-item-right'>
+        12321039218392108390218
+      </view>
+    </view>
+    <view class='paytype-item order-info-item last'>
+      <view class='paytype-item-left'>
+        商品合计
+      </view>
+      <view class='paytype-item-content'></view>
+      <view class='paytype-item-right'>
+        230.00元
+      </view>
+    </view>
+  </view>
+  <view class='sub-title'>选择支付方式</view>
+  <view class='paytype-wrap'>
+    <view class='paytype-item wechatpay active'>
+      <view class='paytype-item-left'>
+        <image 
+          class='paytype-item-type-icon'
+          src='/assets/wechatpay@2x.png'>
+        </image>
+      </view>
+      <view class='paytype-item-content'>微信支付</view>
+      <view class='paytype-item-right'>
+        <image 
+          class='paytype-item-type-icon'
+          src='/assets/recharge-checked.png'>
+        </image>
+        <!-- <image 
+          class='paytype-item-type-icon'
+          src='/assets/recharge-no-checked.png'>
+        </image> -->
+      </view>
+    </view>
+    <view class='paytype-item blanacepay'>
+      <view class='paytype-item-left'>
+        <image 
+          class='paytype-item-type-icon'
+          src='/assets/balancepay@2x.png'>
+        </image>
+      </view>
+      <view class='paytype-item-content'>账户余额支付</view>
+      <view class='paytype-item-right'>
+        <!-- <image 
+          class='paytype-item-type-icon'
+          src='/assets/recharge-checked.png'>
+        </image> -->
+         <image 
+          class='paytype-item-type-icon'
+          src='/assets/recharge-no-checked.png'>
+        </image> 
+      </view>
+    </view>
+  </view>
+  <view class='btn-wrap'>
+    <button class='btn'>立即支付</button>
+  </view>
+</view>
