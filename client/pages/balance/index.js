@@ -20,4 +20,9 @@ Page({
   lower: function (e) {
     console.log(e)
   },
+  rechargeClickEventFn(){
+    wx.navigateTo({
+      url: '/pages/recharge/index'
+    })
+  }
 })

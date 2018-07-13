@@ -12,5 +12,32 @@
 	},
 	"appid": "wx80e1713338eaa27e",
 	"projectname": "blackDuck",
-	"condition": {}
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "余额",
+					"pathName": "pages/paypwd/index",
+					"query": ""
+				}
+			]
+		}
+	}
 }

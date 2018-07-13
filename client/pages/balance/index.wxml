@@ -2,7 +2,7 @@
   <view class='balance-top'>
     <view class='text'>当前余额（元）</view>
     <view class='money'>1005.09</view>
-    <view class='rechange-btn'>
+    <view class='rechange-btn' bindtap='rechargeClickEventFn'>
       <image class='rechange-btn-icon' src='/assets/icon1_wallet@2x.png'></image>
       充值
     </view>
