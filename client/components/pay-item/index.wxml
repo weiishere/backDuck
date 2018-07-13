@@ -19,6 +19,7 @@
         value="{{inputStr}}"
         maxlength="6"
         type="number"
+        focus="{{inputFocus}}"
         bindinput="passInput"/>
     </view>
   </view>

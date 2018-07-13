@@ -28,6 +28,7 @@
   height: 106rpx;
   line-height: 107rpx;
   text-align: center;
+  font-size: 86rpx;
   border: none;
 }
 .hideInput-wrap{

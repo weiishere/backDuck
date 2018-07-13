@@ -10,7 +10,14 @@ Component({
     },
     dType: {
       type: String,
-      value: 'paypwd'
+      observer (newVal, oldVal) {
+        // console.log(newVal, oldVal)
+        if (newVal) {
+          this.setData({
+            dType: newVal
+          })
+        }
+      }
     }
   },
   /**
@@ -18,7 +25,7 @@ Component({
    * 可用于模版渲染
    */
   data: {
-    allinputF1: true,
+    inputFocus: true,
     pwdArr: [],
     inputStr: '',
     focusF: [],
@@ -30,7 +37,7 @@ Component({
    */
   methods: {
     passInput(e) {
-      const dType = e.target.dataset.type;
+      const {dType} = this.data;
       console.log('dType: ', dType)
       const value = e.detail.value;
       const num = e.detail.cursor - 1;
@@ -45,6 +52,7 @@ Component({
           allinput: value,
           pwdArr: tempArr
         }
+        console.log(`${dType}密码输入完成: ${tempArr.join('')}`)
       } else {
         data = {
           inputSrr: value,
@@ -52,14 +60,14 @@ Component({
           pwdArr: tempArr
         }
       }
-      console.log(`${dType}密码输入完成: ${tempArr}`)
       this.setData(data)
+
+      this.triggerEvent("InputEventFn", { type: dType, data: tempArr.join('') })
     },
     allInputFn(e) {
       const index = e.target.dataset.index;
-      console.log(index)
       // var focusF = http.forC(that.data.focusF);
-      var pwdArr = that.data.pwdArr;
+      var pwdArr = this.data.pwdArr;
       var value = e.detail.value
       if (pwdArr[index]) {
         pwdArr[index] = '';
@@ -75,11 +83,9 @@ Component({
       console.log(index)
     },
     focusInput(e) {
-      console.log(e.target.dataset)
       this.setData({
-        allinputF1: true
+        inputFocus: true
       })
-    },
-
+    }
   }
 })
