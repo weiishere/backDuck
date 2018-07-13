@@ -1,5 +1,5 @@
-<view class='paypwd-wrap'>
-	<view class="paypwd-title">请输入支付密码</view>
+<view class='container paypwd-page'>
+	<!-- <view class="paypwd-title">请输入支付密码</view>
   <view class="paypwd-box" bindtap="focusInput">
     <view class="paypwd-box-in" wx:for="{{6}}" wx:key="{{index}}">
       <input
@@ -50,5 +50,7 @@
         type="number"
         bindinput="passInput"/>
     </view>
-  </view>
+  </view> -->
+  <PayItem dType="paypwd" title="请输入支付密码"></PayItem>
+  <!-- <PayItem dType="againPaypwd" title="再次输入支付密码"></PayItem> -->
 </view>

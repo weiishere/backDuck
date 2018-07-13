@@ -1,7 +1,3 @@
-page{background: #f1f1f1}
-.paypwd-wrap{
-  padding: 50rpx;
-}
 .paypwd-title{
   font-size: 34rpx;
   color: #676767;

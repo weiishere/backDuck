@@ -3,7 +3,6 @@
   <view class="paypwd-box" bindtap="focusInput">
     <view class="paypwd-box-in" wx:for="{{6}}" wx:key="{{index}}">
       <input
-        data-type="pwd"
         data-index="{{index}}"
         bindinput="allInputFn"
         type="number" 
@@ -16,10 +15,8 @@
     </view>
     <view class='hideInput-wrap'>
       <input
-        data-type="pwd"
         class='hideInput'
         value="{{inputStr}}"
-        focus="{{allinputF1}}"
         maxlength="6"
         type="number"
         bindinput="passInput"/>

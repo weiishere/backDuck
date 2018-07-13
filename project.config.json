@@ -33,8 +33,8 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "服务",
-					"pathName": "pages/service/index",
+					"name": "支付密码",
+					"pathName": "pages/paypwd/index",
 					"query": ""
 				},
 				{
