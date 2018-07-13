@@ -1,0 +1,51 @@
+page{background: #f1f1f1}
+.paypwd-wrap{
+  padding: 50rpx;
+}
+.paypwd-title{
+  font-size: 34rpx;
+  color: #676767;
+  margin-bottom: 30rpx;
+}
+.paypwd-box{
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	z-index: 10;
+  margin-bottom: 40rpx;
+}
+.paypwd-box-in{
+	width: 108rpx;
+	height: 108rpx;
+	border:1rpx #bfbfbf solid;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right:-1rpx; 
+  background: #fff;
+}
+.paypwd-input{
+  display: block;
+  width: 106rpx;
+  height: 106rpx;
+  line-height: 107rpx;
+  text-align: center;
+  border: none;
+}
+.hideInput-wrap{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	opacity: 0.5;
+	z-index: 2;
+	left: 0rpx;
+	background: red;
+	left: -150%;
+}
+.hideInput-wrap input{
+	width: 100%;
+	height: 100%;
+}

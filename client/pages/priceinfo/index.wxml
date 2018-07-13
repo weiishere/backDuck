@@ -1,0 +1,15 @@
+<view class='info-wrap'>
+  <image class='banner' src='/assets/banner.png'></image>
+  <view class='info'>
+    <view>黑鸭子定位g奥段奢侈品服饰，皮具的清洗和护理，</view>
+    <view>立足对于奢侈品文化的理解和传承，</view>
+    <view>传承欧洲先进的奢侈品制造和维修工艺，</view>
+    <view>提供于奢侈品相匹配的高端护理业务。</view>
+  </view>
+  <image class='banner1' src='/assets/banner-1.png'></image>
+  <view class='info'>
+  洗涤棉麻丝织品，奢侈品洗护，皮革皮草养护，毛料服装洗涤。学习欧洲干洗机制造技术，采用全自动控制变频调速，满足不同面料的洗涤需求。
+  </view>
+  <image class='price' src='/assets/price.png'></image>
+  <Menu></Menu>
+</view>

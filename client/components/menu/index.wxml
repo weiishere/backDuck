@@ -1,0 +1,28 @@
+<view class='menu-warp'>
+    <view class="{{showMenu ? 'mask active' : 'mask'}}"></view>
+    <view class="{{showMenu ? 'menu active' : 'menu'}}">
+      <view class='menu-head' bindtap='toggleMenu'>
+        快速导航
+      </view>
+      <view class='menu-content'>
+        <view class='icon-wrap' data-type='home' bindtap='menuClickFn'>
+          <view class='icon-box'>
+            <image class='icon home' src='/assets/icon_home@2x.png'></image>
+            <view>首页</view>
+          </view>
+        </view>
+        <view class='icon-wrap' data-type='reservation' bindtap='menuClickFn'>
+          <view class='icon-box'>
+            <image class='icon get' src='/assets/icon_clock@2x.png'></image>
+            <view>预约取件</view>
+          </view>
+        </view>
+        <view class='icon-wrap' data-type='order' bindtap='menuClickFn'>
+          <view class='icon-box order'>
+            <image class='icon order' src='/assets/icon_order@2x.png'></image>
+            <view>我的订单</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>

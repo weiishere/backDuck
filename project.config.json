@@ -33,8 +33,14 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "余额",
-					"pathName": "pages/paypwd/index",
+					"name": "介绍",
+					"pathName": "pages/priceinfo/index",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "预约",
+					"pathName": "pages/myreservation/index",
 					"query": ""
 				}
 			]

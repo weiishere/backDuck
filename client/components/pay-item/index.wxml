@@ -1,0 +1,28 @@
+<view class='paypwd-wrap'>
+	<view class="paypwd-title">{{title}}</view>
+  <view class="paypwd-box" bindtap="focusInput">
+    <view class="paypwd-box-in" wx:for="{{6}}" wx:key="{{index}}">
+      <input
+        data-type="pwd"
+        data-index="{{index}}"
+        bindinput="allInputFn"
+        type="number" 
+        class='paypwd-input'
+        confirm-hold="true" 
+        value="{{pwdArr[index]}}" 
+        disabled="true" 
+        maxlength="1"
+        password="{{true}}"/>
+    </view>
+    <view class='hideInput-wrap'>
+      <input
+        data-type="pwd"
+        class='hideInput'
+        value="{{inputStr}}"
+        focus="{{allinputF1}}"
+        maxlength="6"
+        type="number"
+        bindinput="passInput"/>
+    </view>
+  </view>
+</view>

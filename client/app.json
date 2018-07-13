@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/order/order",
-    "pages/home/home",
-    "pages/notice/notice",
+    "pages/order/index",
+    "pages/home/index",
+    "pages/notice/index",
     "pages/feedback/index",
     "pages/balance/index",
     "pages/recharge/index",
@@ -16,7 +16,8 @@
     "pages/reservation/index",
     "pages/orderpay/index",
     "pages/setup/index",
-    "pages/paypwd/index"
+    "pages/paypwd/index",
+    "pages/priceinfo/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

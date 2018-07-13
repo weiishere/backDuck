@@ -1,0 +1,23 @@
+.info-wrap{
+  padding-bottom: 50rpx;
+}
+.banner{
+  width: 100%;
+  height: 186rpx;
+  display: block
+}
+.banner1{
+  width: 100%;
+  height: 323rpx;
+  display: block
+}
+.price{
+  width: 689rpx;
+  height: 552rpx;
+  display: block;
+  margin: 0 auto;
+}
+.info{
+  line-height: 50rpx;
+  padding: 50rpx 30rpx;
+}
