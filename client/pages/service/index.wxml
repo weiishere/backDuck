@@ -1,0 +1,20 @@
+<view class="service-warp">
+  <view class='service-item' bindtap='serviceClickFn'>
+    <image class='big' src='/assets/menu1.png'></image>
+  </view>
+  <view class='service-item' bindtap='serviceClickFn'>
+    <image class='big' src='/assets/menu2.png'></image>
+  </view>
+  <view class='service-item' bindtap='serviceClickFn'>
+    <image class='big' src='/assets/menu3.png'></image>
+  </view>
+  <view class='service-item'>
+    <view class='small-wrap' bindtap='serviceClickFn'>
+      <image class='small' src='/assets/menu4.png'></image>
+    </view>
+    <view class='small-wrap' bindtap='serviceClickFn'>
+      <image class='small' src='/assets/menu5.png'></image>
+    </view>
+  </view>
+  <Menu></Menu>
+</view>

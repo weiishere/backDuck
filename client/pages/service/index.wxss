@@ -1,0 +1,22 @@
+.service-warp{
+  width: 668rpx;
+  margin: 0 auto;
+  padding-top: 44rpx;
+}
+.service-warp .service-item{
+  display: flex;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+}
+.service-warp .service-item .big{
+  width: 100%;
+  height: 186rpx;
+}
+.service-warp .service-item .small{
+  width: 327rpx;
+  height: 218rpx;
+  margin-right: 14rpx;
+}
+.service-warp .service-item .small-wrap:last-child{
+  margin-right: 0;
+}
