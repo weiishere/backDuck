@@ -1,4 +1,6 @@
 // pages/home/home.js.js
+const app = getApp()
+
 Page({
 
   /**
@@ -37,7 +39,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    console.log(app.userInfo);
   },
 
   /**
