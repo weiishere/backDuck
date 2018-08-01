@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/order/index",
     "pages/home/index",
+    "pages/order/index",
     "pages/notice/index",
     "pages/feedback/index",
     "pages/balance/index",
