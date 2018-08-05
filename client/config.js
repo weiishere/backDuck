@@ -4,49 +4,16 @@
 //var host = "http://localhost:5757";
 // 此处主机域名修改成腾讯云解决方案分配的域名
 const localTest = false;
-var host = localTest ? "http://localhost:5757" : "https://q0ymddaf.qcloud.la";
-
+//var host = localTest ? "http://localhost:5757" : "https://q0ymddaf.qcloud.la";
+var host = 'http://118.25.217.48:9881';
 var config = {
   localTest: localTest,
-  goodsApi: {
-    list: `${host}/weapp/goods/list`,
-    listWithLike: `${host}/weapp/goods/listWithLike`,
-    insert: `${host}/weapp/goods/insert`,
-    remove: `${host}/weapp/goods/remove`,
-    update: `${host}/weapp/goods/update`
-  },
-  bannerApi: {
-    list: `${host}/weapp/banner/list`,
-    insert: `${host}/weapp/banner/insert`,
-    remove: `${host}/weapp/banner/remove`,
-    update: `${host}/weapp/banner/update`
-  },
-  menuApi: {
-    list: `${host}/weapp/menu/list`,
-    insert: `${host}/weapp/menu/insert`,
-    remove: `${host}/weapp/menu/remove`,
-    update: `${host}/weapp/menu/update`
-  },
-  tagApi: {
-    list: `${host}/weapp/tag/list`,
-    insert: `${host}/weapp/tag/insert`,
-    remove: `${host}/weapp/tag/remove`,
-    update: `${host}/weapp/tag/update`
-  },
-  goods2tagApi: {
-    list: `${host}/weapp/goods2tag/list`,
-    update: `${host}/weapp/goods2tag/update`
-  },
-  messageApi: {
-    list: `${host}/weapp/message/list`,
-    insert: `${host}/weapp/message/insert`,
-    remove: `${host}/weapp/message/remove`,
-    updateAgree: `${host}/weapp/message/update`
-  },
-  likeApi: {
-    list: `${host}/weapp/like/list`,
-    insert: `${host}/weapp/like/insert`,
-    remove: `${host}/weapp/like/remove`
+  API: {
+    user: {
+      login: `${host}/user/login/oauth`,
+      verification: `${host}/sms/get/verification/code`,
+      bindPhone: `${host}/user/binding/phone`
+    }
   },
   // 下面的地址配合云端 Demo 工作
   testUserInfo: {

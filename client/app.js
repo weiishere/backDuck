@@ -1,49 +1,49 @@
 //app.js
-var qcloud = require('./vendor/wafer2-client-sdk/index')
+//var qcloud = require('./vendor/wafer2-client-sdk/index')
 var config = require('./config');
-let userInfo = {};
+var {
+  singleRequest
+} = require('./utils/util.js')
 
 App({
   onLaunch: function() {
     let self = this;
     //qcloud.setLoginUrl(config.service.loginUrl)
-    
     wx.login({
       success: function(res) {
         if (res.code) {
           //发起网络请求
-          wx.request({
-            url: 'http://118.25.217.48:9881/user/login/oauth',
-            data: {
+          console.log(config.API.user.login);
+          singleRequest({
+            url: config.API.user.login,
+            postData: {
               code: res.code
             },
-            header:{
-              'content-type':'application/x-www-form-urlencoded'
+            success: (data) => {
+              //console.log(data);
+              self.userInfo = {
+                code: res.code,
+                openId: data.data.openId,
+                cookie:data.data.cookie
+              }
             },
-            method: 'POST',
-            success: function(res) {
-              console.log(res);
-            },
-            fail: function() {
-              showModel('请求错误');
-            },
-            complete: function() {
-              wx.hideLoading();
+            error: (data) => {
+
             }
           });
 
 
-          self.userInfo = {
-            code: res.code
-          }
         } else {
           console.log('登录失败！' + res.errMsg)
         }
       },
-      fail:function(e){
+      fail: function(e) {
         console.log(e);
+      },
+      complete: (res) => {
+        console.log(res);
       }
     });
   },
-  userInfo: userInfo
+  userInfo: {}
 })
