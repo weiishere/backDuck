@@ -55,7 +55,11 @@ Page({
         },
         success: (res) => {
           showSuccess('手机绑定成功');
-          
+          setTimeout(() => {
+            wx.redirectTo({
+              url: '/pages/order/index'
+            })
+          }, 1500);
         }
       })
     } else {

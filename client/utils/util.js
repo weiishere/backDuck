@@ -106,15 +106,15 @@ var singleRequest = function({
 }) {
   const app = getApp();
   if (!postData) postData = {};
-  if (app.userInfo) {
-    postData['Cookie'] = app.userInfo.cookie;
-  }
+
   wx.request({
     url: url,
     data: postData,
     method: method || 'POST',
     header: {
-      'content-type': 'application/x-www-form-urlencoded'
+      'content-type': 'application/x-www-form-urlencoded',
+      'Cookie': app.userInfo.cookie,
+      'token': app.userInfo.token
     },
     success: function(res) {
       if (res.data.status == '200') {

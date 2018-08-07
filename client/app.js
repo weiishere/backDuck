@@ -24,7 +24,8 @@ App({
               self.userInfo = {
                 code: res.code,
                 openId: data.data.openId,
-                cookie:data.data.cookie
+                cookie:data.data.cookie,
+                token:data.data.token
               }
             },
             error: (data) => {
@@ -38,10 +39,10 @@ App({
         }
       },
       fail: function(e) {
-        console.log(e);
+        //console.log(e);
       },
       complete: (res) => {
-        console.log(res);
+        //console.log(res);
       }
     });
   },
