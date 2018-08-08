@@ -1,4 +1,11 @@
 var dateTimePicker = require('../../utils/dateTimePicker.js');
+import {
+  showModel,
+  showSuccess,
+  singleRequest
+} from '../../utils/util.js';
+import * as config from '../../config.js';
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -11,7 +18,9 @@ Page({
     dateTimeArray1: null,
     dateTime1: null,
     startYear: 2000,
-    endYear: 2050
+    endYear: 2050,
+    haveAddressList: false,
+    defaultData: ''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -34,6 +43,7 @@ Page({
       dateTimeArray1: obj1.dateTimeArray,
       dateTime1: obj1.dateTime
     });
+    this.getAddressListFn()
   },
   changeDateTime1(e) {
     this.setData({ dateTime1: e.detail.value });
@@ -57,7 +67,61 @@ Page({
   },
   chooseAddressEventFn(){
     wx.navigateTo({
-      url: '/pages/address/index',
+      url: '/pages/address/index?pageorigin=reservation',
+    })
+  },
+  //获取地址列表
+  getAddressListFn(){
+    singleRequest({
+      url: config.API.address.list,
+      postData: {
+      },
+      method: 'get',
+      success: (res) => {
+        const data = res.data;
+        let defaultdata = '';
+        data.forEach((item, index) => {
+          if (item.isDefault == 1) {
+            defaultdata = item
+          }
+        })
+        this.data.defaultData = defaultdata;
+      },
+      error(res){
+        console.log('错误', res)
+      }
+    })
+  },
+  //确认预约取件
+  submitClickEvent(){
+    const { defaultData } = this.data;
+    if (defaultData && defaultData.id) {
+      this.addBespeakFn()
+    } else {
+      showModel("错误", "请选择地址~");
+    } 
+  },
+  // 提交数据
+  addBespeakFn(){
+    const timestamp = Date.parse(new Date()),
+          { defaultData } = this.data;
+    singleRequest({
+      url: config.API.bespeak.add,
+      postData: {
+        bespeakNo: '',
+        takePartTime: timestamp,
+        address: encodeURIComponent(defaultData),  
+        remarks: "",
+        gmtCreate: '',
+        gmtModified: '',
+        state: 0
+      },
+      success: (res) => {
+        console.log('成功', res)
+      },
+      error(res) {
+        console.log('错误', res)
+      }
     })
   }
 })

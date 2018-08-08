@@ -5,11 +5,12 @@
         <view class='label'>收货人</view>
       </view>
       <view class='form-item-content'>
-        <input type='tel' 
+        <input type='text' 
           class='form-input'
-          maxlength='20' 
+          maxlength='20'
           placeholder='收件人姓名'
-          id='userphone'>
+          id='attn'
+          bindinput='inputChangeFn'>
         </input>
       </view>
       <view class='form-item-tools'></view>
@@ -19,11 +20,12 @@
         <view class='label'>联系方式</view>
       </view>
       <view class='form-item-content'>
-        <input type='tel' 
+        <input type='number' 
           class='form-input'
-          maxlength='20' 
+          maxlength='11' 
           placeholder='手机号码'
-          id='userphone'>
+          id='mobile'
+          bindinput='inputChangeFn'>
         </input>
       </view>
       <view class='form-item-tools'></view>
@@ -33,12 +35,14 @@
         <view class='label'>所在地区</view>
       </view>
       <view class='form-item-content'>
-        <input type='tel' 
-          class='form-input'
-          maxlength='20' 
-          placeholder='请选择所在地区'
-          id='userphone'>
-        </input>
+        <picker mode="region" bindchange="bindAreaChange" value="{{area}}" custom-item="{{customItem}}">
+          <view class="picker" wx:if="{{area}}">
+            {{area[0]}}{{area[1]}}{{area[2]}}
+          </view>
+          <view class="picker" wx:if="{{!area}}">
+            请选择所在地区
+          </view>
+        </picker>
       </view>
       <view class='form-item-tools'></view>
     </view>
@@ -47,11 +51,11 @@
         <view class='label'>详细地区</view>
       </view>
       <view class='form-item-content'>
-        <input type='tel' 
+        <input type='text' 
           class='form-input'
-          maxlength='20' 
           placeholder='街道、楼牌号等'
-          id='userphone'>
+          id='address'
+          bindinput='inputChangeFn'>
         </input>
       </view>
       <view class='form-item-tools'></view>
@@ -64,7 +68,7 @@
       <view class='form-item-content'>
       </view>
       <view class='form-item-tools'>
-        <view class='default-icon active'></view>
+        <view bindtap='setdefaultFn' class="default-icon  {{isDefault ? 'active' : ''}}"></view>
       </view>
     </view>
     <!-- <view class='form-item'>
@@ -84,5 +88,5 @@
       </view>
     </view> -->
   </view>
-  <view class='btn'>绑定手机</view>
+  <view class='btn' bindtap='submitAddressFn'>保存</view>
 </view>

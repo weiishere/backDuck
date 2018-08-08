@@ -23,12 +23,12 @@
       <image class='icon' src='/assets/address.png'></image>
     </view>
     <view class='content'>
-      <view class='user'>罗晶晶 18998998752</view>
-      <view class='address'>四川省成都市武侯区兆景路139号5-1-1-1101</view>
+      <view class='user'>{{defaultData.attn}} {{defaultData.mobile}}</view>
+      <view class='address'>{{defaultData.mobile}}</view>
     </view>
     <view class='right'>
       <image class='icon' src='/assets/icon_arrow@2x.png'></image>
     </view>
   </view>
-  <button class='btn'>提交</button>
+  <button class='btn' bindtap='submitClickEvent'>提交</button>
 </view>

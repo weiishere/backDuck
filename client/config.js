@@ -6,6 +6,7 @@
 const localTest = false;
 //var host = localTest ? "http://localhost:5757" : "https://q0ymddaf.qcloud.la";
 var host = 'http://118.25.217.48:9881';
+// var host = 'http://www.hyzi.com';
 var config = {
   localTest: localTest,
   API: {
@@ -13,6 +14,27 @@ var config = {
       login: `${host}/user/login/oauth`,
       verification: `${host}/sms/get/verification/code`,
       bindPhone: `${host}/user/binding/phone`
+    },
+    message: {
+      list: `${host}/message/list`,
+      messageId: `${host}/message/get`,
+      deleteByMsgId: `${host}/message/delete`,
+      getMsgCount: `${host}/message/get/count`,
+      deleteAll: `${host}/message/delete/all`
+    },
+    address: {
+      list: `${host}/address/list`,
+      add: `${host}/address/add`,
+      modify: `${host}/address/modify`,
+      deleteAddress: `${host}/address/delete`,
+      setdefault: `${host}/address/modify/default`,
+      getAddressByid: `${host}/address/get`
+    },
+    bespeak: {
+      list: `${host}/bespeak/list`,
+      add: `${host}/bespeak/add`,
+      cancel: `${host}/bespeak/cancel`,
+      getBespeakId: `${host}/bespeak/get/`
     }
   },
   // 下面的地址配合云端 Demo 工作

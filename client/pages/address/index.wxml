@@ -1,17 +1,23 @@
 <view class='container address-wrap'>
   <view class='address-list'>
-    <view class='address-item'>
+    <view
+      class='address-item' 
+      wx:for="{{list}}" 
+      wx:for-index="idx"
+      wx:for-item="item"
+      wx:key="idx"
+      catchtap='addressdetilFn'>
       <view class='address-info'>
-        <view class='name'>罗晶晶 18998772783</view>
-        <view class='address'>四川省成都市武侯区兆景路139号</view>
+        <view class='name'>{{item.attn}} {{item.mobile}}</view>
+        <view class='address'>{{item.area + item.address}}</view>
       </view>
       <view class='address-tools'>
-        <view class='setdefault'>
-          <view class='default-icon active'></view>
+        <view class='setdefault' data-item="{{item}}" data-id="{{item.id}}" data-key='default' bindtap='operationAddressFn'>
+          <view class="default-icon {{item.isDefault == 1 ? 'active' : ''}}"></view>
           默认地址
         </view>
-        <view class='setedit'>编辑</view>
-        <view class='setdelete'>删除</view>
+        <view class='setedit' data-id="{{item.id}}" data-key='edit' bindtap='operationAddressFn'>编辑</view>
+        <view class='setdelete' data-id="{{item.id}}" data-key='delete' bindtap='operationAddressFn'>删除</view>
       </view>
     </view>
   </view>
