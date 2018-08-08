@@ -9,6 +9,7 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
+    
 	},
 	"appid": "wx4ed1b737cbd28b19",
 	"projectname": "blackDuck",
