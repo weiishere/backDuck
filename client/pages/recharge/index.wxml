@@ -5,23 +5,27 @@
   <view class='recharge-wrap'>
     <dl class='recharge'>
       <dt class='title'>充值金额</dt>
-      <dd class="active">
-        <image class='check-icon' src='/assets/recharge-checked.png'></image>
-        <!-- <image class='check-icon' src='/assets/recharge-no-checked.png'></image> -->
-        冲1000元<text class='give'>送200元</text>
+      <dd class="active" 
+        wx:for="{{activityList}}"
+        wx:for-item="item"
+        wx:for-idx="idx"
+        wx:key="idx"
+        data-id="{{item.id}}"
+        catchtap='chooseRechargeMoneyFn'>
+        <image wx:if="{{item.activity}}" class='check-icon' src='/assets/recharge-checked.png'></image>
+        <image wx:else class='check-icon' src='/assets/recharge-no-checked.png'></image>
+        冲{{item.realRecharge}}元<text class='give'>送{{item.realGive}}元</text>
       </dd>
-      <dd class="">
-        <!-- <image class='check-icon' src='/assets/recharge-checked.png'></image> -->
+      <!-- <dd class="">
          <image class='check-icon' src='/assets/recharge-no-checked.png'></image> 
         冲1000元<text class='give'>送200元</text>
       </dd>
       <dd class="">
-        <!-- <image class='check-icon' src='/assets/recharge-checked.png'></image> -->
          <image class='check-icon' src='/assets/recharge-no-checked.png'></image> 
         冲1000元<text class='give'>送200元</text>
-      </dd>
+      </dd> -->
     </dl>
-    <button class='btn'>立即充值</button>
+    <button class='btn' bindtap='rechargePayFn'>立即充值</button>
     <view class='agree-tips'>点击立即充值，即表示您已同意<text class='agree-link'>《充值活动协议》</text></view>
   </view>
 </view>

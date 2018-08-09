@@ -9,7 +9,9 @@
       </view>
       <view>
         <span>
-          <i class='icon-nav_orders'></i>
+          <navigator url='/pages/order/index'>
+            <i class='icon-nav_orders'></i>
+          </navigator>
         </span>
       </view>
     </view>
@@ -48,8 +50,10 @@
         <text>黑鸭子</text>
       </view>
       <view class='home_sider_level'>
-        <image src='https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/vip_diamond%403x.png'></image>
-        <text>黄金会员</text>
+        <navigator url='/pages/vipcard/index'>
+          <image src='https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/vip_diamond%403x.png'></image>
+          <text>黄金会员</text>
+        </navigator>
       </view>
     </view>
     <view class='home_sider_body'>
@@ -91,11 +95,9 @@
       </ul>
     </view>
     <view class='home_sider_footer'>
-      <view>
-        <navigator url='/pages/service/index'>
-          <i class='icon-leftbar_icon_service'></i>
-          <text>客服</text>
-        </navigator>
+      <view bindtap='callMobildServiceFn'>
+        <i class='icon-leftbar_icon_service'></i>
+        <text>客服</text>
       </view>
       <view>
         <navigator url='/pages/feedback/index'>

@@ -35,7 +35,23 @@ var config = {
       add: `${host}/bespeak/add`,
       cancel: `${host}/bespeak/cancel`,
       getBespeakId: `${host}/bespeak/get/`
-    }
+    },
+    mybalance: `${host}/balance/get`,
+    recharge: {
+      activity: `${host}/activity/list`
+    },
+    vip: {
+      list: `${host}/vip/list`,
+      open: `${host}/vip/pay/open`,
+      open: `${host}/vip/pay/open`,
+    },
+    pay: {
+      balancePay: `${host}/order/pay/balance`,
+      wechatPay: `${host}/order/pay/wechat`,
+      recharge: `${host}/activity/pay/balance`,
+      record: `${host}/pay/record/list`
+    },
+    opinion: `${host}/opinion/add`
   },
   // 下面的地址配合云端 Demo 工作
   testUserInfo: {

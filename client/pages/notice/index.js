@@ -4,6 +4,16 @@
  * 并且在wxml 的 每个notice-item，
  * 设置当前item style="{{item.txtStyle，}}"
 */
+import {
+  showModel,
+  showSuccess,
+  singleRequest,
+  formatDateTime
+} from '../../utils/util.js';
+import * as config from '../../config.js';
+const app = getApp()
+
+
 Page({
   /**
    * 页面的初始数据
@@ -17,9 +27,96 @@ Page({
     wx.setNavigationBarTitle({
       title: '我的消息'
     })
+    this.getMessageFn()
   },
-  getNotice(){
-    
+  getMessageFn() {
+    const $this = this;
+    singleRequest({
+      url: config.API.message.list,
+      postData: {
+        pageSize: this.data.pageSize || 10,
+        currentPage: this.data.currentPage || 1
+      },
+      method: 'get',
+      success: (res) => {
+        console.log('res: ', res)
+        let data = [
+          {
+            "id": 4,
+            "msgTitle": "签收通知",
+            "msgContent": "您的订单已全部签收，如有疑问，请致电客服400023654，我们将竭诚为你服务",
+            "msgType": 104,
+            "businessId": 123456789,
+            "isRead": 1,
+            "gmtCreate": 1530003715000,
+            "gmtModified": 1530003718000,
+            "state": 1,
+            "userId": null
+          },
+          {
+            "id": 1,
+            "msgTitle": "取件通知",
+            "msgContent": "黑鸭子物流人员【张三】于17：30已完成上门取件，取件码：756230",
+            "msgType": 101,
+            "businessId": 123456789,
+            "isRead": 1,
+            "gmtCreate": 1530003646000,
+            "gmtModified": 1530003650000,
+            "state": 1,
+            "userId": null
+          },
+          {
+            "id": 2,
+            "msgTitle": "订单生成",
+            "msgContent": "您的订单生成，订单号：123456789。本次消费560，取件码：756320",
+            "msgType": 102,
+            "businessId": 123456789,
+            "isRead": 1,
+            "gmtCreate": 1530003646000,
+            "gmtModified": 1530003650000,
+            "state": 1,
+            "userId": null
+          },
+          {
+            "id": 3,
+            "msgTitle": "护理完成",
+            "msgContent": "您的订单已护理完成，我们稍后为你安排配送，取件码：756802",
+            "msgType": 103,
+            "businessId": 123456789,
+            "isRead": 1,
+            "gmtCreate": 1530003607000,
+            "gmtModified": 1530003619000,
+            "state": 1,
+            "userId": null
+          }
+        ];
+        data.map((item, index) => {
+          let statusText = '';
+          item.address = JSON.parse(item.address)
+          if (item.state == -1) {
+            statusText = '取消'
+          } else if (item.state == 0) {
+            statusText = '待取件'
+          } else if (item.state == 1) {
+            statusText = '已取件'
+          } else if (item.state == 2) {
+            statusText = '已下单'
+          }
+          item.statusText = statusText
+          item.time = formatDateTime(item.takePartTime)
+          return item
+        })
+        $this.setData({
+          list: res.data
+        })
+      },
+      error(res) {
+        showModel({
+          title: "错误",
+          content: res.msg || '报错了~'
+        });
+      }
+    })
   },
   touchS: function (e) {
 

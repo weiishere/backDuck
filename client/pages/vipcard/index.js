@@ -1,4 +1,12 @@
 // pages/vipcard/index.js
+import {
+  showModel,
+  showSuccess,
+  singleRequest
+} from '../../utils/util.js';
+import * as config from '../../config.js';
+const app = getApp()
+
 Page({
 
   /**
@@ -29,5 +37,37 @@ Page({
         url: '/pages/bindphone/index',
       })
     }
+  },
+
+  //获取会员信息
+  getRechargeListFn() {
+    const $this = this;
+    singleRequest({
+      url: config.API.recharge.activity,
+      postData: {
+      },
+      method: 'get',
+      success: (res) => {
+        let data = res.data;
+        console.log(data)
+        if (data) {
+          $this.setData({
+            activityList: data
+          })
+        } else {
+          showModel({
+            title: "错误",
+            content: "收货地址为空~"
+          });
+        }
+
+      },
+      error(res) {
+        showModel({
+          title: "错误",
+          content: res.msg || '报错了~'
+        });
+      }
+    })
   }
 })

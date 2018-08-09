@@ -1,7 +1,7 @@
 <view class='container'>
   <view class='balance-top'>
     <view class='text'>当前余额（元）</view>
-    <view class='money'>1005.09</view>
+    <view class='money'>{{realAccountBalance}}</view>
     <view class='rechange-btn' bindtap='rechargeClickEventFn'>
       <image class='rechange-btn-icon' src='/assets/icon1_wallet@2x.png'></image>
       充值
@@ -15,13 +15,17 @@
       bindscrolltolower="lower"
       scroll-into-view="{{toView}}" 
       scroll-top="{{scrollTop}}">
-      <view class='balance-record-item'>
+      <view class='balance-record-item'
+        wx:for="{{records}}"
+        wx:for-item="item"
+        wx:for-idx="idx"
+        wx:key="idx">
         <view class='record-info'>
-          <view class='record-type'>订单支付</view>
-          <view class='record-time'>2018-04-02 16:12:56</view>
+          <view class='record-type'>{{item.orderId}} 订单支付</view>
+          <view class='record-time'>{{item.createTime}}</view>
         </view>
         <view class='record-amount'>
-          -58.00元
+          {{item.realPayMoney}}元
         </view>
       </view>
     </scroll-view>

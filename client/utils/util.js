@@ -66,7 +66,8 @@ var showModel = (opts, fn) => {
 
   wx.showModal({
     title: opts.title,
-    content: JSON.stringify(opts.content || '暂无异常信息~'),
+    // content: JSON.stringify(opts.content || '暂无异常信息~'), // 为什么要用JSON 转换下 ？？
+    content:  opts.content || '暂无异常信息~',
     showCancel: opts.showCancel || false,
     success: (res) => {
       if(res.confirm){
