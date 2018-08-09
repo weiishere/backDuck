@@ -19,7 +19,7 @@
           <span>
             <image src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHoAAAB6CAYAAABwWUfkAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjI1QTc4M0M2Nzc4NzExRThCNTVBQzVBQzMwNzQ5RkI3IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjI1QTc4M0M3Nzc4NzExRThCNTVBQzVBQzMwNzQ5RkI3Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6MjVBNzgzQzQ3Nzg3MTFFOEI1NUFDNUFDMzA3NDlGQjciIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MjVBNzgzQzU3Nzg3MTFFOEI1NUFDNUFDMzA3NDlGQjciLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz79OmeiAAAN5ElEQVR42uxd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'></image>
           </span>
-          <text>1上门取件</text>
+          <text>上门取件</text>
         </navigator>
       </view>
       <view>
@@ -59,35 +59,49 @@
           <text>最新活动</text>
         </li>
         <li catchtap="gotoPage" data-order='../order/index'>
-          <i class='icon-nav_orders'></i>
-          <text>我的订单</text>
+          <navigator url='/pages/order/index'>
+            <i class='icon-nav_orders'></i>
+            <text>我的订单</text>
+          </navigator>
         </li>
         <li>
-          <i class='icon-leftbar_icon_clock'></i>
-          <text>我的预约</text>
+          <navigator url='/pages/myreservation/index'>
+            <i class='icon-leftbar_icon_clock'></i>
+            <text>我的预约</text>
+          </navigator>
         </li>
         <li>
-          <i class='icon-leftbar_icon_wallet'></i>
-          <text>账户余额</text>
+          <navigator url='/pages/balance/index'>
+            <i class='icon-leftbar_icon_wallet'></i>
+            <text>账户余额</text>
+          </navigator>
         </li>
         <li>
-          <i class='icon-leftbar_icon_mail' style="font-size:26rpx"></i>
-          <text>我的消息</text>
+          <navigator url='/pages/notice/index'>
+            <i class='icon-leftbar_icon_mail' style="font-size:26rpx"></i>
+            <text>我的消息</text>
+          </navigator>
         </li>
         <li>
-          <i class='icon-leftbar_icon_add'></i>
-          <text>我的地址</text>
+          <navigator url='/pages/address/index'>
+            <i class='icon-leftbar_icon_add'></i>
+            <text>我的地址</text>
+          </navigator>
         </li>
       </ul>
     </view>
     <view class='home_sider_footer'>
       <view>
-        <i class='icon-leftbar_icon_service'></i>
-        <text>客服</text>
+        <navigator url='/pages/service/index'>
+          <i class='icon-leftbar_icon_service'></i>
+          <text>客服</text>
+        </navigator>
       </view>
       <view>
-        <i class='icon-leftbar_icon_advice'></i>
-        <text>意见与建议</text>
+        <navigator url='/pages/feedback/index'>
+          <i class='icon-leftbar_icon_advice'></i>
+          <text>意见与建议</text>
+        </navigator>
       </view>
     </view>
   </view>

@@ -5,9 +5,10 @@ import {
   singleRequest
 } from '../../../utils/util.js';
 import * as config from '../../../config.js';
-const app = getApp()
+const app = getApp()  
 Page({
   data: {
+    id: '',
     attn: '',
     mobile: '',
     email: '',
@@ -20,19 +21,34 @@ Page({
     let title = '添加地址'
     if (options.pageorigin == 'edit') {
       title = '编辑地址'
-      this.getAddressById(options.id)
+      this.setData({
+        id: options.id
+      }, () => {
+        this.getAddressById(options.id)
+      })
     }
     wx.setNavigationBarTitle({
       title
     })
   },
-  // 提交数据
+  // 根据ID 获取需要编辑的信息
   getAddressById(id) {
+    const $this = this;
     singleRequest({
       url: config.API.address.getAddressByid+'/'+id,
+      method: 'GET',
       postData: {},
       success: (res) => {
-        console.log('成功', res)
+        // console.log('成功', res)
+        let data = {};
+        for (let key in res.data) {
+          console.log('key: ', key, $this.data[key])
+          if ($this.data[key] != undefined) {
+            data[key] = res.data[key]
+          }
+        }
+        console.log(data)
+        $this.setData(data)
       },
       error(res) {
         console.log('错误', res)
@@ -66,6 +82,7 @@ Page({
   //提交按钮
   submitAddressFn(){
     const {
+      id,
       attn,
       mobile,
       email,
@@ -77,24 +94,42 @@ Page({
       showModel("错误", "请输入正确的名字~");
     } else if (!mobile || mobile.length < 11) {
       showModel("错误", "请输入正确的联系方式~");
+    } else if (!area) {
+      showModel("错误", "请输入选择所在地区~");
+    } else if (!address) {
+      showModel("错误", "请输入详细地址~");
     } else {
-      this.addAddressFn({
+      let data = {
         attn,
         mobile,
         email,
-        area: area.join(''),
+        area: (area instanceof Array ? area.join('') : area),
         address,
-        isDefault
-      })
+        areaCode: 1001,
+        isDefault: isDefault ? 1 : 0
+      };
+      if (id) {
+        data['id'] = id
+      }
+      this.addAddressFn(data)
     }
   },
   // 提交数据
   addAddressFn(parameter) {
     singleRequest({
-      url: config.API.address.add,
-      postData: parameter,
+      url: parameter.id ? config.API.address.edit : config.API.address.add,
+      postData: {
+        jsonData: JSON.stringify(parameter)
+      },
       success: (res) => {
-        console.log('成功', res)
+        showModel("成功", `地址${parameter.id ? '编辑' : '新增'}成功~`, (res) => {
+          console.log(res.confirm)
+          if (res.confirm) {
+            wx.navigateBack({
+              delta: 1
+            })
+          }
+        });
       },
       error(res) {
         console.log('错误', res)

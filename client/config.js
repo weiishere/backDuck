@@ -25,7 +25,7 @@ var config = {
     address: {
       list: `${host}/address/list`,
       add: `${host}/address/add`,
-      modify: `${host}/address/modify`,
+      edit: `${host}/address/modify`,
       deleteAddress: `${host}/address/delete`,
       setdefault: `${host}/address/modify/default`,
       getAddressByid: `${host}/address/get`

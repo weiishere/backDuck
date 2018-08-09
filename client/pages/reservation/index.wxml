@@ -23,8 +23,8 @@
       <image class='icon' src='/assets/address.png'></image>
     </view>
     <view class='content'>
-      <view class='user'>{{defaultData.attn}} {{defaultData.mobile}}</view>
-      <view class='address'>{{defaultData.mobile}}</view>
+      <view class='user'>{{currData.attn}} {{currData.mobile}}</view>
+      <view class='address'>{{currData.mobile}}</view>
     </view>
     <view class='right'>
       <image class='icon' src='/assets/icon_arrow@2x.png'></image>

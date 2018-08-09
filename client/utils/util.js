@@ -25,6 +25,22 @@ const formatTime = date => {
   return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
 }
 
+const formatDateTime = (inputTime) =>  {
+  var date = new Date(inputTime);
+  var y = date.getFullYear();
+  var m = date.getMonth() + 1;
+  m = m < 10 ? ('0' + m) : m;
+  var d = date.getDate();
+  d = d < 10 ? ('0' + d) : d;
+  var h = date.getHours();
+  h = h < 10 ? ('0' + h) : h;
+  var minute = date.getMinutes();
+  var second = date.getSeconds();
+  minute = minute < 10 ? ('0' + minute) : minute;
+  second = second < 10 ? ('0' + second) : second;
+  return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+}
+
 const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
@@ -45,13 +61,16 @@ var showSuccess = text => wx.showToast({
 })
 
 // 显示失败提示
-var showModel = (title, content) => {
+var showModel = (title, content, fn) => {
   wx.hideToast();
 
   wx.showModal({
     title,
     content: JSON.stringify(content || '暂无异常描述'),
-    showCancel: false
+    showCancel: false,
+    success: (res) => {
+      fn && fn(res)
+    }
   })
 }
 
@@ -106,7 +125,6 @@ var singleRequest = function({
 }) {
   const app = getApp();
   if (!postData) postData = {};
-
   wx.request({
     url: url,
     data: postData,
@@ -173,6 +191,7 @@ var clone = function(obj) {
 
 module.exports = {
   formatTime,
+  formatDateTime,
   showBusy,
   showSuccess,
   showModel,

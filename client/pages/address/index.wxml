@@ -6,18 +6,21 @@
       wx:for-index="idx"
       wx:for-item="item"
       wx:key="idx"
+      id="{{item.id}}"
+      data-item="{{item}}"
+      data-id="{{item.id}}"
       catchtap='addressdetilFn'>
       <view class='address-info'>
         <view class='name'>{{item.attn}} {{item.mobile}}</view>
         <view class='address'>{{item.area + item.address}}</view>
       </view>
       <view class='address-tools'>
-        <view class='setdefault' data-item="{{item}}" data-id="{{item.id}}" data-key='default' bindtap='operationAddressFn'>
+        <view class='setdefault' data-item="{{item}}" data-id="{{item.id}}" data-key='default'            catchtap='operationAddressFn'>
           <view class="default-icon {{item.isDefault == 1 ? 'active' : ''}}"></view>
           默认地址
         </view>
-        <view class='setedit' data-id="{{item.id}}" data-key='edit' bindtap='operationAddressFn'>编辑</view>
-        <view class='setdelete' data-id="{{item.id}}" data-key='delete' bindtap='operationAddressFn'>删除</view>
+        <view class='setedit' data-id="{{item.id}}" data-key='edit' catchtap='operationAddressFn'>编辑</view>
+        <view class='setdelete' data-id="{{item.id}}" data-key='delete' catchtap='operationAddressFn'>删除</view>
       </view>
     </view>
   </view>

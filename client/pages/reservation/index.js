@@ -20,7 +20,7 @@ Page({
     startYear: 2000,
     endYear: 2050,
     haveAddressList: false,
-    defaultData: ''
+    currData: ''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -43,7 +43,6 @@ Page({
       dateTimeArray1: obj1.dateTimeArray,
       dateTime1: obj1.dateTime
     });
-    this.getAddressListFn()
   },
   changeDateTime1(e) {
     this.setData({ dateTime1: e.detail.value });
@@ -70,32 +69,11 @@ Page({
       url: '/pages/address/index?pageorigin=reservation',
     })
   },
-  //获取地址列表
-  getAddressListFn(){
-    singleRequest({
-      url: config.API.address.list,
-      postData: {
-      },
-      method: 'get',
-      success: (res) => {
-        const data = res.data;
-        let defaultdata = '';
-        data.forEach((item, index) => {
-          if (item.isDefault == 1) {
-            defaultdata = item
-          }
-        })
-        this.data.defaultData = defaultdata;
-      },
-      error(res){
-        console.log('错误', res)
-      }
-    })
-  },
+
   //确认预约取件
   submitClickEvent(){
-    const { defaultData } = this.data;
-    if (defaultData && defaultData.id) {
+    const { currData } = this.data;
+    if (currData && currData.id) {
       this.addBespeakFn()
     } else {
       showModel("错误", "请选择地址~");
@@ -104,20 +82,29 @@ Page({
   // 提交数据
   addBespeakFn(){
     const timestamp = Date.parse(new Date()),
-          { defaultData } = this.data;
+          { currData } = this.data;
+
     singleRequest({
       url: config.API.bespeak.add,
       postData: {
-        bespeakNo: '',
-        takePartTime: timestamp,
-        address: encodeURIComponent(defaultData),  
-        remarks: "",
-        gmtCreate: '',
-        gmtModified: '',
-        state: 0
+        jsonData: JSON.stringify({
+          bespeakNo: '',
+          takePartTime: timestamp,
+          address: JSON.stringify(currData),
+          remarks: "",
+          gmtCreate: '',
+          gmtModified: '',
+          state: 0
+        })
       },
       success: (res) => {
-        console.log('成功', res)
+        showModel("成功", "预约取件成功", (res) => {
+          if (res.confirm) {
+            wx.redirectTo({
+              url: '/pages/myreservation/index',
+            })
+          }
+        });
       },
       error(res) {
         console.log('错误', res)
