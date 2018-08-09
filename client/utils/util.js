@@ -61,15 +61,18 @@ var showSuccess = text => wx.showToast({
 })
 
 // 显示失败提示
-var showModel = (title, content, fn) => {
+var showModel = (opts, fn) => {
   wx.hideToast();
 
   wx.showModal({
-    title,
-    content: JSON.stringify(content || '暂无异常描述'),
-    showCancel: false,
+    title: opts.title,
+    content: JSON.stringify(opts.content || '暂无异常信息~'),
+    showCancel: opts.showCancel || false,
     success: (res) => {
-      fn && fn(res)
+      if(res.confirm){
+        fn && fn(res)
+      }
+      // fn && fn(res)
     }
   })
 }
@@ -98,12 +101,18 @@ var getItemDataByServer = function({
         if (res.data.code == '00001') {
           resolve(res.data);
         } else {
-          util.showModel('操作失败(' + res.data.code + ')');
+          util.showModel({
+            title: '操作失败(' + res.data.code + ')',
+            content: ''
+          });
           reject();
         }
       },
       fail: function() {
-        showModel('请求错误');
+        showModel({
+          title: "请求错误",
+          content: ''
+        });
         reject();
       },
       complete: function() {
@@ -149,13 +158,19 @@ var singleRequest = function({
             });
           }, 500);
         } else {
-          showModel('操作失败(' + res.data.status + ')');
+          showModel({
+            title: "",
+            content: '操作失败(' + res.data.status + ')'
+          });
           error && error(res.data);
         }
       }
     },
     fail: function() {
-      showModel('请求错误');
+      showModel({
+        title: "请求错误",
+        content: ''
+      });
       fail && fail();
     },
     complete: function(res) {

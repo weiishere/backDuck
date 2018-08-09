@@ -56,8 +56,11 @@ Page({
           list: res.data
         })
       }, 
-      error(res){
-        console.log('错误')
+      error(res) {
+        showModel({
+          title: "错误",
+          content: res.msg || '报错了~'
+        });
       }
     })
   }

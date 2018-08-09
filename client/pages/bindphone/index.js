@@ -28,7 +28,10 @@ Page({
   },
   verification() {
     if (!(/^1[345789]\d{9}$/.test(this.data.phoneInputValue))) {
-      showModel("错误", "您输入的手机号不合法~");
+      showModel({
+        title: "错误",
+        content: '您输入的手机号不合法~'
+      });
       return false;
     } else {
       singleRequest({
@@ -63,7 +66,10 @@ Page({
         }
       })
     } else {
-      showModel("错误", "请先获取验证码~");
+      showModel({
+        title: "错误",
+        content: '请先获取验证码~'
+      });
     }
   },
   /**

@@ -59,7 +59,6 @@ Page({
     });
   },
   bindTimeChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       time: e.detail.value
     })
@@ -76,7 +75,10 @@ Page({
     if (currData && currData.id) {
       this.addBespeakFn()
     } else {
-      showModel("错误", "请选择地址~");
+      showModel({
+        title: "错误",
+        content: '请选择地址~'
+      });
     } 
   },
   // 提交数据
@@ -98,7 +100,11 @@ Page({
         })
       },
       success: (res) => {
-        showModel("成功", "预约取件成功", (res) => {
+
+        showModel({
+          title: "成功",
+          content: '预约取件成功'
+        }, (res) => {
           if (res.confirm) {
             wx.redirectTo({
               url: '/pages/myreservation/index',
@@ -107,7 +113,10 @@ Page({
         });
       },
       error(res) {
-        console.log('错误', res)
+        showModel({
+          title: "错误",
+          content: res.msg || '出错啦'
+        });
       }
     })
   }

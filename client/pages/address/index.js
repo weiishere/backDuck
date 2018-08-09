@@ -40,13 +40,18 @@ Page({
             list: data
           })
         } else {
-          showModel("错误", "收货地址为空~");
+          showModel({
+            title: "错误",
+            content: "收货地址为空~"
+          });
         }
 
       },
       error(res) {
-        // console.log(res)
-        showModel("错误", res.msg || '报错了~');
+        showModel({
+          title: "错误",
+          content: res.msg || '报错了~'
+        });
       }
     })
   },
@@ -69,7 +74,17 @@ Page({
   operationAddressFn(e){
     const { id, key, item } = e.currentTarget.dataset;
     if (key != 'edit') {
-      this.setAddressByIdFn(key, id)
+      if (key == 'delete') {
+        showModel({
+          title: '',
+          content: '确定要删除该地址吗？',
+          showCancel: true
+        }, (res) => {
+          this.setAddressByIdFn(key, id)
+        });
+      } else {
+        this.setAddressByIdFn(key, id)
+      }
     } else {
       wx.navigateTo({
         url: `/pages/address/add/index?pageorigin=edit&id=${id}`,
@@ -77,7 +92,6 @@ Page({
     }
   },
   setAddressByIdFn(key, id){
-    console.log(key, id)
     const $this = this;
     let url = config.API.address.deleteAddress
     if (key == 'default') {

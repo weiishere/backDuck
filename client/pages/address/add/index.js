@@ -91,13 +91,25 @@ Page({
       isDefault
     } = this.data;
     if (!attn || attn.length < 2) {
-      showModel("错误", "请输入正确的名字~");
+      showModel({
+        title: "错误", 
+        content: "请输入正确的名字~"
+      });
     } else if (!mobile || mobile.length < 11) {
-      showModel("错误", "请输入正确的联系方式~");
+      showModel({
+        title: "错误",
+        content: "请输入正确的联系方式~"
+      });
     } else if (!area) {
-      showModel("错误", "请输入选择所在地区~");
+      showModel({
+        title: "错误",
+        content: "请输入选择所在地区~"
+      });
     } else if (!address) {
-      showModel("错误", "请输入详细地址~");
+      showModel({
+        title: "错误",
+        content: "请输入详细地址~"
+      });
     } else {
       let data = {
         attn,
@@ -122,13 +134,13 @@ Page({
         jsonData: JSON.stringify(parameter)
       },
       success: (res) => {
-        showModel("成功", `地址${parameter.id ? '编辑' : '新增'}成功~`, (res) => {
-          console.log(res.confirm)
-          if (res.confirm) {
-            wx.navigateBack({
-              delta: 1
-            })
-          }
+        showModel({
+          title: "成功",
+          content: `地址${parameter.id ? '编辑' : '新增'}成功~`
+        }, (res) => {
+          wx.navigateBack({
+            delta: 1
+          })
         });
       },
       error(res) {
