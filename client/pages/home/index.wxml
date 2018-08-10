@@ -92,6 +92,12 @@
             <text>我的地址</text>
           </navigator>
         </li>
+        <li>
+          <navigator url='/pages/setup/index'>
+            <i class='icon-set'></i>
+            <text>设置</text>
+          </navigator>
+        </li>
       </ul>
     </view>
     <view class='home_sider_footer'>

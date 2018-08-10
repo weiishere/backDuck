@@ -9,6 +9,6 @@ Page({
   },
   clickEventFn (e) {
     const {type} = e.currentTarget.dataset;
-    console.log(type)
+    // console.log(type)
   }
 })

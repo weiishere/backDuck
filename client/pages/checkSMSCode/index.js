@@ -13,11 +13,16 @@ Page({
     mobile: '',
     smsCode: '',
     countNum: 60,
+    pageorigin: '',
     btnText: '获取验证码'
   },
   onLoad: function (options) {
+    console.log(options.pageorigin)
+    this.setData({
+      pageorigin: options.pageorigin
+    })
     wx.setNavigationBarTitle({
-      title: '修改手机号',
+      title: '获取验证码',
     })
   },
   inputChangeFn(e){
@@ -53,23 +58,18 @@ Page({
   },
   getSMSCodeFn(){
     const $this = this;
-    const {mobile} = this.data;
-    const RegMobile = /^1[3456789]\d{9}$/;
-    if (!RegMobile.test(mobile)) {
-      showModel({
-        title: "错误",
-        content: '请输入正确的手机号~'
-      });
-      return false
-    }
     singleRequest({
-      url: `${config.API.verification.sendSMSCode}/${mobile}`,
+      url: `${config.API.verification.sendBindingSMSCode}`,
       postData: {
       },
-      method: 'get',
+      method: 'GET',
       success: (res) => {
         const data = res.data;
-        $this.countdownFn()
+        $this.setData({
+          mobile: data
+        }, () => {
+          $this.countdownFn()
+        })
       },
       error(res) {
         showModel({
@@ -80,6 +80,18 @@ Page({
     })
   },
   nextBtnClickFn() {
+
+    if (this.data.pageorigin == 'forgetpaypwd') {
+      wx.redirectTo({
+        url: '/pages/setpaypwd/index',
+      })
+    }
+    if (this.data.pageorigin == 'changephone') {
+      wx.redirectTo({
+        url: '/pages/changephone/index',
+      })
+    }
+    return false;
     const { mobile, smsCode } = this.data;
     const RegMobile = /^1[3456789]\d{9}$/;
     if (!RegMobile.test(mobile)) {
@@ -87,7 +99,7 @@ Page({
         title: "错误",
         content: '手机号错误~'
       });
-    } else if (smsCode.length < 6) {
+    } else if (smsCode.length < 5) {
       showModel({
         title: "错误",
         content: '短信验证码错误~'
@@ -101,12 +113,21 @@ Page({
     singleRequest({
       url: config.API.verification.checkSMSCode,
       postData: {
-        phone: mobile,
+        phone: mobile, 
         verificationCode: smsCode
       },
       success: (res) => {
         const data = res.data;
-        $this.countdownFn()
+        if (this.data.pageorigin == 'forgetpaypwd') {
+          wx.redirectTo({
+            url: '/pages/setpaypwd/index',
+          })
+        }
+        if (this.data.pageorigin == 'changephone') {
+          wx.redirectTo({
+            url: '/pages/changephone/index',
+          })
+        }
       },
       error(res) {
         showModel({

@@ -58,3 +58,7 @@ page {
   color: #fff;
   font-size: 32rpx;
 }
+.navigator-hover{
+  opacity: 1;
+  background: none;
+}

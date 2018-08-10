@@ -10,6 +10,7 @@
     "pages/vipcard/index",
     "pages/bindphone/index",
     "pages/changephone/index",
+    "pages/checkSMSCode/index",
     "pages/address/index",
     "pages/address/add/index",
     "pages/myreservation/index",
@@ -17,6 +18,7 @@
     "pages/orderpay/index",
     "pages/setup/index",
     "pages/paypwd/index",
+    "pages/setpaypwd/index",
     "pages/priceinfo/index",
     "pages/service/index"
   ],

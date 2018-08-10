@@ -51,7 +51,12 @@ var config = {
       recharge: `${host}/activity/pay/balance`,
       record: `${host}/pay/record/list`
     },
-    opinion: `${host}/opinion/add`
+    opinion: `${host}/opinion/add`,
+    verification: {
+      sendSMSCode: `${host}/sms/get/verification/code/`,
+      sendBindingSMSCode: `${host}/sms/get/verification/code/Binding`,
+      checkSMSCode: `${host}//sms/check/verification/code`
+    },
   },
   // 下面的地址配合云端 Demo 工作
   testUserInfo: {
