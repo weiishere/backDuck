@@ -1,6 +1,6 @@
 <view class='container address-wrap'>
   <view class='form-wrap'>
-    <navigator url='/pages/paypwd/index'>
+    <navigator url='/pages/checkpaypwd/index'>
       <view class='form-item' data-type='changepwd' bindtap='clickEventFn'>
         <view class='form-item-label'>
           <view class='label'>修改支付密码</view>

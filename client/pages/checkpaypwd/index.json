@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "PayItem": "/components/pay-item/index"
+  }
+}

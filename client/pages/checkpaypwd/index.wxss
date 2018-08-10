@@ -1,4 +1,4 @@
-.set-paypwd-page{
+.check-paypwd-page{
   padding: 45rpx;
 }
 .paypwd-title{

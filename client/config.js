@@ -53,10 +53,17 @@ var config = {
     },
     opinion: `${host}/opinion/add`,
     verification: {
-      sendSMSCode: `${host}/sms/get/verification/code/`,
+      sendSMSCode: `${host}/sms/get/verification/code`,
       sendBindingSMSCode: `${host}/sms/get/verification/code/Binding`,
       checkSMSCode: `${host}//sms/check/verification/code`
     },
+    setting: {
+      setPayPWD: `${host}/user/info/set/pay/password`,    //设置支付密码
+      changePayPWD: `${host}/user/info/modify/pay/password`,    //修改支付密码
+      checkPayPWD: `${host}/user/info/check/pay/password`,    //验证支付密码
+      forgetPWD: `${host}/user/info/forget/pay/password`,    //忘记支付密码
+      changePhoneNum: `${host}/user/info/modify/phone`    //修改手机号
+    }
   },
   // 下面的地址配合云端 Demo 工作
   testUserInfo: {

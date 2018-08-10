@@ -19,6 +19,7 @@
     "pages/setup/index",
     "pages/paypwd/index",
     "pages/setpaypwd/index",
+    "pages/checkpaypwd/index",
     "pages/priceinfo/index",
     "pages/service/index"
   ],

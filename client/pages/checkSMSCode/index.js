@@ -80,18 +80,6 @@ Page({
     })
   },
   nextBtnClickFn() {
-
-    if (this.data.pageorigin == 'forgetpaypwd') {
-      wx.redirectTo({
-        url: '/pages/setpaypwd/index',
-      })
-    }
-    if (this.data.pageorigin == 'changephone') {
-      wx.redirectTo({
-        url: '/pages/changephone/index',
-      })
-    }
-    return false;
     const { mobile, smsCode } = this.data;
     const RegMobile = /^1[3456789]\d{9}$/;
     if (!RegMobile.test(mobile)) {
@@ -99,7 +87,7 @@ Page({
         title: "错误",
         content: '手机号错误~'
       });
-    } else if (smsCode.length < 5) {
+    } else if (smsCode.length < 4) {
       showModel({
         title: "错误",
         content: '短信验证码错误~'

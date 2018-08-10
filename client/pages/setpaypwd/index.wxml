@@ -1,4 +1,59 @@
-<view class='container paypwd-page'>
-  <PayItem dType="paypwd" title="请输入支付密码" bindInputEventFn="inputEventFn"></PayItem>
-  <PayItem dType="againPaypwd" title="再次输入支付密码" bindInputEventFn="inputEventFn"></PayItem> 
+<view class='container set-paypwd-page'>
+  <view class='paypwd-wrap'>
+    <view class="paypwd-title">请输入支付密码</view>
+    <view class="paypwd-box" data-itype="one" bindtap="focusInput">
+      <view class="paypwd-box-in" wx:for="{{6}}" wx:key="{{index}}">
+        <input
+          data-index="{{index}}"
+          data-itype="one" 
+          type="number" 
+          class='paypwd-input'
+          confirm-hold="true" 
+          value="{{OnePwdArr[index]}}" 
+          disabled="true" 
+          maxlength="1"
+          password="{{true}}"/>
+      </view>
+      <view class='hideInput-wrap'>
+        <input
+          data-itype="one" 
+          class='hideInput'
+          value="{{OneinputStr}}"
+          maxlength="6"
+          type="number"
+          focus="{{OneInputFocus}}"
+          bindinput="passInput"/>
+      </view>
+    </view>
+    <view class="paypwd-title">再次输入支付密码</view>
+    <view class="paypwd-box" data-itype="two" bindtap="focusInput">
+      <view class="paypwd-box-in" wx:for="{{6}}" wx:key="{{index}}">
+        <input
+          data-itype="two" 
+          data-index="{{index}}"
+          type="number" 
+          class='paypwd-input'
+          confirm-hold="true" 
+          value="{{TwoPwdArr[index]}}" 
+          disabled="true" 
+          maxlength="1"
+          password="{{true}}"/>
+      </view>
+      <view class='hideInput-wrap'>
+        <input
+          data-itype="two" 
+          class='hideInput'
+          value="{{TwoinputStr}}"
+          maxlength="6"
+          type="number"
+          focus="{{TwoInputFocus}}"
+          bindinput="passInput"/>
+      </view>
+    </view>
+  </view>
+  <view class='btn-wrap'>
+    <view class='btn' bindtap='nextBtnClickFn'>
+      确定
+    </view>
+  </view>
 </view>
