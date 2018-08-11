@@ -28,23 +28,27 @@
     color: #FF282B;
 }
 
+
+.order_header_active_9::after {
+    transform: translate3d(0, 0, 0);
+}
 .order_header_active_0::after {
     transform: translate3d(0, 0, 0);
 }
 
-.order_header_active_1::after {
+.order_header_active_0::after {
     transform: translate3d(100%, 0, 0);
 }
 
-.order_header_active_2::after {
+.order_header_active_1::after {
     transform: translate3d(200%, 0, 0);
 }
 
-.order_header_active_3::after {
+.order_header_active_2::after {
     transform: translate3d(300%, 0, 0);
 }
 
-.order_header_active_4::after {
+.order_header_active_3::after {
     transform: translate3d(400%, 0, 0);
 }
 
@@ -61,6 +65,7 @@
 .order_item {
     padding: 0 30rpx;
     background: #fff;
+    margin-bottom: 20rpx;
 }
 
 .order_item_header {

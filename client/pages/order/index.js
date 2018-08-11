@@ -1,77 +1,75 @@
 // pages/home/home.js.js
+import {
+  showModel,
+  showSuccess,
+  singleRequest
+} from '../../utils/util.js';
+import * as config from '../../config.js';
+const app = getApp()
+
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    chooseIndex: "0"
+    list: [],
+    chooseIndex: 9,
+    currentPage: 1,
+    pageSize: 10
+  },
+  onLoad: function (options) {
+    this.getOrderListFn()
+  },
+
+  getOrderListFn (){
+    const $this = this;
+    let { list, chooseIndex} = this.data
+    singleRequest({
+      url: config.API.order.list,
+      method: 'get',
+      postData: {
+        pageSize: $this.data.pageSize,
+        currentPage: $this.data.currentPage,
+        state: (chooseIndex == 9 ? '' : chooseIndex)
+      },
+      success: (res) => {
+        const data = res.data;
+        data.map((item, index)=>{
+          if (item.state == 0) {
+            item.stateText = '待取件'
+          } else if (item.state == 1) {
+            item.stateText = '待处理'
+          } else if (item.state == 2) {
+            item.stateText = '待收件'
+          } else if (item.state == 3) {
+            item.stateText = '已完成（已收款）'
+          }
+          return item
+        })
+        list = list.concat(data)
+        $this.setData({
+          list
+        })
+      },
+      error (res) {
+      }
+    })
   },
   orderTypeChoose: function(e) {
     const index = e.currentTarget.dataset.index;
     this.setData({
-      chooseIndex: index
+      chooseIndex: index,
+      list: []
+    }, ()=>{
+      this.getOrderListFn()
     })
   },
   gotoPage: function(e) {
-    const page = e.currentTarget.dataset.order;
+    const { page, orderid } = e.currentTarget.dataset;
     wx.navigateTo({
-      url: page
+      url: `${page}?orderId=${orderid}`
     });
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
 })

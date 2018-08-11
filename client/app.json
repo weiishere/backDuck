@@ -2,6 +2,7 @@
   "pages": [
     "pages/home/index",
     "pages/order/index",
+    "pages/orderItem/orderItem",
     "pages/notice/index",
     "pages/feedback/index",
     "pages/balance/index",

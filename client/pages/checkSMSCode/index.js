@@ -14,7 +14,8 @@ Page({
     smsCode: '',
     countNum: 60,
     pageorigin: '',
-    btnText: '获取验证码'
+    btnText: '获取验证码',
+    btnIsClick: false
   },
   onLoad: function (options) {
     console.log(options.pageorigin)
@@ -35,6 +36,9 @@ Page({
   },
   clickGetSMSCodeFn(){
     if (this.data.countNum == 60) {
+      this.setData({
+        btnIsClick: true
+      })
       this.getSMSCodeFn()
     }
   },
@@ -80,9 +84,14 @@ Page({
     })
   },
   nextBtnClickFn() {
-    const { mobile, smsCode } = this.data;
+    const { mobile, smsCode, btnIsClick } = this.data;
     const RegMobile = /^1[3456789]\d{9}$/;
-    if (!RegMobile.test(mobile)) {
+    if (!btnIsClick) {
+      showModel({
+        title: "错误",
+        content: '请先获取短信验证码~'
+      });
+    } else if (!RegMobile.test(mobile)) {
       showModel({
         title: "错误",
         content: '手机号错误~'

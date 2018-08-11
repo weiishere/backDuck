@@ -62,7 +62,12 @@ var config = {
       changePayPWD: `${host}/user/info/modify/pay/password`,    //修改支付密码
       checkPayPWD: `${host}/user/info/check/pay/password`,    //验证支付密码
       forgetPWD: `${host}/user/info/forget/pay/password`,    //忘记支付密码
-      changePhoneNum: `${host}/user/info/modify/phone`    //修改手机号
+      changePhoneNum: `${host}/user/info/modify/phone`,    //修改手机号
+      isHavePayPWD: `${host}/user/info/get/pay/password`    //查询用户是否有支付密码
+    },
+    order: {
+      list: `${host}/order/list`,    //订单列表
+      detail: `${host}/order/get`    //订单详情
     }
   },
   // 下面的地址配合云端 Demo 工作

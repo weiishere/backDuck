@@ -1,81 +1,55 @@
 <view class='container order'>
     <view class='order_header order_header_active_{{chooseIndex}}'>
-        <view class="{{chooseIndex==='0'&&'active'}}" catchtap="orderTypeChoose" data-type='all' data-index="0">
-            <text>所有订单</text>
+        <view class="{{chooseIndex==='9'&&'active'}}" catchtap="orderTypeChoose" data-type='all' data-index="9">
+            <text>全部订单</text>
         </view>
-        <view class="{{chooseIndex==='1'&&'active'}}" catchtap="orderTypeChoose" data-type='waitDo' data-index='1'>
+        <view class="{{chooseIndex==='0'&&'active'}}" catchtap="orderTypeChoose" data-type='waitDo' data-index='0'>
             <text>待处理</text>
         </view>
-        <view class="{{chooseIndex==='2'&&'active'}}" catchtap="orderTypeChoose" data-type='waitOut' data-index='2'>
-            <text>待送件</text>
+        <view class="{{chooseIndex==='1'&&'active'}}" catchtap="orderTypeChoose" data-type='waitOut' data-index='1'>
+            <text>待收件</text>
         </view>
-        <view class="{{chooseIndex==='3'&&'active'}}" catchtap="orderTypeChoose" data-type='done' data-index='3'>
+        <view class="{{chooseIndex==='2'&&'active'}}" catchtap="orderTypeChoose" data-type='done' data-index='2'>
             <text>已完成</text>
         </view>
-        <view class="{{chooseIndex==='4'&&'active'}}" catchtap="orderTypeChoose" data-type='cacle' data-index='4'>
+        <view class="{{chooseIndex==='3'&&'active'}}" catchtap="orderTypeChoose" data-type='cacle' data-index='3'>
             <text>已取消</text>
         </view>
     </view>
     <view class='order_body'>
-        <view class='order_item'>
-            <view class='order_item_header' catchtap='gotoPage' data-order='../orderItem/orderItem'>
-                <view><text>订单号：02564422563</text></view>
-                <view><text>已完成</text></view>
-            </view>
-            <view class='order_item_body'>
-                <view>
-                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
-                </view>
-                <view>
-                    <text>
-                        ARMANI JEANS 黑色上衣
-                    </text>
-                    <text  class='gray'>
-                        服务项目：洗涤
-                    </text>
-                </view>
-                <view>
-                    <text>￥ 69.00</text>
-                    <text class='gray delete'>￥ 89.00</text>
-                </view>
-            </view>
-            <view class='order_item_body'>
-                <view>
-                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
-                </view>
-                <view>
-                    <text>
-                        ARMANI JEANS 黑色上衣
-                    </text>
-                    <text  class='gray'>
-                        服务项目：洗涤
-                    </text>
-                </view>
-                <view>
-                    <text>￥ 69.00</text>
-                    <text class='gray delete'>￥ 89.00</text>
-                </view>
-            </view>
-            <view class='order_item_body'>
-                <view>
-                    <image src="http://d9.yihaodianimg.com/N02/M09/B3/B0/CgQCsFImpu-AVrUYAAGBurst9VQ39900_450x450.jpg" ></image>
-                </view>
-                <view>
-                    <text>
-                        ARMANI JEANS 黑色上衣
-                    </text>
-                    <text  class='gray'>
-                        服务项目：洗涤
-                    </text>
-                </view>
-                <view>
-                    <text>￥ 69.00</text>
-                    <text class='gray delete'>￥ 89.00</text>
-                </view>
-            </view>
-            <view class='order_item_footer'>
-                <view><text>共3件商品 合计：</text><text class='red'>￥267.00</text></view>
-            </view>
+        <view class='order_item'
+          wx:for="{{list}}"
+          wx:for-item="item"
+          wx:for-idx="idx"
+          wx:key="idx">
+          <view class='order_item_header' catchtap='gotoPage' data-orderId='{{item.id}}' data-page='/pages/orderItem/orderItem'>
+            <view><text>订单号：{{item.orderNo}}</text></view>
+            <view><text>{{item.stateText}}</text></view>
+          </view>
+          <view class='order_item_body'
+            wx:for="{{item.orderItems}}"
+            wx:for-item="orderItems"
+            wx:for-idx="itemidx"
+            wx:key="itemidx">
+              <view>
+                  <image src="{{orderItems.itemPic}}" ></image>
+              </view>
+              <view>
+                  <text>
+                      {{orderItems.itemTitle}}
+                  </text>
+                  <text  class='gray'>
+                      服务项目：{{orderItems.businessType}}
+                  </text>
+              </view>
+              <view>
+                  <text>￥ {{orderItems.realPrice}}</text>
+                  <text class='gray delete'>￥ 89.00</text>
+              </view>
+          </view>
+          <view class='order_item_footer'>
+              <view><text>共{{item.orderItems.length}}件商品 合计：</text><text class='red'>￥{{item.realOrderMoney}}</text></view>
+          </view>
         </view>
     </view>
 </view>

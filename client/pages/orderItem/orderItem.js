@@ -1,72 +1,71 @@
-
 // pages/home/home.js.js
+import {
+  showModel,
+  showSuccess,
+  singleRequest,
+  formatDateTime
+} from '../../utils/util.js';
+import * as config from '../../config.js';
+const app = getApp()
+
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        chooseIndex: "0"
+      chooseIndex: "0",
+      namemobile:'',
+      address: '',
+      orderNo: '' ,
+      gmtCreate: '',
+      orderItems: '',
+      state: '',
+      stateDes: '',
+      realOrderMoney: '0.00'
     },
     orderTypeChoose: function (e) {
-        const index = e.currentTarget.dataset.index;
-        this.setData({
-            chooseIndex: index
+      const index = e.currentTarget.dataset.index;
+      this.setData({
+          chooseIndex: index
+      })
+    },
+  onLoad: function (options) {
+    this.getOrderDetailFn(options.orderId)
+  },
+
+  getOrderDetailFn(orderId) {
+    const $this = this;
+    let { list } = this.data
+    singleRequest({
+      url: `${config.API.order.detail}/${orderId}`,
+      method: 'get',
+      postData: {
+      },
+      success: (res) => {
+        const { 
+          jsonAddress, 
+          orderNo, 
+          gmtCreate, 
+          orderItems,
+          state,
+          stateDes,
+          realOrderMoney
+        } = res.data;
+  
+        $this.setData({
+          namemobile: jsonAddress.attn + ' ' + jsonAddress.mobile,
+          address: jsonAddress.area + jsonAddress.address,
+          orderNo,
+          createTime: formatDateTime(gmtCreate),
+          orderItems,
+          state,
+          stateDes,
+          realOrderMoney
         })
-    },
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function (options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
+      },
+      error(res) {
+      }
+    })
+  }
 })
