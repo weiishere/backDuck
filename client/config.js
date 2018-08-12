@@ -14,7 +14,8 @@ var config = {
       login: `${host}/user/login/oauth`,
       verification: `${host}/sms/get/verification/code`,
       bindPhone: `${host}/user/binding/phone`,
-      addInfo: `${host}/user/info/add`
+      addInfo: `${host}/user/info/add`,
+      getInfo: `${host}/user/info/get`
     },
     message: {
       list: `${host}/message/list`,
@@ -43,8 +44,7 @@ var config = {
     },
     vip: {
       list: `${host}/vip/list`,
-      open: `${host}/vip/pay/open`,
-      open: `${host}/vip/pay/open`,
+      open: `${host}/vip/pay/open`
     },
     pay: {
       balancePay: `${host}/order/pay/balance`,

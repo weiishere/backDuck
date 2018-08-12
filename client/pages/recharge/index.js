@@ -75,16 +75,7 @@ Page({
         activityId: $this.data.rechargeId
       },
       success: (res) => {
-        let data = res.data;
-        console.log(data)
-
-        showModel({
-          title: "成功",
-          content: "充值成功~"
-        }, () => {
-
-        });
-
+        $this.payFn(res.data)
       },
       error(res) {
         showModel({
@@ -108,6 +99,28 @@ Page({
     this.setData({
       rechargeId,
       activityList: tempArr
+    })
+  },
+  payFn(data) {
+    wx.requestPayment({
+      'timeStamp': data.timestamp,
+      'nonceStr': data.nonceStr,
+      'package': `prepay_id=${data.prepayId}`,
+      'signType': 'MD5',
+      'paySign': data.sign,
+      'success': function (res) {
+        showModel({
+          title: "成功",
+          content: "充值成功~"
+        }, () => {
+          wx.redirectTo({
+            url: '/pages/blanace/index',
+          })
+        });
+      },
+      'fail': function (res) {
+        console.log('fail: ', res)
+      }
     })
   }
 })

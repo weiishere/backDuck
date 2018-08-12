@@ -12,7 +12,9 @@ Page({
     opinion: ''
   },
   onLoad: function (options) {
-  
+    wx.setNavigationBarTitle({
+      title: '意见反馈',
+    })
   },
   opinionInputFn(e){
     const {value} = e.detail
@@ -28,7 +30,7 @@ Page({
         opinion
       },
       success: (res) => {
-        showSuccess('提交成功');
+        showSuccess('感谢您提出的宝贵意见~');
         this.setData({
           opinion: ''
         })

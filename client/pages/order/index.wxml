@@ -1,7 +1,7 @@
 <view class='container order'>
     <view class='order_header order_header_active_{{chooseIndex}}'>
         <view class="{{chooseIndex==='9'&&'active'}}" catchtap="orderTypeChoose" data-type='all' data-index="9">
-            <text>全部订单</text>
+            <text>全部</text>
         </view>
         <view class="{{chooseIndex==='0'&&'active'}}" catchtap="orderTypeChoose" data-type='waitDo' data-index='0'>
             <text>待处理</text>

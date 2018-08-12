@@ -8,23 +8,16 @@ import * as config from '../../config.js';
 const app = getApp()
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     isLogined: false,
     viptype: 'gold',
     user: ''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '会员卡',
     })
+    console.log(app.userInfo)
     if (!this.data.user) {
       this.setData({
         user: app.userInfo.user

@@ -1,15 +1,28 @@
 // pages/home/home.js.js
 import {
-  showModel
+  showModel,
+  singleRequest
 } from '../../utils/util.js';
+import * as config from '../../config.js';
 const app = getApp()
-Page({
 
-  /**
-   * 页面的初始数据
-   */
+Page({
   data: {
-    sideBarShow: false
+    vipName: '',
+    sideBarShow: false,
+    msgCount: 0
+  },
+  onLoad: function (options) {
+    const $this = this;
+    setTimeout(() => {
+      console.log('onReady: ', app.userInfo)
+      $this.setData({
+        avatarUrl: app.userInfo.user.avatarUrl,
+        nickName: app.userInfo.user.nickName,
+        vipName: app.userInfo.user.vipName
+      })
+      this.getMsgCountFn();
+    }, 2000)
   },
   sideBarTrggle: function(e) {
     const siderState = e.currentTarget.dataset.siderState === 'true' ? true : false;
@@ -23,19 +36,35 @@ Page({
       url: page
     });
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   callMobildServiceFn () {
     wx.makePhoneCall({
       phoneNumber: '15982316112'
     })
-  }
+  },
+  rechargeBtnFn(){
+    wx.navigateTo({
+      url: '/pages/recharge/index',
+    })
+  },
+  
+  getMsgCountFn(e){
+    const $this = this;
+    singleRequest({
+      url: config.API.message.getMsgCount,
+      postData: {
+      },
+      method: 'GET',
+      success: (res) => {
+        $this.setData({
+          msgCount: res.data
+        })
+      },
+      error(res) {
+        showModel({
+          title: "错误",
+          content: res.msg || '报错了~'
+        });
+      }
+    })
+  },
 })

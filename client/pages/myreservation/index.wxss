@@ -53,5 +53,5 @@ page{
   margin-top: 13rpx;
 }
 .myreservation-info li.address{
-  line-height: 40rpx;
+  /* line-height: 40rpx; */
 }

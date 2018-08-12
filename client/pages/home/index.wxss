@@ -188,3 +188,28 @@
 .home_sider_footer>view i {
   margin: 0 15rpx;
 }
+.nitice-num{
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  font-size: 16rpx;
+  display: inline-block;
+  vertical-align: middle;
+  color: #fff;
+  background: #235379;
+  border-radius: 99px;
+  margin-top: -5px;
+  margin-left: 8px;
+}
+.recharge-btn{
+  font-size: 26rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  color: #235379;
+  border: #235379 1px solid;
+  margin-left: 8px;
+  border-radius: 3px;
+  padding: 0 10rpx;
+}

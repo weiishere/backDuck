@@ -7,13 +7,15 @@
       <view class='user-info'>
          <!-- <view class='signin'>登陆后即可查看会员卡</view>  -->
          <view class='signin'>
-          <view class='user-name'>{{user.nickName}}</view>
-          <view class='user-type'>钻石会员</view>
+          <view class='user-name'>{{user.nickName ? user.nickName : '黑鸭子'}}</view>
+          <view class='user-type'>{{user.vipName ? user.vipName : '非会员'}}</view>
         </view> 
       </view>
     </view>
-    <view class='vipcard-icon-wrap'>
-      <image class='vipcard-icon' src='/assets/img_vip_gold@2x.png'></image>
+    <view class='vipcard-icon-wrap' wx:if="{{user}}">
+      <image class='vipcard-icon' wx:if="{{user.level == 0}}"  src='/assets/img_vip_diamond@2x.png'></image>
+      <image class='vipcard-icon' wx:if="{{user.level == 1}}" src='/assets/img_vip_gold@2x.png'></image>
+      <image class='vipcard-icon' wx:if="{{user.level == 2}}" src='/assets/img_vip_platinum@2x.png'></image>
     </view>
     <view 
       class='login-btn' 
