@@ -68,7 +68,7 @@ Page({
     const OnePayPWD = hexMD5(OneInputStr)
     const TwoPayPWD = hexMD5(TwoInputStr)
     if (OnePayPWD === TwoPayPWD) {
-       
+      this.savePayPWDFn(OnePayPWD)
     } else {
       showModel({
         title: "错误",
@@ -76,5 +76,31 @@ Page({
       });
     }
   },
-  
+
+  //获取会员信息
+  savePayPWDFn(PayPWD) {
+    const $this = this;
+    singleRequest({
+      url: config.API.setting.setPayPWD,
+      postData: {
+        payPassword: PayPWD
+      },
+      success: (res) => {
+        showModel({
+          title: "成功",
+          content: "支付密码设置成功~"
+        }, () => {
+          wx.redirectTo({
+            url: '/pages/setup/index',
+          })
+        });
+      },
+      error(res) {
+        showModel({
+          title: "错误",
+          content: res.msg || '报错了~'
+        });
+      }
+    })
+  }
 })

@@ -14,7 +14,8 @@ Page({
    */
   data: {
     isLogined: false,
-    viptype: 'gold'
+    viptype: 'gold',
+    user: ''
   },
 
   /**
@@ -24,10 +25,15 @@ Page({
     wx.setNavigationBarTitle({
       title: '会员卡',
     })
+    if (!this.data.user) {
+      this.setData({
+        user: app.userInfo.user
+      })
+    }
   },
   userBtnEventFn(e){
-    const { viptype, isLogined} = this.data;
-    if (isLogined) {
+    const { viptype, user} = this.data;
+    if (user) {
       wx.navigateTo({
         url: '/pages/vipupgraded/index',
       })
@@ -38,7 +44,9 @@ Page({
       })
     }
   },
-
+  bindGetUserInfo: function (e) {
+    console.log(e.detail.userInfo)
+  },
   //获取会员信息
   getRechargeListFn() {
     const $this = this;

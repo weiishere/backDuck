@@ -35,6 +35,7 @@
   width: 100rpx;
   height: 100rpx;
   display: inline-block;
+  border-radius: 99px;
 }
 .vipcard-top .vipcard-icon-wrap{
   width: 116rpx;

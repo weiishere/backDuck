@@ -13,7 +13,8 @@ var config = {
     user: {
       login: `${host}/user/login/oauth`,
       verification: `${host}/sms/get/verification/code`,
-      bindPhone: `${host}/user/binding/phone`
+      bindPhone: `${host}/user/binding/phone`,
+      addInfo: `${host}/user/info/add`
     },
     message: {
       list: `${host}/message/list`,
@@ -55,7 +56,7 @@ var config = {
     verification: {
       sendSMSCode: `${host}/sms/get/verification/code`,
       sendBindingSMSCode: `${host}/sms/get/verification/code/Binding`,
-      checkSMSCode: `${host}//sms/check/verification/code`
+      checkSMSCode: `${host}/sms/check/verification/code`
     },
     setting: {
       setPayPWD: `${host}/user/info/set/pay/password`,    //设置支付密码

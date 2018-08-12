@@ -13,20 +13,34 @@ App({
       success: function(res) {
         if (res.code) {
           //发起网络请求
-          console.log(config.API.user.login);
+          // console.log(config.API.user.login);
           singleRequest({
             url: config.API.user.login,
             postData: {
               code: res.code
             },
             success: (data) => {
-              //console.log(data);
               self.userInfo = {
                 code: res.code,
                 openId: data.data.openId,
                 cookie:data.data.cookie,
                 token:data.data.token
               }
+              // 查看是否授权
+              wx.getSetting({
+                success: function (res) {
+                  if (res.authSetting['scope.userInfo']) {
+                    // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                    wx.getUserInfo({
+                      success: function (res) {
+                        self.addUserInfoFn(res.userInfo)
+                        self.userInfo = Object.assign(self.userInfo, { user: res.userInfo})
+                        console.log(self.userInfo)
+                      }
+                    })
+                  }
+                }
+              })
             },
             error: (data) => {
 
@@ -44,5 +58,20 @@ App({
       }
     });
   },
-  userInfo: {}
+  userInfo: {},
+  addUserInfoFn(data){
+    console.log(data)
+    singleRequest({
+      url: config.API.user.addInfo,
+      postData: {
+        jsonData: JSON.stringify(data)  
+      },
+      success: (res) => {
+        console.log('success: ', res)
+      },
+      error: (res) => {
+        console.log('error: ', res)
+      }
+    });
+  }
 })

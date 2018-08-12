@@ -1,6 +1,6 @@
 <view class='container address-wrap'>
   <view class='form-wrap'>
-    <navigator url='/pages/checkpaypwd/index'>
+    <navigator url='/pages/checkpaypwd/index?pageorigin=setpaypwd' wx:if="{{havePayPWD}}">
       <view class='form-item' data-type='changepwd' bindtap='clickEventFn'>
         <view class='form-item-label'>
           <view class='label'>修改支付密码</view>
@@ -12,10 +12,22 @@
         </view>
       </view>
     </navigator>
-    <navigator url='/pages/checkSMSCode/index?pageorigin=forgetpaypwd'>
+    <navigator url='/pages/checkSMSCode/index?pageorigin=forgetpaypwd' wx:if="{{havePayPWD}}">
       <view class='form-item' data-type='forgetpwd' bindtap='clickEventFn'>
         <view class='form-item-label'>
           <view class='label'>忘记支付密码</view>
+        </view>
+        <view class='form-item-content'>
+        </view>
+        <view class='form-item-tools'>
+          <view class='arrow-icon'></view>
+        </view>
+      </view>
+    </navigator>
+    <navigator url='/pages/checkSMSCode/index?pageorigin=setpaypwd' wx:if="{{!havePayPWD}}">
+      <view class='form-item' data-type='forgetpwd' bindtap='clickEventFn'>
+        <view class='form-item-label'>
+          <view class='label'>设置支付密码</view>
         </view>
         <view class='form-item-content'>
         </view>

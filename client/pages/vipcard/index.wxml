@@ -2,12 +2,12 @@
   <view class='vipcard-top'>
     <view class='user-info-wrap'>
       <view class='user-icon-wrap'>
-        <image class='user-icon' src='/assets/user_head_default@2x.png'></image>
+        <image class='user-icon' src='{{user.avatarUrl}}'></image>
       </view>
       <view class='user-info'>
          <!-- <view class='signin'>登陆后即可查看会员卡</view>  -->
          <view class='signin'>
-          <view class='user-name'>Olivia Luo</view>
+          <view class='user-name'>{{user.nickName}}</view>
           <view class='user-type'>钻石会员</view>
         </view> 
       </view>
@@ -18,9 +18,15 @@
     <view 
       class='login-btn' 
       data-level="{{viptype}}"
-      bindtap='userBtnEventFn'>
-      {{isLogined ? '会员升级' : '登录'}}
+      bindtap='userBtnEventFn'
+      wx:if="{{user}}" >
+      会员升级
     </view>
+    <button 
+      class='login-btn' 
+      wx:else
+      open-type="getUserInfo" 
+      bindgetuserinfo="bindGetUserInfo">登录</button>
   </view>
   <view class='title'>
     <image src='/assets/icon@2x.png' class='title-icon'></image>会员特权

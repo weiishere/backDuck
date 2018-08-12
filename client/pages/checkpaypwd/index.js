@@ -32,14 +32,14 @@ Page({
     }
     if (tempArr.length >= 6) {
       data = {
-        inputSrr: value,
+        inputStr: value,
         allinput: value,
         pwdArr: tempArr
       }
       console.log(`密码输入完成: ${tempArr.join('')}`)
     } else {
       data = {
-        inputSrr: value,
+        inputStr: value,
         allinput: '',
         pwdArr: tempArr
       }
@@ -74,7 +74,7 @@ Page({
     //   url: '/pages/setpaypwd/index'
     // })
     const { inputStr} = this.data;
-    console.log(inputStr)
+    console.log(this.data)
     if (inputStr < 6) {
       showModel({
         title: "错误",
@@ -88,12 +88,9 @@ Page({
         payPassword: hexMD5(inputStr)
       },
       success: (res) => {
-        showSuccess('手机绑定成功');
-        setTimeout(() => {
-          wx.redirectTo({
-            url: '/pages/order/index'
-          })
-        }, 1500);
+        wx.redirectTo({
+          url: '/pages/setpaypwd/index'
+        })
       }
     })
   }

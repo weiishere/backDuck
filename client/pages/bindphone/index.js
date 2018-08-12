@@ -41,10 +41,30 @@ Page({
           showSuccess('验证码发送成功');
           this.setData({
             sendDone: true
+          }, () => {
+            this.countdownFn()
           })
         }
       })
     }
+  },
+  countdownFn() {
+    const $this = this;
+    let { countNum } = this.data
+    const countId = setInterval(() => {
+      if (countNum <= 0) {
+        $this.setData({
+          countNum: 60,
+          btnText: '获取验证码'
+        })
+        clearInterval(countId)
+      } else {
+        $this.setData({
+          countNum: (countNum -= 1),
+          btnText: `${countNum}s`
+        })
+      }
+    }, 1000)
   },
   submitPhoneBind() {
     if (this.data.sendDone) {

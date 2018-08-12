@@ -96,7 +96,7 @@ Page({
         title: "错误",
         content: '手机号错误~'
       });
-    } else if (smsCode.length < 4) {
+    } else if (smsCode.length < 6) {
       showModel({
         title: "错误",
         content: '短信验证码错误~'
@@ -115,7 +115,7 @@ Page({
       },
       success: (res) => {
         const data = res.data;
-        if (this.data.pageorigin == 'forgetpaypwd') {
+        if (this.data.pageorigin == 'forgetpaypwd' || this.data.pageorigin == 'setpaypwd') {
           wx.redirectTo({
             url: '/pages/setpaypwd/index',
           })

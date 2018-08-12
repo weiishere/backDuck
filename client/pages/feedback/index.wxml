@@ -4,7 +4,7 @@
   </view>
   <view class='feedback-wrap'>
     <view class='title'>反馈内容</view>
-    <textarea class='text' value='{{opinion}}' bindinput='opinionInputFn' placeholder='乐意聆听您对黑鸭子d额任何意见与建议'></textarea>
+    <textarea class='text' value='{{opinion}}' bindinput='opinionInputFn' placeholder='乐意聆听您对黑鸭子的任何意见与建议'></textarea>
     <button class='btn' bindtap='opinionSubmitFn'>提交</button>
   </view>
 </view>
