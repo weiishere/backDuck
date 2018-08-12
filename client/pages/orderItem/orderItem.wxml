@@ -70,7 +70,7 @@
       <text>金额合计：</text><text class='red'>￥ {{realOrderMoney}}</text>
     </view>
     <view>
-    <text>确认签收</text>
+    <text catchtap='confirmReceiptFn'>确认签收</text>
     </view>
   </view>
 </view>

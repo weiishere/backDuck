@@ -6,7 +6,7 @@
       </view>
       <view class='paytype-item-content'></view>
       <view class='paytype-item-right'>
-        <text class='amount'>230.00</text> 元
+        <text class='amount'>{{money}}</text> 元
       </view>
     </view>
     <view class='paytype-item order-info-item first'>
@@ -15,7 +15,7 @@
       </view>
       <view class='paytype-item-content'></view>
       <view class='paytype-item-right'>
-        12321039218392108390218
+        {{orderNo}}
       </view>
     </view>
     <view class='paytype-item order-info-item last'>
@@ -24,13 +24,13 @@
       </view>
       <view class='paytype-item-content'></view>
       <view class='paytype-item-right'>
-        230.00元
+        {{money}}元
       </view>
     </view>
   </view>
   <view class='sub-title'>选择支付方式</view>
   <view class='paytype-wrap'>
-    <view class='paytype-item wechatpay active'>
+    <view class='paytype-item wechatpay active' data-way="wechat" catchtap='togglePayWayFn'>
       <view class='paytype-item-left'>
         <image 
           class='paytype-item-type-icon'
@@ -40,16 +40,18 @@
       <view class='paytype-item-content'>微信支付</view>
       <view class='paytype-item-right'>
         <image 
+          wx:if="{{payway == 'wechat'}}"
           class='paytype-item-type-icon'
           src='/assets/recharge-checked.png'>
         </image>
-        <!-- <image 
+        <image 
+          wx:if="{{payway != 'wechat'}}"
           class='paytype-item-type-icon'
           src='/assets/recharge-no-checked.png'>
-        </image> -->
+        </image>
       </view>
     </view>
-    <view class='paytype-item blanacepay'>
+    <view class='paytype-item blanacepay' data-way="blanace" catchtap='togglePayWayFn'>
       <view class='paytype-item-left'>
         <image 
           class='paytype-item-type-icon'
@@ -58,11 +60,13 @@
       </view>
       <view class='paytype-item-content'>账户余额支付</view>
       <view class='paytype-item-right'>
-        <!-- <image 
+        <image 
+          wx:if="{{payway == 'blanace'}}"
           class='paytype-item-type-icon'
           src='/assets/recharge-checked.png'>
-        </image> -->
+        </image>
          <image 
+          wx:if="{{payway != 'blanace'}}"
           class='paytype-item-type-icon'
           src='/assets/recharge-no-checked.png'>
         </image> 
@@ -70,6 +74,7 @@
     </view>
   </view>
   <view class='btn-wrap'>
-    <button class='btn'>立即支付</button>
+    <button class='btn' catchtap='payBtnClickFn'>立即支付</button>
   </view>
+  <Modal>11</Modal>
 </view>

@@ -67,5 +67,12 @@ Page({
       error(res) {
       }
     })
+  },
+  //确认签收
+  confirmReceiptFn(){
+    const {orderNo, realOrderMoney} = this.data
+    wx.navigateTo({
+      url: `/pages/orderpay/index?money=${realOrderMoney}&orderNo=${orderNo}`,
+    })
   }
 })

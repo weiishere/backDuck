@@ -1,0 +1,18 @@
+<!--components/modal/index.wxml-->
+<view class='modal-wrapper'>
+  <view class='modal-mask'></view>
+  <view class='modal-box'>
+    <view class='modal-top'>
+      <view class='modal-title'>
+        请输入支付密码
+      </view>
+    </view>
+    <view class='modal-content'>
+      请输入支付密码
+    </view>
+    <view class='modal-bottom'>
+      取消 支付
+    </view>
+    <slot></slot>
+  </view>
+</view>

@@ -1,5 +1,9 @@
 {
+  "usingComponents": {
+    "Modal": "/components/modal/index"
+  },
   "navigationBarTitleText": "黑鸭子",
   "navigationBarBackgroundColor": "#ccf",
   "backgroundColor": "#999999"
+  
 }
