@@ -11,7 +11,13 @@
       catchtap='addressdetilFn'>
       <view class='title clearfix'>
         <view class='num'>预约号：{{item.bespeakNo}}</view>
-        <view class="status {{(item.state == 1 || item.state == -1) ? 'delete' : ''}}">{{item.statusText}}</view>
+        <view 
+          class="status {{(item.state == 1 || item.state == -1) ? 'delete' : ''}}" 
+          data-id="{{item.id}}"
+          data-state="{{item.state}}"
+          catchtap='deleteItemFn'>
+          {{item.statusText}}
+        </view>
       </view>
       <view class="myreservation-info clearfix">
         <view class='sub-title'>预约信息</view>
