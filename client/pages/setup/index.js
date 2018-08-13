@@ -28,6 +28,7 @@ Page({
       url: config.API.setting.isHavePayPWD,
       postData: {
       },
+      method: 'GET',
       success: (res) => {
         let data = res.data;
         $this.setData({

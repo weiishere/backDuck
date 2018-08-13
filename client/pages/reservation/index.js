@@ -29,7 +29,7 @@ Page({
     wx.setNavigationBarTitle({
       title: '预约取件',
     });
-
+    this.getDefaultAddressFn()
     // 获取完整的年月日 时分秒，以及默认显示的数组
     var obj = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
     var obj1 = dateTimePicker.dateTimePicker(this.data.startYear, this.data.endYear);
@@ -80,6 +80,28 @@ Page({
         content: '请选择地址~'
       });
     } 
+  },
+  getDefaultAddressFn() {
+    const timestamp = Date.parse(new Date()),
+      { currData } = this.data;
+
+    singleRequest({
+      url: config.API.address.getDefaultAddress,
+      method: 'GET',
+      postData: {
+      },
+      success: (res) => {
+        this.setData({
+          currData: res.data
+        })
+      },
+      error(res) {
+        showModel({
+          title: "错误",
+          content: res.msg || '出错啦'
+        });
+      }
+    })
   },
   // 提交数据
   addBespeakFn(){

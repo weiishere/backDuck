@@ -4,7 +4,8 @@
     <view class='home_header' >
       <view>
         <span>
-          <i data-sider-state='true' catchtap="sideBarTrggle" class='icon-nav_menu'></i>
+          <i wx:if="{{nickName}}"  data-sider-state='true' catchtap="sideBarTrggle" class='icon-nav_menu'></i>
+          <button class='icon-nav_menu' bindgetuserinfo='getUserInfoFn' open-type="getUserInfo"  data-sider-state='true'  wx:else></button>
         </span>
       </view>
       <view>

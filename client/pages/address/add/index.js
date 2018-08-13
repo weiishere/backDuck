@@ -117,8 +117,8 @@ Page({
         email,
         area: (area instanceof Array ? area.join('') : area),
         address,
-        areaCode: 1001,
-        isDefault: isDefault ? 1 : 0
+        areaCode: '',
+        isDefault: 1
       };
       if (id) {
         data['id'] = id

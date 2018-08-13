@@ -42,6 +42,26 @@
 .home_header view:last-child span i {
   font-size: 40rpx;
 }
+.home_header button.icon-nav_menu{
+  position: static;
+  margin-left:0;
+  margin-right:0;
+  padding-left:0;
+  padding-right:0;
+  box-sizing: content-box;
+  text-align:center;
+  text-decoration:none;
+  line-height: normal;
+  border-radius: 0;
+  -webkit-tap-highlight-color:transparent;
+  overflow: hidden;
+  background: none;
+  font-family:'iconfont';
+  display: inline-block;
+  font-size: 30rpx;
+  margin: 0;
+  padding: 0;
+}
 
 .home_footer {
   position: absolute;

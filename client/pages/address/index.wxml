@@ -16,7 +16,7 @@
       </view>
       <view class='address-tools'>
         <view class='setdefault' data-item="{{item}}" data-id="{{item.id}}" data-key='default'            catchtap='operationAddressFn'>
-          <view class="default-icon {{item.isDefault == 1 ? 'active' : ''}}"></view>
+          <view class="default-icon {{item.isDefault == 0 ? 'active' : ''}}"></view>
           默认地址
         </view>
         <view class='setedit' data-id="{{item.id}}" data-key='edit' catchtap='operationAddressFn'>编辑</view>

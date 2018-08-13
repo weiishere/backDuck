@@ -97,11 +97,11 @@ Page({
   },
   wechatPayFn(data) {
     wx.requestPayment({
-      'timeStamp': data.timestamp,
+      'timeStamp': data.timeStamp,
       'nonceStr': data.nonceStr,
-      'package': `prepay_id=${data.prepayId}`,
-      'signType': 'MD5',
-      'paySign': data.sign,
+      'package': data.package,
+      'signType': data.signType,
+      'paySign': data.paySign,
       'success': function (res) {
         showModel({
           title: "成功",

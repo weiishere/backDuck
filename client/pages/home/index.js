@@ -15,14 +15,20 @@ Page({
   onLoad: function (options) {
     const $this = this;
     setTimeout(() => {
-      console.log('onReady: ', app.userInfo)
-      $this.setData({
+      this.setdefaultdataFn()
+    }, 1500)
+  },
+  setdefaultdataFn(){
+    if (app.userInfo.user) {
+      this.setData({
         avatarUrl: app.userInfo.user.avatarUrl,
         nickName: app.userInfo.user.nickName,
-        vipName: app.userInfo.user.vipName
+        vipName: app.userInfo.user.vipName ? app.userInfo.user.vipName : ''
+      }, () => {
+        // app.getUserInfoFn()
       })
       this.getMsgCountFn();
-    }, 2000)
+    }
   },
   sideBarTrggle: function(e) {
     const siderState = e.currentTarget.dataset.siderState === 'true' ? true : false;
@@ -67,4 +73,12 @@ Page({
       }
     })
   },
+  getUserInfoFn(e) {
+    // console.log('getUserInfoFn: ', e)
+    // console.log('getUserInfoFn userInfo: ', app.userInfo)
+    if (!app.userInfo.user && e.detail.errMsg == "getUserInfo:ok") {
+      app.userInfo.user = Object.assign(e.detail.userInfo)
+    }
+    this.setdefaultdataFn()
+  }
 })

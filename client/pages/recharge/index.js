@@ -9,26 +9,16 @@ const app = getApp()
 
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     activityList: [],
     rechargeId: ''
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '余额充值'
     })
     this.getRechargeListFn()
   },
-
-  //获取活动列表
   getRechargeListFn() {
     const $this = this;
     singleRequest({
@@ -103,11 +93,11 @@ Page({
   },
   payFn(data) {
     wx.requestPayment({
-      'timeStamp': data.timestamp,
+      'timeStamp': data.timeStamp,
       'nonceStr': data.nonceStr,
-      'package': `prepay_id=${data.prepayId}`,
-      'signType': 'MD5',
-      'paySign': data.sign,
+      'package': data.package,
+      'signType': data.signType,
+      'paySign': data.paySign,
       'success': function (res) {
         showModel({
           title: "成功",

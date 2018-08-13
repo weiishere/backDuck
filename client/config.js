@@ -30,7 +30,8 @@ var config = {
       edit: `${host}/address/modify`,
       deleteAddress: `${host}/address/delete`,
       setdefault: `${host}/address/modify/default`,
-      getAddressByid: `${host}/address/get`
+      getAddressByid: `${host}/address/get`,
+      getDefaultAddress: `${host}/address/get/default/address`
     },
     bespeak: {
       list: `${host}/bespeak/list`,

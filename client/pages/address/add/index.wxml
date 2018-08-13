@@ -63,9 +63,9 @@
       </view>
       <view class='form-item-tools'></view>
     </view>
-    <view class='form-item'>
+    <!-- 设为默认地址 -->
+    <!-- <view class='form-item'>
       <view class='form-item-label'>
-        <!-- 设为默认地址 -->
          <view class='label'>设为默认地址</view> 
       </view>
       <view class='form-item-content'>
@@ -73,7 +73,7 @@
       <view class='form-item-tools'>
         <view bindtap='setdefaultFn' class="default-icon  {{isDefault ? 'active' : ''}}"></view>
       </view>
-    </view>
+    </view> -->
     <!-- <view class='form-item'>
       <view class='form-item-label'>
         <view class='label'>联系方式</view>
