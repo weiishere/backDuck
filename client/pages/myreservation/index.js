@@ -68,14 +68,13 @@ Page({
   deleteItemFn(e) {
     const { id, state} = e.currentTarget.dataset;
     //只有状态不是1 的才能继续删除
-    if (state == 1) return false;
+    if (state != 0) return false;
     const $this = this;
     singleRequest({
       url: config.API.bespeak.cancel,
       postData: {
         bespeakId: id
       },
-      method: 'get',
       success: (res) => {
         console.log('res: ', res)
         showModel({
