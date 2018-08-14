@@ -134,6 +134,7 @@ var singleRequest = function({
   alert
 }) {
   const app = getApp();
+  const { userInfo } = app;
   if (!postData) postData = {};
   wx.request({
     url: url,
@@ -141,8 +142,8 @@ var singleRequest = function({
     method: method || 'POST',
     header: {
       'content-type': 'application/x-www-form-urlencoded',
-      'Cookie': app.userInfo.cookie,
-      'token': app.userInfo.token
+      'Cookie': userInfo ? userInfo.cookie : '',
+      'token': userInfo ? userInfo.token : ''
     },
     success: function(res) {
       if (res.data.status == '200') {
