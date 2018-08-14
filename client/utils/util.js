@@ -152,6 +152,10 @@ var singleRequest = function({
         if (res.data.data) {
           success && success(res.data);
         }
+
+        if (res.data.status === 212) {
+          app.userLoginFn()
+        }
         if (res.data.status === 201) {
           setTimeout(() => {
             wx.redirectTo({

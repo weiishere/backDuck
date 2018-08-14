@@ -75,3 +75,14 @@ page{
 .btn-wrap .btn{
   font-size: 30rpx;
 }
+.pay-info{
+  text-align: center;
+  margin: 10px 0;
+}
+.pay-info .pay-name{
+  padding: 10rpx 0; 
+}
+.pay-info .pay-amount{
+  font-size: 68rpx;
+  font-weight: 700;
+}

@@ -21,8 +21,11 @@
           wx:for="{{list}}"
           wx:for-item="item"
           wx:for-idx="idx"
-          wx:key="idx">
-          <view class='order_item_header' catchtap='gotoPage' data-orderId='{{item.id}}' data-page='/pages/orderItem/orderItem'>
+          wx:key="idx"
+          catchtap='gotoPage' 
+          data-orderId='{{item.id}}' 
+          data-page='/pages/orderItem/orderItem'>
+          <view class='order_item_header'>
             <view><text>订单号：{{item.orderNo}}</text></view>
             <view><text>{{item.stateText}}</text></view>
           </view>
@@ -44,7 +47,7 @@
               </view>
               <view>
                   <text>￥ {{orderItems.realPrice}}</text>
-                  <text class='gray delete'>￥ 89.00</text>
+                  <!-- <text class='gray delete'>￥ 89.00</text> -->
               </view>
           </view>
           <view class='order_item_footer'>

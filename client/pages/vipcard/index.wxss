@@ -60,6 +60,7 @@
   position: absolute;
   bottom: 30rpx;
   right: 65rpx;
+  font-size: 28rpx;
 }
 .title{
   height: 90rpx;

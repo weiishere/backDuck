@@ -8,7 +8,7 @@
          <!-- <view class='signin'>登陆后即可查看会员卡</view>  -->
          <view class='signin'>
           <view class='user-name'>{{user.nickName ? user.nickName : '黑鸭子'}}</view>
-          <view class='user-type'>{{user.vipName ? user.vipName : '非会员'}}</view>
+          <view class='user-type'>{{user.vipName ? user.vipName : '普通会员'}}</view>
         </view> 
       </view>
     </view>

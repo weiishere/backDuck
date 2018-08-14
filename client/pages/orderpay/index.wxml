@@ -76,5 +76,11 @@
   <view class='btn-wrap'>
     <button class='btn' catchtap='payBtnClickFn'>立即支付</button>
   </view>
-  <Modal>11</Modal>
+  <ModalBox show="{{modalshow}}" mType='paypwd' bindcloseAfterFn="closeAfterFn" title="请输入支付密码">
+    <view class='pay-info'>
+      <view class='pay-name'>黑鸭子</view>
+      <view class='pay-amount'>￥{{money}}</view>
+    </view>
+    <PayPWD bindInputEventFn="completeFn"></PayPWD>
+  </ModalBox>
 </view>

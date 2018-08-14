@@ -65,7 +65,7 @@
     </view>
   </view>
 
-  <view class='order_footer'>
+  <view class='order_footer' wx:if="{{state == 1}}">
     <view>
       <text>金额合计：</text><text class='red'>￥ {{realOrderMoney}}</text>
     </view>

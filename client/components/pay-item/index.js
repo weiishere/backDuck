@@ -7,17 +7,6 @@ Component({
     title: {
       type: String,
       value: '支付密码'
-    },
-    dType: {
-      type: String,
-      observer (newVal, oldVal) {
-        // console.log(newVal, oldVal)
-        if (newVal) {
-          this.setData({
-            dType: newVal
-          })
-        }
-      }
     }
   },
   /**
@@ -25,7 +14,7 @@ Component({
    * 可用于模版渲染
    */
   data: {
-    inputFocus: true,
+    inputFocus: false,
     pwdArr: [],
     inputStr: '',
     focusF: [],
@@ -37,8 +26,6 @@ Component({
    */
   methods: {
     passInput(e) {
-      const {dType} = this.data;
-      console.log('dType: ', dType)
       const value = e.detail.value;
       const num = e.detail.cursor - 1;
       const tempArr = [];
@@ -52,7 +39,7 @@ Component({
           allinput: value,
           pwdArr: tempArr
         }
-        console.log(`${dType}密码输入完成: ${tempArr.join('')}`)
+        console.log(`密码输入完成: ${tempArr.join('')}`)
       } else {
         data = {
           inputSrr: value,
@@ -61,8 +48,7 @@ Component({
         }
       }
       this.setData(data)
-
-      this.triggerEvent("InputEventFn", { type: dType, data: tempArr.join('') })
+      this.triggerEvent("InputEventFn", { data: tempArr.join('') })
     },
     allInputFn(e) {
       const index = e.target.dataset.index;

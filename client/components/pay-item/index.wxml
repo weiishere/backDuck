@@ -1,5 +1,5 @@
 <view class='paypwd-wrap'>
-	<view class="paypwd-title">{{title}}</view>
+	<!-- <view class="paypwd-title">{{title}}</view> -->
   <view class="paypwd-box" bindtap="focusInput">
     <view class="paypwd-box-in" wx:for="{{6}}" wx:key="{{index}}">
       <input

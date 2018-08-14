@@ -36,8 +36,12 @@ page{
   /* color: #000000; */
 }
 .reservation-wrap .content .address{
+  width: 100%;
   color: #676767;
   font-size: 28rpx;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  overflow:hidden;
 }
 
 .reservation .btn{

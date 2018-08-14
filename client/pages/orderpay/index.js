@@ -14,7 +14,9 @@ Page({
     money: '',
     orderNo: '',
     payway: 'wechat',
-    payBtnLock: true
+    paypwd: '',
+    payBtnLock: true,
+    modalshow: true
   },
   onLoad: function (options) {
     console.log(options)
@@ -59,10 +61,13 @@ Page({
   },
   balancePayModelFn() {
     // this.payFn()
+    this.setData({
+      modalshow: false
+    })
   },
   payFn() {
     const $this = this;
-    const { payway, orderNo } = this.data;
+    const { payway, orderNo, paypwd } = this.data;
     let url = '';
     let jsondata = {
       orderId: orderNo
@@ -75,7 +80,6 @@ Page({
     }
     singleRequest({
       url,
-      method: 'get',
       postData: jsondata,
       success: (res) => {
         if (payway == 'wechat') {
@@ -115,6 +119,25 @@ Page({
       'fail': function (res) {
         console.log('fail: ', res)
       }
+    })
+  },
+  // 余额支付
+  //输入完成的回调
+  completeFn(e) {
+    console.log('completeFn ：', e.detail.data)
+    if (e.detail && e.detail.data.length == 6) {
+      this.setData({
+        paypwd: e.detail.data
+      }, () => {
+        this.payFn()
+      })
+    }
+  },
+  //关闭之后执行的方法，重置按钮状态
+  closeAfterFn(){
+    this.setData({
+      payBtnLock: true,
+      modalshow: true
     })
   }
 })

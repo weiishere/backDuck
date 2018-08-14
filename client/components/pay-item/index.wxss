@@ -13,8 +13,8 @@
   margin-bottom: 40rpx;
 }
 .paypwd-box-in{
-	width: 108rpx;
-	height: 108rpx;
+	width: 88rpx;
+	height: 88rpx;
 	border:1rpx #bfbfbf solid;
 	display: flex;
 	justify-content: center;
@@ -24,9 +24,9 @@
 }
 .paypwd-input{
   display: block;
-  width: 106rpx;
-  height: 106rpx;
-  line-height: 107rpx;
+  width: 86rpx;
+  height: 86rpx;
+  line-height: 87rpx;
   text-align: center;
   font-size: 86rpx;
   border: none;

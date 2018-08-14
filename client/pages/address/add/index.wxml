@@ -91,5 +91,5 @@
       </view>
     </view> -->
   </view>
-  <view class='btn' bindtap='submitAddressFn'>保存</view>
+  <view class='btn' bindtap='submitAddressFn'>保<text class='space'></text>存</view>
 </view>

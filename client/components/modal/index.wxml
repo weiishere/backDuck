@@ -1,18 +1,19 @@
 <!--components/modal/index.wxml-->
-<view class='modal-wrapper'>
+<view class='modal-wrapper' hidden='{{modalshow}}'>
   <view class='modal-mask'></view>
   <view class='modal-box'>
     <view class='modal-top'>
       <view class='modal-title'>
-        请输入支付密码
+        {{title}}
       </view>
+      <image src='/assets/close.png' class='modal-close' catchtap='closeModalFn'></image>
     </view>
     <view class='modal-content'>
-      请输入支付密码
+      <slot></slot>
     </view>
-    <view class='modal-bottom'>
-      取消 支付
+    <view class='modal-bottom' wx:if="{{cancelText || confirmText}}">
+      <view class='modal-btn modal-btn-cancel' catchtap='cancelClickFn'>{{cancelText ? cancelText : '取消'}}</view>
+      <view class='modal-btn modal-btn-confirm' catchtap='confirmClickFn'>{{confirmText ? confirmText : '确定'}}</view>
     </view>
-    <slot></slot>
   </view>
 </view>

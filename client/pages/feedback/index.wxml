@@ -5,6 +5,6 @@
   <view class='feedback-wrap'>
     <view class='title'>反馈内容</view>
     <textarea class='text' value='{{opinion}}' bindinput='opinionInputFn' placeholder='乐意聆听您对黑鸭子的任何意见与建议'></textarea>
-    <button class='btn' bindtap='opinionSubmitFn'>提交</button>
+    <button class='btn' bindtap='opinionSubmitFn'>提<text class='space'></text>交</button>
   </view>
 </view>

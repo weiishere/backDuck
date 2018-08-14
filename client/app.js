@@ -7,10 +7,13 @@ var {
 
 App({
   onLaunch: function() {
+    this.userLoginFn()
+  },
+  userLoginFn(){
     let self = this;
     //qcloud.setLoginUrl(config.service.loginUrl)
     wx.login({
-      success: function(res) {
+      success: function (res) {
         if (res.code) {
           //发起网络请求
           // console.log(config.API.user.login);
@@ -23,8 +26,8 @@ App({
               self.userInfo = {
                 code: res.code,
                 openId: data.data.openId,
-                cookie:data.data.cookie,
-                token:data.data.token
+                cookie: data.data.cookie,
+                token: data.data.token
               }
               // 查看是否授权
               wx.getSetting({
@@ -51,7 +54,7 @@ App({
           console.log('登录失败！' + res.errMsg)
         }
       },
-      fail: function(e) {
+      fail: function (e) {
         //console.log(e);
       },
       complete: (res) => {
