@@ -65,7 +65,8 @@ App({
   userInfo: {},
   addUserInfoFn(data) {
     let self = this;
-    // console.log(data)
+    data.nickname = data.nickName;
+    delete data.nickName
     singleRequest({
       url: config.API.user.addInfo,
       postData: {
