@@ -10,7 +10,8 @@ const app = getApp()
 Page({
   data: {
     pageorigin: '',
-    list: ''
+    list: '',
+    nocontent: false
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -40,14 +41,20 @@ Page({
             list: data
           })
         } else {
-          showModel({
-            title: "错误",
-            content: "收货地址为空~"
-          });
+          $this.setData({
+            nocontent: ($this.data.currentPage == 1)
+          })
+          // showModel({
+          //   title: "错误",
+          //   content: "收货地址为空~"
+          // });
         }
 
       },
       error(res) {
+        $this.setData({
+          nocontent: ($this.data.currentPage == 1)
+        })
         showModel({
           title: "错误",
           content: res.msg || '报错了~'

@@ -17,9 +17,13 @@ Page({
     list: [],
     chooseIndex: 9,
     currentPage: 1,
-    pageSize: 10
+    pageSize: 10,
+    nocontent: false
   },
   onLoad: function (options) {
+    wx.showLoading({
+      title: '',
+    })
     this.getOrderListFn()
   },
 
@@ -35,6 +39,7 @@ Page({
         state: (chooseIndex == 9 ? '' : chooseIndex)
       },
       success: (res) => {
+        wx.hideLoading()
         const data = res.data;
         data.map((item, index)=>{
           if (item.state == 0) {
@@ -50,10 +55,14 @@ Page({
         })
         list = list.concat(data)
         $this.setData({
-          list
+          list,
+          nocontent: ($this.data.currentPage == 1 && data.length == 0)
         })
       },
-      error (res) {
+      error(res) {
+        $this.setData({
+          nocontent: ($this.data.currentPage == 1)
+        })
       }
     })
   },

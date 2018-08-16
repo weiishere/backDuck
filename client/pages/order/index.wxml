@@ -55,7 +55,7 @@
         </view>
       </view>
     </view>
-    <view class='no-content order'>
+    <view class='no-content order' wx:if="{{nocontent}}">
       <image class='icon' src='/assets/no_order_information_@2x.png'></image>
       <view class='text'>暂无订单信息</view>
     </view>

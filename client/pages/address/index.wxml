@@ -24,7 +24,7 @@
       </view>
     </view>
   </view>
-  <view class='no-content order'>
+  <view class='no-content' wx:if="{{nocontent}}">
     <image class='icon' src='/assets/no_shipping_information_@2x.png'></image>
     <view class='text'>暂无配送信息</view>
   </view>

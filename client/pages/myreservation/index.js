@@ -13,7 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: ''
+    list: '',
+    nocontent: false
   },
   /**
    * 生命周期函数--监听页面加载
@@ -29,8 +30,8 @@ Page({
     singleRequest({
       url: config.API.bespeak.list,
       postData: {
-        pageSize: this.data.pageSize || 10,
-        currentPage: this.data.currentPage || 1
+        pageSize: $this.data.pageSize || 10,
+        currentPage: $this.data.currentPage || 1
       },
       method: 'get',
       success: (res) => {
@@ -53,7 +54,8 @@ Page({
           return item
         })
         $this.setData({
-          list: res.data
+          list: res.data,
+          nocontent: ($this.data.currentPage == 1 && res.data.length == 0)
         })
       }, 
       error(res) {
@@ -61,6 +63,9 @@ Page({
           title: "错误",
           content: res.msg || '报错了~'
         });
+        $this.setData({
+          nocontent: ($this.data.currentPage == 1)
+        })
       }
     })
   },
