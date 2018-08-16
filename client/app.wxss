@@ -62,3 +62,22 @@ page {
   opacity: 1;
   background: none;
 }
+
+
+.no-content{
+  text-align: center;
+  color: #999;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.no-content .icon{
+  width: 290rpx;
+  height: 192rpx;
+  display: inline-block
+}
+.no-content .text{
+  margin-top: 40rpx;
+}

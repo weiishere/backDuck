@@ -24,6 +24,10 @@
       </view>
     </view>
   </view>
+  <view class='no-content order'>
+    <image class='icon' src='/assets/no_shipping_information_@2x.png'></image>
+    <view class='text'>暂无配送信息</view>
+  </view>
   <view class='add-address'>
     <navigator url='/pages/address/add/index'>新增收货地址</navigator>
   </view>

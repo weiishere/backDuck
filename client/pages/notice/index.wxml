@@ -33,5 +33,9 @@
         <view wx:if="{{item}}" class='tools delete' data-id="{{item.id}}" data-index="{{idx}}" catchtap='delNoticeFn'>删除</view>
       </view>
     </block>
+    <view class='no-content message'>
+      <image class='icon' src='/assets/no_information@2x.png'></image>
+      <view class='text'>暂无配送信息</view>
+    </view>
   </view>
 </view>
