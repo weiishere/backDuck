@@ -23,7 +23,9 @@ Page({
     delBtnWidth: 80,
     txtStyle: '',
     txtStyle: '', 
-    nocontent: false
+    nocontent: false,
+    pageSize: 10,
+    currentPage: 1
   },
   onLoad: function (options) {
     console.log(options)

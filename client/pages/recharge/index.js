@@ -104,7 +104,7 @@ Page({
           content: "充值成功~"
         }, () => {
           wx.redirectTo({
-            url: '/pages/blanace/index',
+            url: '/pages/balance/index',
           })
         });
       },

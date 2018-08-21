@@ -11,7 +11,9 @@ Page({
   data: {
     pageorigin: '',
     list: '',
-    nocontent: false
+    nocontent: false,
+    pageSize: 10,
+    currentPage: 1
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -36,20 +38,10 @@ Page({
       method: 'get',
       success: (res) => {
         const data = res.data;
-        if (data) {
-          $this.setData({
-            list: data
-          })
-        } else {
-          $this.setData({
-            nocontent: ($this.data.currentPage == 1)
-          })
-          // showModel({
-          //   title: "错误",
-          //   content: "收货地址为空~"
-          // });
-        }
-
+        $this.setData({
+          list: data,
+          nocontent: ($this.data.currentPage == 1 && data.length == 0)
+        })
       },
       error(res) {
         $this.setData({

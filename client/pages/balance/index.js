@@ -17,18 +17,35 @@ Page({
     realAccountBalance: '0.00',
     currentPage: 1,
     pageSize: 10,
-    records: []
+    records: [],
+    scrollHeight: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const that = this;
     wx.setNavigationBarTitle({
       title: '余额充值'
     })
-    this.getMyBalanceFn()
-    this.getPayRecordsFn()
+    wx.getSystemInfo({
+      success: function (res) {
+        let height = res.windowHeight;
+        console.info('height: ', height);
+        wx.createSelectorQuery().selectAll('#scrollList').boundingClientRect((rects) => {
+          rects.forEach((rect) => {
+            console.log(rect)
+            that.setData({
+              scrollHeight: res.windowHeight - rect.top - 20
+            }, () => {
+              that.getMyBalanceFn()
+              that.getPayRecordsFn()
+            });
+          })
+        }).exec();
+      }
+    });
   },
   //获取账户余额
   getMyBalanceFn() {

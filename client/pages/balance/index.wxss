@@ -49,7 +49,7 @@ page{
   top: 0px;
 }
 .balance-record-wrap{
-  margin: 70rpx 30rpx;
+  margin: 70rpx 30rpx 0;
   background: #fff;
   border: #e5e5e5 1rpx solid;
 }
