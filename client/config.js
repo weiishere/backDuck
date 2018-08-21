@@ -6,7 +6,7 @@
 const localTest = false;
 //var host = localTest ? "http://localhost:5757" : "https://q0ymddaf.qcloud.la";
 // var host = 'http://118.25.217.48:9881';
-var host = 'http://www.hyzi.com';
+var host = 'https://api.hyazi.com';
 var config = {
   localTest: localTest,
   API: {

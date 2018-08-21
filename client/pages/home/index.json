@@ -4,7 +4,7 @@
     "PayPWD": "/components/pay-item/index"
   },
   "navigationBarTitleText": "黑鸭子",
-  "navigationBarBackgroundColor": "#ccf",
+  "navigationBarBackgroundColor": "#fff",
   "backgroundColor": "#999999"
   
 }
