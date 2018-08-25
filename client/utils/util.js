@@ -210,6 +210,7 @@ var clone = function(obj) {
   throw new Error("Unable to copy obj! Its type isn't supported.");
 }
 
+
 module.exports = {
   formatTime,
   formatDateTime,

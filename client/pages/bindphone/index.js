@@ -14,7 +14,51 @@ Page({
   data: {
     phoneInputValue: '',
     sendDone: false,
-    validateCode: ''
+    validateCode: '',
+    approved: false,
+    countNum: 60,
+    btnText: '获取验证码'
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    const self = this;
+    wx.setNavigationBarTitle({
+      title: '绑定手机',
+    })
+    // 查看是否授权
+    wx.getSetting({
+      success: function (res) {
+        self.setData({
+          approved: res.authSetting['scope.userInfo'] ? true : false
+        })
+      }
+    })
+  },
+  onGotUserInfo (e) {
+    const { errMsg, userInfo, rawData } = e.detail
+    console.log('errMsg: ', errMsg)
+    console.log('userInfo: ', userInfo)
+    console.log('rawData: ', rawData)
+
+    this.setData({
+      approved: e.detail.rawData ? true : false
+    }, () => {
+      if (userInfo) {
+        if (app.userInfo && app.userInfo.user) {
+          app.userInfo.user = Object.assign(app.userInfo.user, {...userInfo})
+        } else {
+          app.userInfo = Object.assign(app.userInfo, {
+            user: {
+              ...userInfo
+            }
+          })
+        }
+        this.submitPhoneBind()
+      }
+    });
   },
   bindKeyInput(e) {
     this.setData({
@@ -34,18 +78,20 @@ Page({
       });
       return false;
     } else {
-      singleRequest({
-        url: config.API.user.verification + '/' + this.data.phoneInputValue,
-        method: 'GET',
-        success: (res) => {
-          showSuccess('验证码发送成功');
-          this.setData({
-            sendDone: true
-          }, () => {
-            this.countdownFn()
-          })
-        }
-      })
+      if (this.data.countNum == 60) {
+        singleRequest({
+          url: config.API.user.verification + '/' + this.data.phoneInputValue,
+          method: 'GET',
+          success: (res) => {
+            showSuccess('验证码发送成功');
+            this.setData({
+              sendDone: true
+            }, () => {
+              this.countdownFn()
+            })
+          }
+        })
+      }
     }
   },
   countdownFn() {
@@ -67,6 +113,14 @@ Page({
     }, 1000)
   },
   submitPhoneBind() {
+    if (!(/^1[345789]\d{9}$/.test(this.data.phoneInputValue))) {
+      showModel({
+        title: "错误",
+        content: '您输入的手机号不合法~'
+      });
+      return false;
+    }
+
     if (this.data.sendDone) {
       console.log(this.data.validateCode);
       singleRequest({
@@ -80,7 +134,7 @@ Page({
           showSuccess('手机绑定成功');
           setTimeout(() => {
             wx.redirectTo({
-              url: '/pages/order/index'
+              url: '/pages/home/index'
             })
           }, 1500);
         }
@@ -91,60 +145,5 @@ Page({
         content: '请先获取验证码~'
       });
     }
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
   }
 })

@@ -14,6 +14,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+      orderId: '',
       chooseIndex: "0",
       namemobile:'',
       address: '',
@@ -31,7 +32,20 @@ Page({
       })
     },
   onLoad: function (options) {
-    this.getOrderDetailFn(options.orderId)
+    // this.getOrderDetailFn(options.orderId)
+    if (options.orderId) {
+      this.setData({
+        orderId: options.orderId
+      })
+    }
+  },
+  onShow(){
+    const { orderId } = this.data
+    if ( orderId ) {
+      this.getOrderDetailFn(orderId)
+    } else {
+      console.log('参数不正确')
+    }
   },
 
   getOrderDetailFn(orderId) {
@@ -65,6 +79,7 @@ Page({
         })
       },
       error(res) {
+
       }
     })
   },

@@ -33,11 +33,12 @@
           </input>
         </view>
         <view class='form-item-tools'>
-          <view class='sms-captcha' catchtap='verification'>获取验证码</view>
+          <view class='sms-captcha' catchtap='verification'>{{btnText}}</view>
         </view>
       </view>
     </view>
-    <view class='btn' catchtap='submitPhoneBind'>绑定手机</view>
-    <view class='no-sms-captcha'>收不到验证码</view>
+    <view wx:if="{{approved}}" class='btn' catchtap='submitPhoneBind'>绑定手机</view>    
+    <button  wx:if="{{!approved}}" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="onGotUserInfo" class='btn' >用户授权</button>
+    <!-- <view class='no-sms-captcha'>收不到验证码</view> -->
   </view>
 </view>

@@ -4,7 +4,9 @@ Page({
   
   },
   onLoad: function (options) {
-  
+    wx.setNavigationBarTitle({
+      title: '服务项目',
+    })
   },
   serviceClickFn(){
 

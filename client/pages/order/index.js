@@ -41,18 +41,6 @@ Page({
       success: (res) => {
         wx.hideLoading()
         const data = res.data;
-        data.map((item, index)=>{
-          if (item.state == 0) {
-            item.stateText = '待取件'
-          } else if (item.state == 1) {
-            item.stateText = '待处理'
-          } else if (item.state == 2) {
-            item.stateText = '待收件'
-          } else if (item.state == 3) {
-            item.stateText = '已完成（已收款）'
-          }
-          return item
-        })
         list = list.concat(data)
         $this.setData({
           list,
