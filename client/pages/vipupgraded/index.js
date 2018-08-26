@@ -86,8 +86,8 @@ Page({
           title: "成功",
           content: '会员升级成功~'
         }, () => {
-          wx.redirectTo({
-            url: '/pages/vipcard/index',
+          wx.navigateBack({
+            delta: 1
           })
         });
       },

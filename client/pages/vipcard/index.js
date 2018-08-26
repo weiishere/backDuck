@@ -17,12 +17,15 @@ Page({
     wx.setNavigationBarTitle({
       title: '会员卡',
     })
-    console.log(app.userInfo)
-    if (!this.data.user) {
-      this.setData({
+    
+  },
+  onShow(){
+    const that = this;
+    app.getUserInfoFn(() => {
+      that.setData({
         user: app.userInfo.user
       })
-    }
+    })
   },
   userBtnEventFn(e){
     const { viptype, user} = this.data;
@@ -50,7 +53,7 @@ Page({
       method: 'get',
       success: (res) => {
         let data = res.data;
-        console.log(data)
+        // console.log(data)
         if (data) {
           $this.setData({
             activityList: data
@@ -58,7 +61,7 @@ Page({
         } else {
           showModel({
             title: "错误",
-            content: "收货地址为空~"
+            content: "服务器错误~"
           });
         }
 

@@ -42,12 +42,12 @@ Page({
         // console.log('成功', res)
         let data = {};
         for (let key in res.data) {
-          console.log('key: ', key, $this.data[key])
+          // console.log('key: ', key, $this.data[key])
           if ($this.data[key] != undefined) {
             data[key] = res.data[key]
           }
         }
-        console.log(data)
+        // console.log(data)
         $this.setData(data)
       },
       error(res) {
@@ -62,7 +62,7 @@ Page({
     this.setData({
       [id]: value
     })
-    console.log(this.data)
+    // console.log(this.data)
   },
   //设置为默认地址
   setdefaultFn(){
@@ -70,11 +70,11 @@ Page({
     this.setData({
       isDefault: !isDefault
     })
-    console.log(this.data.isDefault)
+    // console.log(this.data.isDefault)
   },
   //地址选择器
   bindAreaChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
+    // console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       area: e.detail.value
     })
