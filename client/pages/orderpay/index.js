@@ -19,7 +19,9 @@ Page({
     modalshow: true
   },
   onLoad: function (options) {
-    console.log(options)
+    wx.setNavigationBarTitle({
+      title: '订单支付'
+    })
     if (options.money && options.orderNo) {
       this.setData({
         money: options.money,

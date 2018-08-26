@@ -130,13 +130,16 @@ Page({
           verificationCode: this.data.validateCode,
           openId: app.userInfo.openId
         },
-        success: (res) => {
+        success (res) {
           showSuccess('手机绑定成功');
           setTimeout(() => {
             wx.redirectTo({
               url: '/pages/home/index'
             })
           }, 1500);
+        }, 
+        error(res){
+          console.log(res)
         }
       })
     } else {

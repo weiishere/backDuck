@@ -21,6 +21,9 @@ Page({
     nocontent: false
   },
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '我的订单'
+    })
     wx.showLoading({
       title: '',
     })

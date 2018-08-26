@@ -14,6 +14,9 @@ Page({
   },
   onLoad: function (options) {
     const $this = this;
+    wx.setNavigationBarTitle({
+      title: '黑鸭子'
+    })
     setTimeout(() => {
       this.setdefaultdataFn()
     }, 1500)

@@ -17,7 +17,9 @@ Page({
     allinput: '',
   },
   onLoad: function (options) {
-    
+    wx.setNavigationBarTitle({
+      title: '支付密码'
+    })
   },
   inputEventFn(e){
     console.log(e.detail)

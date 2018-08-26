@@ -33,6 +33,9 @@ Page({
     },
   onLoad: function (options) {
     // this.getOrderDetailFn(options.orderId)
+    wx.setNavigationBarTitle({
+      title: '订单详情'
+    })
     if (options.orderId) {
       this.setData({
         orderId: options.orderId
