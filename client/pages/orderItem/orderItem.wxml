@@ -36,16 +36,16 @@
 
   <view class='order_body'>
     <view class='order_item'>
-
       <view class='order_item_body'
         wx:for="{{orderItems}}"
         wx:for-item="item"
         wx:for-idx="idx"
         wx:key="{{idx}}">
-        <view>
-          <image src=""></image>
+        <image class='isurgent' wx:if="{{item.isUrgent == 1}}" src='/assets/isurgent.png'></image>
+        <view class='pic-wrap'>
+          <image class='pic' src=""></image>
         </view>
-        <view>
+        <view class='item-info'>
           <text>
               {{item.itemTitle}}
           </text>
@@ -53,7 +53,7 @@
               服务项目：{{item.businessType}}
           </text>
         </view>
-        <view>
+        <view class=''>
           <text>￥ {{item.realPrice}}</text>
           <!-- <text class='gray delete'>￥ 89.00</text> -->
         </view>
@@ -61,6 +61,25 @@
       <view class='order_item_footer'>
         <view>
           <text>共{{orderItems.length}}件商品</text>
+        </view>
+      </view>
+    </view>
+    <view class='confirm-info'>
+      <view class='confirm-title'>确认信息</view>
+      <view class='confirm-item'
+        wx:for="{{orderItems}}"
+        wx:for-item="item"
+        wx:for-idx="idx"
+        wx:key="{{idx}}">
+        <view class='title'>{{item.itemTitle}}</view>
+        <view class='flex-wrap clearfix'>
+          <view class='image-wrap'
+            wx:for="{{item.realMainPic}}"
+            wx:for-item="picItem"
+            wx:for-idx="index"
+            wx:key="{{index}}">
+            <image class='pic' src='{{picItem[index]}}'></image>
+          </view>
         </view>
       </view>
     </view>

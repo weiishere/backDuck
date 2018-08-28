@@ -1,7 +1,7 @@
 /* pages/home/home.js.wxss */
 
 .container.home {
-  background-image: url(https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/bg_02.png);
+  background-image: url('https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/WechatIMG386.jpeg');
   /*background-size: cover;*/
   background-size: 100% 100%;
 }

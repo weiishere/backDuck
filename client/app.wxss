@@ -81,3 +81,10 @@ page {
 .no-content .text{
   margin-top: 40rpx;
 }
+
+.flex-wrap{
+  display: flex;
+}
+.flex-item{
+  flex: 1;
+}

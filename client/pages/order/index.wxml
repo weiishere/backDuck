@@ -35,7 +35,7 @@
           wx:for-idx="itemidx"
           wx:key="itemidx">
             <view>
-                <image src="{{orderItems.itemPic}}" ></image>
+                <image src="{{orderItems.realMainPic}}" ></image>
             </view>
             <view>
                 <text>
