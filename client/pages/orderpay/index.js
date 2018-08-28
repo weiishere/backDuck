@@ -12,7 +12,7 @@ const app = getApp()
 Page({
   data: {
     money: '',
-    orderNo: '',
+    orderId: '',
     payway: 'wechat',
     paypwd: '',
     payBtnLock: true,
@@ -22,10 +22,10 @@ Page({
     wx.setNavigationBarTitle({
       title: '订单支付'
     })
-    if (options.money && options.orderNo) {
+    if (options.money && options.orderId) {
       this.setData({
         money: options.money,
-        orderNo: options.orderNo
+        orderId: options.orderId
       })
     } else {
       showModel({
@@ -69,10 +69,10 @@ Page({
   },
   payFn() {
     const $this = this;
-    const { payway, orderNo, paypwd } = this.data;
+    const { payway, orderId, paypwd } = this.data;
     let url = '';
     let jsondata = {
-      orderId: orderNo
+      orderId: orderId
     };
     if (payway == 'wechat') {
       url = config.API.pay.wechatPay

@@ -88,9 +88,9 @@ Page({
   },
   //确认签收
   confirmReceiptFn(){
-    const {orderNo, realOrderMoney} = this.data
+    const { orderId, realOrderMoney} = this.data
     wx.navigateTo({
-      url: `/pages/orderpay/index?money=${realOrderMoney}&orderNo=${orderNo}`,
+      url: `/pages/orderpay/index?money=${realOrderMoney}&orderId=${orderId}`,
     })
   }
 })
