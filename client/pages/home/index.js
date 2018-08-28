@@ -47,7 +47,7 @@ Page({
   },
   callMobildServiceFn () {
     wx.makePhoneCall({
-      phoneNumber: '15982316112'
+      phoneNumber: '400-002-2003'
     })
   },
   rechargeBtnFn(){

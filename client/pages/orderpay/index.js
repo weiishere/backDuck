@@ -16,7 +16,8 @@ Page({
     payway: 'wechat',
     paypwd: '',
     payBtnLock: true,
-    modalshow: true
+    modalshow: true,
+    havePayPWD: false
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
@@ -37,6 +38,7 @@ Page({
         })
       });
     }
+    this.havePayPWDFn()
   },
   togglePayWayFn(e) {
     const {  payway } = this.data;
@@ -140,6 +142,22 @@ Page({
     this.setData({
       payBtnLock: true,
       modalshow: true
+    })
+  },
+  //获取用户是否有支付密码
+  havePayPWDFn() {
+    const $this = this;
+    singleRequest({
+      url: config.API.setting.isHavePayPWD,
+      postData: {
+      },
+      method: 'GET',
+      success: (res) => {
+        let data = res.data;
+        $this.setData({
+          havePayPWD: data
+        })
+      }
     })
   }
 })

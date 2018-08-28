@@ -76,16 +76,26 @@
 .order_item_body {
   display: flex;
   height: 90rpx;
-  padding: 20rpx;
+  padding: 20rpx 50rpx;
   background: #eee;
   margin-bottom: 5rpx;
   position: relative;
 }
 
 .order_item_body .isurgent{
+  width: 73rpx;
+  height: 73rpx;
   position: absolute;
   left: 0px;
   top: 0px;
+}
+.order_item_body .isobtained{
+  width: 130rpx;
+  height: 70rpx;
+  position: absolute;
+  right: 150rpx;
+  top: 50%;
+  transform: translateY(-50%)
 }
 .order_item_body view {
   /* flex: 7; */

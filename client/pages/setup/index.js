@@ -21,7 +21,7 @@ Page({
     // console.log(type)
   },
 
-  //获取会员信息
+  //获取用户是否有支付密码
   havePayPWDFn() {
     const $this = this;
     singleRequest({
