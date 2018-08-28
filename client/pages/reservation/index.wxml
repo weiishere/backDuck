@@ -5,12 +5,19 @@
       <image class='icon' src='/assets/time.png'></image>
     </view>
     <view class='content'>
-      <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
+      <!-- <picker mode="multiSelector" value="{{dateTime1}}" bindchange="changeDateTime1" bindcolumnchange="changeDateTimeColumn1" range="{{dateTimeArray1}}">
     <view class="tui-picker-detail">
       {{dateTimeArray1[0][dateTime1[0]]}}-{{dateTimeArray1[1][dateTime1[1]]}}-{{dateTimeArray1[2][dateTime1[2]]}} {{dateTimeArray1[3][dateTime1[3]]}}:{{dateTimeArray1[4][dateTime1[4]]}}
     </view>
-  </picker>
-
+  </picker> -->
+      <picker 
+        mode="multiSelector"
+        bindchange="bindMultiPickerChange"
+        bindcolumnchange="bindMultiPickerColumnChange"
+        value="{{multiIndex}}" 
+        range="{{multiArray}}">
+        <view class="tui-picker-detail">{{orderData}}</view>
+      </picker>
       <!-- 2018-06-17 18:58:24 -->
     </view>
     <view class='right'>

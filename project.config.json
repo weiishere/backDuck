@@ -41,7 +41,7 @@
 				{
 					"id": 1,
 					"name": "子页面",
-					"pathName": "pages/bindphone/index",
+					"pathName": "pages/reservation/index",
 					"query": ""
 				}
 			]
