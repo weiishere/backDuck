@@ -18,6 +18,8 @@ Page({
     wx.setNavigationBarTitle({
       title: '黑鸭子'
     })
+  },
+  onShow(){
     setTimeout(() => {
       this.setdefaultdataFn()
     }, 1500)
@@ -70,12 +72,6 @@ Page({
         $this.setData({
           msgCount: res.data
         })
-      },
-      error(res) {
-        showModel({
-          title: "错误",
-          content: res.msg || '报错了~'
-        });
       }
     })
   },

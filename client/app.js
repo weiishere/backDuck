@@ -7,6 +7,9 @@ var {
 
 App({
   onLaunch: function() {
+    wx.setNavigationBarTitle({
+      title: '黑鸭子',
+    })
     this.userLoginFn()
   },
   userLoginFn(fn){

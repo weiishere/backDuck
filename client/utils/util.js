@@ -135,6 +135,7 @@ var singleRequest = function({
 }) {
   const app = getApp();
   const { userInfo } = app;
+  console.log(userInfo)
   if (!postData) postData = {};
   wx.request({
     url: url,
@@ -143,21 +144,20 @@ var singleRequest = function({
     header: {
       'content-type': 'application/x-www-form-urlencoded',
       'Cookie': userInfo ? userInfo.cookie : '',
-      'token': userInfo ? userInfo.token : ''
+      'token': (userInfo && userInfo.token) ? userInfo.token  : ''
     },
     success: function(res) {
       if (res.data.status == '200') {
         if (alert) showSuccess('操作成功');
         success && success(res.data);
       } else {
-        if (res.data.data) {
-          success && success(res.data);
-        }
-
-        if (res.data.status === 212) {
+        if (res.data.status === 200) {
+          if ( res.data.data) {
+            success && success(res.data);
+          }
+        } else if (res.data.status === 212) {
           app.userLoginFn()
-        }
-        if (res.data.status === 201) {
+        } else if (res.data.status === 201) {
           setTimeout(() => {
             wx.redirectTo({
               url: '/pages/bindphone/index'
