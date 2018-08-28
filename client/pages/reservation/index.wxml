@@ -24,7 +24,7 @@
     </view>
     <view class='content'>
       <view class='user'>{{currData.attn}} {{currData.mobile}}</view>
-      <view class='address'>{{currData.area + currData.address}}</view>
+      <view class='address'>{{currData.area ? (currData.area + currData.address) : '请选择地址'}}</view>
     </view>
     <view class='right'>
       <image class='icon' src='/assets/icon_arrow@2x.png'></image>

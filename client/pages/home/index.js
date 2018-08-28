@@ -10,7 +10,8 @@ Page({
   data: {
     vipName: '',
     sideBarShow: false,
-    msgCount: 0
+    msgCount: 0,
+    nickName: ''
   },
   onLoad: function (options) {
     const $this = this;

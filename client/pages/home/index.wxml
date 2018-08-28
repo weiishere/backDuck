@@ -1,11 +1,11 @@
 <!--pages/home/home.js.wxml-->
 <view class='container home'>
+  <button class='is-no-user-info' bindgetuserinfo='getUserInfoFn' open-type="getUserInfo"  data-sider-state='true' wx:if="{{!nickName}}"></button>
   <view class='warpview' bindtap="sideBarTrggle" data-sider-state='false' >
     <view class='home_header' >
       <view>
         <span>
-          <i wx:if="{{nickName}}"  data-sider-state='true' catchtap="sideBarTrggle" class='icon-nav_menu'></i>
-          <button class='icon-nav_menu' bindgetuserinfo='getUserInfoFn' open-type="getUserInfo"  data-sider-state='true'  wx:else></button>
+          <i data-sider-state='true' catchtap="sideBarTrggle" class='icon-nav_menu'></i>
         </span>
       </view>
       <view>

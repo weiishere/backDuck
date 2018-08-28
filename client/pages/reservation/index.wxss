@@ -31,6 +31,8 @@ page{
 .reservation-wrap .content{
   flex: 1;
   margin-left: 30rpx;
+  max-width: 600rpx;
+  overflow: hidden
 }
 .reservation-wrap .content .user{
   /* color: #000000; */

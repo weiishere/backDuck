@@ -83,12 +83,17 @@ Page({
           url: config.API.user.verification + '/' + this.data.phoneInputValue,
           method: 'GET',
           success: (res) => {
-            showSuccess('验证码发送成功');
             this.setData({
               sendDone: true
             }, () => {
               this.countdownFn()
             })
+          },
+          error(res) {
+            showModel({
+              title: "发送失败",
+              content: `${res.msg}~`
+            });
           }
         })
       }
