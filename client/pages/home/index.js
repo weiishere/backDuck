@@ -35,11 +35,13 @@ Page({
     }
   },
   sideBarTrggle: function(e) {
+    console.log(e)
     const siderState = e.currentTarget.dataset.siderState === 'true' ? true : false;
     this.setData({
       sideBarShow: siderState
     })
   },
+  
   gotoPage: function(e) {
     const page = e.currentTarget.dataset.order;
     wx.navigateTo({

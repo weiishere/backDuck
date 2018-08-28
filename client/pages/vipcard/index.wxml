@@ -2,7 +2,7 @@
   <view class='vipcard-top'>
     <view class='user-info-wrap'>
       <view class='user-icon-wrap'>
-        <image class='user-icon' src='{{user.avatarUrl}}'></image>
+        <image class='user-icon' src='{{user.avatarUrl ? user.avatarUrl : "https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/ZmLXp4.jpg"}}'></image>
       </view>
       <view class='user-info'>
          <!-- <view class='signin'>登陆后即可查看会员卡</view>  -->
