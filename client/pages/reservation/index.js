@@ -309,11 +309,11 @@ Page({
         data.multiIndex[4] = 0;
         break;
       case 3:
-        console.log('时间： ' + data.multiArray[e.detail.column][e.detail.value]);
+        // console.log('时间： ' + data.multiArray[e.detail.column][e.detail.value]);
         data.multiIndex[4] = 0;
         break;
       case 4:
-        console.log('分钟： ' + data.multiArray[e.detail.column][e.detail.value]);
+        // console.log('分钟： ' + data.multiArray[e.detail.column][e.detail.value]);
         break;
     }
     this.setData(data)

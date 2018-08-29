@@ -158,11 +158,11 @@ var singleRequest = function({
         } else if (res.data.status === 212) {
           app.userLoginFn()
         } else if (res.data.status === 201) {
-          // setTimeout(() => {
-          //   wx.redirectTo({
-          //     url: '/pages/bindphone/index'
-          //   });
-          // }, 500);
+          setTimeout(() => {
+            wx.redirectTo({
+              url: '/pages/bindphone/index'
+            });
+          }, 500);
         } else {
           showModel({
             title: "",
