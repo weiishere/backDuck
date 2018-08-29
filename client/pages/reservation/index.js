@@ -114,18 +114,18 @@ Page({
    * 新的时间选择控件
    */
   setDefaultTimeFn: function (options) {
-    var date = new Date();
-    var year = date.getFullYear()
-    var month = date.getMonth() + 1
-    var day = date.getDate()
-    var hour = date.getHours()
+    let date = new Date();
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    let hour = date.getHours()
 
-    var surplusMonth = this.surplusMonth(year);
+    let surplusMonth = this.surplusMonth(year);
     // console.log(surplusMonth)
-    var surplusDay = this.surplusDay(year, month, day);
+    let surplusDay = this.surplusDay(year, month, day);
     // console.log(surplusDay)
-    var surplusHour = this.surplusHour()
-    var surplusMinute = this.surplusMinute()
+    let surplusHour = this.surplusHour()
+    let surplusMinute = this.surplusMinute()
     
     console.log('surplusHour: ', surplusHour)
     console.log('surplusMinute: ', surplusMinute)
@@ -143,22 +143,22 @@ Page({
     })
   },
   surplusMonth: function (year) {
-    var date = new Date();
-    var year2 = date.getFullYear()
-    var month = date.getMonth() + 1
-    var day = date.getDate()
-    var hour = date.getHours()
-    var minute = date.getMinutes()
-    var second = date.getSeconds()
-    var monthDatas = [];
+    let date = new Date();
+    let year2 = date.getFullYear()
+    let month = date.getMonth() + 1
+    let day = date.getDate()
+    let hour = date.getHours()
+    let minute = date.getMinutes()
+    let second = date.getSeconds()
+    let monthDatas = [];
     if (year == year2) {
-      var surplusMonth = 12 - month;
+      let surplusMonth = 12 - month;
       monthDatas.push(month + "月")
-      for (var i = month; i < 12; i++) {
+      for (let i = month; i < 12; i++) {
         monthDatas.push(i + 1 + "月")
       }
     } else {
-      for (var i = 0; i < 12; i++) {
+      for (let i = 0; i < 12; i++) {
         monthDatas.push(i + 1 + "月")
       }
     }
@@ -166,11 +166,11 @@ Page({
     return monthDatas;
   },
   surplusDay: function (year, month, day) {
-    var days = 31;
-    var dayDatas = [];
-    var date = new Date();
-    var year2 = date.getFullYear()
-    var month2 = date.getMonth() + 1
+    let days = 31;
+    let dayDatas = [];
+    let date = new Date();
+    let year2 = date.getFullYear()
+    let month2 = date.getMonth() + 1
 
     switch (parseInt(month)) {
       case 1:
@@ -206,19 +206,19 @@ Page({
     }
     if (year == year2 && month == month2) {
       dayDatas.push(day + "日")
-      for (var i = day; i < days; i++) {
+      for (let i = day; i < days; i++) {
         dayDatas.push(i + 1 + "日")
       }
     } else {
       // console.log(month + "月" + days + "天")
-      for (var i = 0; i < days; i++) {
+      for (let i = 0; i < days; i++) {
         dayDatas.push(i + 1 + "日")
       }
     }
     return dayDatas;
   },
   surplusHour: function (year, month, day, hour) {
-    var surplusHours = [];
+    let surplusHours = [];
     for (let i = 8; i <= 22; i++) {
       surplusHours.push(i+'点')
     }
@@ -234,17 +234,17 @@ Page({
     return minute;
   },
   bindMultiPickerColumnChange: function (e) {
-    var date = new Date();
-    var year1 = date.getFullYear()
-    var month1 = date.getMonth() + 1
-    var day1 = date.getDate();
-    var hour1 = date.getHours();
+    let date = new Date();
+    let year1 = date.getFullYear()
+    let month1 = date.getMonth() + 1
+    let day1 = date.getDate();
+    let hour1 = date.getHours();
     console.log("当前年份" + this.data.month + '修改的列为', e.detail.column, '，值为', e.detail.value);
 
     let surplusHour = this.surplusHour(),
       surplusMinute = this.surplusMinute();
       
-    var data = {
+    let data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex,
       year: this.data.year,
@@ -252,12 +252,18 @@ Page({
       day: this.data.day
     };
     data.multiIndex[e.detail.column] = e.detail.value;
+
+    data.multiArray[3] = surplusHour
+    data.multiArray[4] = surplusMinute;
+    let surplusDay = this.surplusDay(data.year, data.month, data.day);
+    let hourStr = data.multiArray[e.detail.column][e.detail.value];
+    let hour = hourStr.substring(0, hourStr.length - 1);
     switch (e.detail.column) {
       case 0:
-        var yearStr = data.multiArray[e.detail.column][e.detail.value];
-        var year = yearStr.substring(0, yearStr.length - 1)
+        let yearStr = data.multiArray[e.detail.column][e.detail.value];
+        let year = yearStr.substring(0, yearStr.length - 1)
         data.year = parseInt(year);
-        var surplusMonth = this.surplusMonth(year);
+        let surplusMonth = this.surplusMonth(year);
         data.multiArray[1] = surplusMonth;
 
         if (data.year == year1) {
@@ -270,8 +276,6 @@ Page({
         } else {
           data.day = 1;
         }
-
-        var surplusDay = this.surplusDay(data.year, data.month, data.day);
 
         data.multiArray[2] = surplusDay;
 
@@ -286,8 +290,8 @@ Page({
       case 1:
         console.log('选择月份' + data.multiArray[e.detail.column][e.detail.value]);
 
-        var monthStr = data.multiArray[e.detail.column][e.detail.value];
-        var month = monthStr.substring(0, monthStr.length - 1);
+        let monthStr = data.multiArray[e.detail.column][e.detail.value];
+        let month = monthStr.substring(0, monthStr.length - 1);
 
         data.month = month;
         data.day = 1;
@@ -298,11 +302,7 @@ Page({
           data.day = 1;
         }
 
-        var surplusDay = this.surplusDay(data.year, data.month, data.day);
-
         data.multiArray[2] = surplusDay;
-        data.multiArray[3] = surplusHour[0];
-        data.multiArray[4] = surplusHour[1];
 
         data.multiIndex[2] = 0;
         data.multiIndex[3] = 0;
@@ -310,30 +310,18 @@ Page({
         break;
       case 2:
         console.log('选择日' + data.multiArray[e.detail.column][e.detail.value]);
-        var dayStr = data.multiArray[e.detail.column][e.detail.value];
-        var day = dayStr.substring(0, dayStr.length - 1);
+        let dayStr = data.multiArray[e.detail.column][e.detail.value];
+        let day = dayStr.substring(0, dayStr.length - 1);
         data.day = day;
-
-        data.multiArray[3] = surplusHour
-        data.multiArray[4] = surplusMinute;
 
         data.multiIndex[3] = 0;
         data.multiIndex[4] = 0;
         break;
       case 3:
         console.log('时间： ' + data.multiArray[e.detail.column][e.detail.value]);
-        var hourStr = data.multiArray[e.detail.column][e.detail.value];
-        var hour = hourStr.substring(0, hourStr.length - 1);
-
-        data.multiArray[4] = surplusMinute;
         data.multiIndex[4] = 0;
-
         break;
       case 4:
-        var hourStr = data.multiArray[e.detail.column][e.detail.value];
-        console.log('hourStr: ', hourStr)
-        var hour = hourStr.substring(0, hourStr.length - 1);
-
         console.log('分钟： ' + data.multiArray[e.detail.column][e.detail.value]);
         break;
     }
