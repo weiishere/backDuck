@@ -52,9 +52,14 @@ Page({
       }
     })
   },
+  //立即开通按钮
   vipUpgradeFn(e){
     const $this = this;
-    const { vipid } = e.currentTarget.dataset
+    const { vipid } = e.currentTarget.dataset;
+    console.log(app)
+    if (vipid == app) {
+      return false;
+    }
     singleRequest({
       url: config.API.vip.open,
       postData: {

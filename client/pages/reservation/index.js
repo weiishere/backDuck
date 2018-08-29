@@ -12,13 +12,11 @@ Page({
   data: {
     haveAddressList: false,
     currData: '',
-    multiIndex: [0, 0, 0, 0, 0, 0],
+    multiIndex: [0, 0, 0, 0, 0],
     multiArray: [],
     year: "",
     month: "",
     day: "",
-    startHour: "",
-    endHour: "",
     orderData: "选择预约时间"
   },
   /**
@@ -123,25 +121,25 @@ Page({
     var hour = date.getHours()
 
     var surplusMonth = this.surplusMonth(year);
-    console.log(surplusMonth)
+    // console.log(surplusMonth)
     var surplusDay = this.surplusDay(year, month, day);
-    console.log(surplusDay)
-    var surplusHour = this.surplusHour(year, month, day, hour)
-    console.log(surplusHour)
+    // console.log(surplusDay)
+    var surplusHour = this.surplusHour()
+    var surplusMinute = this.surplusMinute()
+    
+    console.log('surplusHour: ', surplusHour)
+    console.log('surplusMinute: ', surplusMinute)
 
     this.setData({
       multiArray: [[year + '年', (year + 1) + '年', (year + 2) + '年'],
-        surplusMonth,
-        surplusDay,
-      surplusHour[0],
-      ['~'],
-      surplusHour[1]
+      surplusMonth,
+      surplusDay,
+      surplusHour,
+      surplusMinute
       ],
       year: year,
       month: month,
-      day: day,
-      startHour: surplusHour[0][0],
-      endHour: surplusHour[1][0],
+      day: day
     })
   },
   surplusMonth: function (year) {
@@ -212,7 +210,7 @@ Page({
         dayDatas.push(i + 1 + "日")
       }
     } else {
-      console.log(month + "月" + days + "天")
+      // console.log(month + "月" + days + "天")
       for (var i = 0; i < days; i++) {
         dayDatas.push(i + 1 + "日")
       }
@@ -220,53 +218,38 @@ Page({
     return dayDatas;
   },
   surplusHour: function (year, month, day, hour) {
-    var date = new Date();
-    var year2 = date.getFullYear()
-    var month2 = date.getMonth() + 1
-    var day2 = date.getDate();
-    var hourEnd = [4, 8, 12, 16, 20, 24];
-    var hours = [['00时', '04时', '08时', '12时', '16时', '20时'], ['04时', '08时', '12时', '16时', '20时', '24时']];
-
-    if (year == year2 && month == month2 && day == day2) {
-      var hour2 = hour
-      var j = 0;
-      for (var i = 0; i < hourEnd.length; i++) {
-        console.log("离24点还" + (hourEnd[i] - hour))
-        if ((hourEnd[i] - hour) > 0) {
-          console.log("i" + i)
-          j = i;
-          break;
-        }
-      }
-      var surplusHours = [[], []];
-      for (var i = j; i < hours[0].length; i++) {
-        // console.log(hours[0][i])
-        surplusHours[0].push(hours[0][i]);
-      }
-      for (var i = j; i < hours[1].length; i++) {
-        // console.log(hours[1][i])
-        surplusHours[1].push(hours[1][i]);
-      }
-
-      hours = surplusHours;
+    var surplusHours = [];
+    for (let i = 8; i <= 22; i++) {
+      surplusHours.push(i+'点')
     }
-    return hours;
+    return surplusHours;
+  },
+  surplusMinute(){
+    const minute = []
+    for (let i = 0; i <= 59; i++) {
+      if (i%5 == 0) {
+        minute.push(i+'分')
+      }
+    }
+    return minute;
   },
   bindMultiPickerColumnChange: function (e) {
     var date = new Date();
     var year1 = date.getFullYear()
     var month1 = date.getMonth() + 1
-    var day1 = date.getDate()
-    var hour1 = date.getHours()
+    var day1 = date.getDate();
+    var hour1 = date.getHours();
     console.log("当前年份" + this.data.month + '修改的列为', e.detail.column, '，值为', e.detail.value);
+
+    let surplusHour = this.surplusHour(),
+      surplusMinute = this.surplusMinute();
+      
     var data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex,
       year: this.data.year,
       month: this.data.month,
-      day: this.data.day,
-      startHour: this.data.startHour,
-      endHour: this.data.startHour,
+      day: this.data.day
     };
     data.multiIndex[e.detail.column] = e.detail.value;
     switch (e.detail.column) {
@@ -291,26 +274,14 @@ Page({
         var surplusDay = this.surplusDay(data.year, data.month, data.day);
 
         data.multiArray[2] = surplusDay;
-        var surplusHour;
-        if (data.year == year1 && month1 == data.month && data.day == day1) {
-          surplusHour = this.surplusHour(data.year, data.month, data.day, hour1)
-        } else {
-          surplusHour = this.surplusHour(data.year, data.month, data.day, 1)
-        }
-
-        console.log(surplusHour)
 
         data.multiArray[3] = surplusHour[0];
-        data.multiArray[5] = surplusHour[1];
-
-
-        data.startHour = surplusHour[0];
-        data.endHour = surplusHour[1];
+        data.multiArray[4] = surplusHour[1];
 
         data.multiIndex[1] = 0;
         data.multiIndex[2] = 0;
         data.multiIndex[3] = 0;
-        data.multiIndex[5] = 0;
+        data.multiIndex[4] = 0;
         break;
       case 1:
         console.log('选择月份' + data.multiArray[e.detail.column][e.detail.value]);
@@ -330,24 +301,12 @@ Page({
         var surplusDay = this.surplusDay(data.year, data.month, data.day);
 
         data.multiArray[2] = surplusDay;
-
-        var surplusHour;
-        if (data.year == year1 && month1 == data.month && data.day == day1) {
-          surplusHour = this.surplusHour(data.year, data.month, data.day, hour1)
-        } else {
-          surplusHour = this.surplusHour(data.year, data.month, data.day, 1)
-        }
-
-
         data.multiArray[3] = surplusHour[0];
-        data.multiArray[5] = surplusHour[1];
+        data.multiArray[4] = surplusHour[1];
 
-
-        data.startHour = surplusHour[0];
-        data.endHour = surplusHour[1];
         data.multiIndex[2] = 0;
         data.multiIndex[3] = 0;
-        data.multiIndex[5] = 0;
+        data.multiIndex[4] = 0;
         break;
       case 2:
         console.log('选择日' + data.multiArray[e.detail.column][e.detail.value]);
@@ -355,80 +314,54 @@ Page({
         var day = dayStr.substring(0, dayStr.length - 1);
         data.day = day;
 
-        var surplusHour;
-        if (data.year == year1 && month1 == data.month && data.day == day1) {
-          surplusHour = this.surplusHour(data.year, data.month, data.day, hour1)
-        } else {
-          surplusHour = this.surplusHour(data.year, data.month, data.day, 1)
-        }
-
-
-        data.multiArray[3] = surplusHour[0];
-        data.multiArray[5] = surplusHour[1];
-
-
-
-        data.startHour = surplusHour[0];
-        data.endHour = surplusHour[1];
+        data.multiArray[3] = surplusHour
+        data.multiArray[4] = surplusMinute;
 
         data.multiIndex[3] = 0;
-        data.multiIndex[5] = 0;
+        data.multiIndex[4] = 0;
         break;
       case 3:
-        console.log('起始时间' + data.multiArray[e.detail.column][e.detail.value]);
-
+        console.log('时间： ' + data.multiArray[e.detail.column][e.detail.value]);
         var hourStr = data.multiArray[e.detail.column][e.detail.value];
         var hour = hourStr.substring(0, hourStr.length - 1);
-        data.startHour = hour;
-        console.log('起始时间' + hour);
-        var endhours2 = [];
-        if (data.year == year1 && data.month == month1 && data.day == day1) {
-          var surplusHour = this.surplusHour(data.year, data.month, data.day, hour);
-          endhours2 = surplusHour[1]
-        } else {
-          var end = ['04时', '08时', '12时', '16时', '20时', '24时'];
-          for (var i = e.detail.value; i < end.length; i++) {
-            endhours2.push(end[i]);
-          }
-        }
 
-
-        data.multiArray[5] = endhours2;
-        data.multiIndex[5] = 0;
+        data.multiArray[4] = surplusMinute;
+        data.multiIndex[4] = 0;
 
         break;
-      case 5:
+      case 4:
         var hourStr = data.multiArray[e.detail.column][e.detail.value];
+        console.log('hourStr: ', hourStr)
         var hour = hourStr.substring(0, hourStr.length - 1);
-        data.endHour = hour;
-        console.log('结束时间' + data.multiArray[e.detail.column][e.detail.value]);
+
+        console.log('分钟： ' + data.multiArray[e.detail.column][e.detail.value]);
         break;
     }
     this.setData(data)
 
   },
   bindMultiPickerChange: function (e) {
-    const year = this.data.multiArray[0][this.data.multiIndex[0]],
-          mounth = this.data.multiArray[1][this.data.multiIndex[1]],
-          day = this.data.multiArray[2][this.data.multiIndex[2]],
-          startHours = this.data.multiArray[3][this.data.multiIndex[3]],
-          flag = this.data.multiArray[4][this.data.multiIndex[4]],
-          endHours = this.data.multiArray[5][this.data.multiIndex[5]];
+    const { multiArray, multiIndex} = this.data;
+    const year = multiArray[0][multiIndex[0]],
+          mounth = multiArray[1][multiIndex[1]],
+          day = multiArray[2][multiIndex[2]],
+          Hours = multiArray[3][multiIndex[3]],
+          Minute = multiArray[4][multiIndex[4]];
 
-    console.log('year: ', year)
-    console.log('mounth: ', mounth)
-    console.log('day: ', day)
-    console.log('startHours: ', startHours)
-    console.log('flag: ', flag)
-    console.log('endHours: ', endHours)
+    console.log('year: ', year.substring(0, year.length - 1))
+    console.log('mounth: ', mounth.substring(0, mounth.length - 1))
+    console.log('day: ', day.substring(0, day.length - 1))
+    console.log('Hours: ', Hours.substring(0, Hours.length - 1))
+    console.log('Minute: ', Minute.substring(0, Minute.length - 1))
 
-    var dateStr =
-      this.data.multiArray[0][this.data.multiIndex[0]] +
-      this.data.multiArray[1][this.data.multiIndex[1]] +
-      this.data.multiArray[2][this.data.multiIndex[2]] +
-      this.data.multiArray[3][this.data.multiIndex[3]] +
-      this.data.multiArray[4][this.data.multiIndex[4]] +
-      this.data.multiArray[5][this.data.multiIndex[5]];
+    console.log(multiIndex[0], multiIndex[1], multiIndex[2], multiIndex[3], multiIndex[4])
+    
+    const dateStr =
+      multiArray[0][multiIndex[0]] +
+      multiArray[1][multiIndex[1]] +
+      multiArray[2][multiIndex[2]] +
+      multiArray[3][multiIndex[3]] +
+      multiArray[4][multiIndex[4]];
     console.log('picker发送选择改变，携带值为', dateStr)
     this.setData({
       orderData: dateStr
