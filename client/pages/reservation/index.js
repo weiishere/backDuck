@@ -38,8 +38,7 @@ Page({
   //确认预约取件
   submitClickEvent(){
     const { currData } = this.data;
-    console.log(this.data)
-    return false;
+
     if (currData && currData.id) {
       this.addBespeakFn()
     } else {
@@ -73,9 +72,9 @@ Page({
   },
   // 提交数据
   addBespeakFn(){
-    const timestamp = Date.parse(new Date()),
-          { currData } = this.data;
-
+    const { currData, timestamp } = this.data;
+    // console.log(this.data)
+    // return false;
     singleRequest({
       url: config.API.bespeak.add,
       postData: {
@@ -121,14 +120,12 @@ Page({
     let hour = date.getHours()
 
     let surplusMonth = this.surplusMonth(year);
-    // console.log(surplusMonth)
     let surplusDay = this.surplusDay(year, month, day);
-    // console.log(surplusDay)
     let surplusHour = this.surplusHour()
     let surplusMinute = this.surplusMinute()
     
-    console.log('surplusHour: ', surplusHour)
-    console.log('surplusMinute: ', surplusMinute)
+    // console.log('surplusHour: ', surplusHour)
+    // console.log('surplusMinute: ', surplusMinute)
 
     this.setData({
       multiArray: [[year + '年', (year + 1) + '年', (year + 2) + '年'],
@@ -239,7 +236,7 @@ Page({
     let month1 = date.getMonth() + 1
     let day1 = date.getDate();
     let hour1 = date.getHours();
-    console.log("当前年份" + this.data.month + '修改的列为', e.detail.column, '，值为', e.detail.value);
+    // console.log("当前年份" + this.data.month + '修改的列为', e.detail.column, '，值为', e.detail.value);
 
     let surplusHour = this.surplusHour(),
       surplusMinute = this.surplusMinute();
@@ -279,20 +276,15 @@ Page({
 
         data.multiArray[2] = surplusDay;
 
-        data.multiArray[3] = surplusHour[0];
-        data.multiArray[4] = surplusHour[1];
-
         data.multiIndex[1] = 0;
         data.multiIndex[2] = 0;
         data.multiIndex[3] = 0;
         data.multiIndex[4] = 0;
         break;
       case 1:
-        console.log('选择月份' + data.multiArray[e.detail.column][e.detail.value]);
-
+        // console.log('选择月份' + data.multiArray[e.detail.column][e.detail.value]);
         let monthStr = data.multiArray[e.detail.column][e.detail.value];
         let month = monthStr.substring(0, monthStr.length - 1);
-
         data.month = month;
         data.day = 1;
 
@@ -303,7 +295,6 @@ Page({
         }
 
         data.multiArray[2] = surplusDay;
-
         data.multiIndex[2] = 0;
         data.multiIndex[3] = 0;
         data.multiIndex[4] = 0;
@@ -326,7 +317,6 @@ Page({
         break;
     }
     this.setData(data)
-
   },
   bindMultiPickerChange: function (e) {
     const { multiArray, multiIndex} = this.data;
@@ -334,25 +324,23 @@ Page({
           mounth = multiArray[1][multiIndex[1]],
           day = multiArray[2][multiIndex[2]],
           Hours = multiArray[3][multiIndex[3]],
-          Minute = multiArray[4][multiIndex[4]];
+          Minute = multiArray[4][multiIndex[4]],
+          yyyy = year.substring(0, year.length - 1),
+          MM = mounth.substring(0, mounth.length - 1),
+          dd = day.substring(0, day.length - 1),
+          HH = Hours.substring(0, Hours.length - 1),
+          mm = Minute.substring(0, Minute.length - 1),
+      dateTime = `${yyyy}/${(MM - 0) <= 9 ? ('0' + MM) : MM}/${(dd - 0) <= 9 ? ('0' + dd) : dd} ${(HH - 0) <= 9 ? ('0' + HH) : HH}:${(mm - 0) <= 9 ? ('0' + mm) : mm}:00`;
 
-    console.log('year: ', year.substring(0, year.length - 1))
-    console.log('mounth: ', mounth.substring(0, mounth.length - 1))
-    console.log('day: ', day.substring(0, day.length - 1))
-    console.log('Hours: ', Hours.substring(0, Hours.length - 1))
-    console.log('Minute: ', Minute.substring(0, Minute.length - 1))
-
-    console.log(multiIndex[0], multiIndex[1], multiIndex[2], multiIndex[3], multiIndex[4])
-    
-    const dateStr =
-      multiArray[0][multiIndex[0]] +
-      multiArray[1][multiIndex[1]] +
-      multiArray[2][multiIndex[2]] +
-      multiArray[3][multiIndex[3]] +
-      multiArray[4][multiIndex[4]];
-    console.log('picker发送选择改变，携带值为', dateStr)
+    // console.log(dateTime)
+    const time = new Date(dateTime),
+          timestamp = time.getTime();
+    const dateStr = `${yyyy}年${(MM - 0) <= 9 ? ('0' + MM) : MM}月${(dd - 0) <= 9 ? ('0' + dd) : dd}日 ${(HH - 0) <= 9 ? ('0' + HH) : HH}:${(mm - 0) <= 9 ? ('0' + mm) : mm}:00`;
+    // console.log('picker发送选择改变，携带值为', dateStr)
     this.setData({
-      orderData: dateStr
+      orderData: dateStr,
+      dateTime,
+      timestamp
     })
   }
 })
