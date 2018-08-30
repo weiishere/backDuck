@@ -92,5 +92,12 @@ Page({
     wx.navigateTo({
       url: `/pages/orderpay/index?money=${realOrderMoney}&orderId=${orderId}`,
     })
+  },
+  lookBigPicFn(e){
+    const { piclist} = e.currentTarget.dataset
+    wx.previewImage({
+      urls: piclist
+    })
+    console.log(piclist)
   }
 })
