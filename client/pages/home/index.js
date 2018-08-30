@@ -41,7 +41,7 @@ Page({
       sideBarShow: siderState
     }, () => {
       this.getMsgCountFn();
-    }
+    })
   },
   
   gotoPage: function(e) {
