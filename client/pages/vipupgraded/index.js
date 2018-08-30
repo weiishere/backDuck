@@ -19,6 +19,7 @@ Page({
     })
 
     if (app.userInfo && app.userInfo.user && app.userInfo.user.vipId != null) {
+      console.log(app.userInfo.user.vipId)
       this.setData({
         vipType: app.userInfo.user.vipId
       })
