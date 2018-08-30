@@ -13,6 +13,7 @@ Page({
   data: {
     money: '',
     orderId: '',
+    orderNo: '',
     payway: 'wechat',
     paypwd: '',
     payBtnLock: true,
@@ -23,10 +24,11 @@ Page({
     wx.setNavigationBarTitle({
       title: '订单支付'
     })
-    if (options.money && options.orderId) {
+    if (options.money && options.orderId && options.orderNo) {
       this.setData({
         money: options.money,
-        orderId: options.orderId
+        orderId: options.orderId,
+        orderNo: options.orderNo
       })
     } else {
       showModel({
@@ -87,7 +89,7 @@ Page({
       postData: jsondata,
       success: (res) => {
         if (payway == 'wechat') {
-          $this.wechatPayFn()
+          $this.wechatPayFn(res.data)
         } else {
           showModel({
             title: "成功",

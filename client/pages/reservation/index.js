@@ -178,17 +178,14 @@ Page({
       case 10:
       case 12:
         days = 31;
-
         break;
       //对于2月份需要判断是否为闰年
       case 2:
         if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
           days = 29;
-
           break;
         } else {
           days = 28;
-
           break;
         }
 
@@ -197,14 +194,12 @@ Page({
       case 9:
       case 11:
         days = 30;
-
         break;
-
     }
     if (year == year2 && month == month2) {
-      dayDatas.push(day + "日")
+      dayDatas.push(day - 0 + "日")
       for (let i = day; i < days; i++) {
-        dayDatas.push(i + 1 + "日")
+        dayDatas.push(i - 0 + 1 + "日")
       }
     } else {
       // console.log(month + "月" + days + "天")
@@ -212,6 +207,7 @@ Page({
         dayDatas.push(i + 1 + "日")
       }
     }
+    console.log(dayDatas)
     return dayDatas;
   },
   surplusHour: function (year, month, day, hour) {
@@ -285,8 +281,11 @@ Page({
         // console.log('选择月份' + data.multiArray[e.detail.column][e.detail.value]);
         let monthStr = data.multiArray[e.detail.column][e.detail.value];
         let month = monthStr.substring(0, monthStr.length - 1);
+        // console.log('monthStr: ', monthStr, 'month: ', month)
         data.month = month;
         data.day = 1;
+
+        console.log('data: ', data)
 
         if (data.year == year1 && month1 == data.month) {
           data.day = day1;

@@ -71,8 +71,8 @@ Page({
         } = res.data;
   
         $this.setData({
-          namemobile: jsonAddress.attn + ' ' + jsonAddress.mobile,
-          address: jsonAddress.area + jsonAddress.address,
+          namemobile: jsonAddress ? (jsonAddress.attn + ' ' + jsonAddress.mobile) : '',
+          address: jsonAddress ? (jsonAddress.area + jsonAddress.address) : '',
           orderNo,
           createTime: formatDateTime(gmtCreate),
           orderItems,
@@ -88,9 +88,9 @@ Page({
   },
   //确认签收
   confirmReceiptFn(){
-    const { orderId, realOrderMoney} = this.data
+    const { orderId, orderNo, realOrderMoney} = this.data
     wx.navigateTo({
-      url: `/pages/orderpay/index?money=${realOrderMoney}&orderId=${orderId}`,
+      url: `/pages/orderpay/index?money=${realOrderMoney}&orderId=${orderId}&orderNo=${orderNo}`,
     })
   },
   lookBigPicFn(e){

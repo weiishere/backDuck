@@ -11,7 +11,7 @@ Page({
     vipName: '',
     sideBarShow: false,
     msgCount: 0,
-    nickName: true
+    nickName: false
   },
   onLoad: function (options) {
     const $this = this;
@@ -31,7 +31,7 @@ Page({
         nickName: app.userInfo.user.nickName,
         vipName: app.userInfo.user.vipName ? app.userInfo.user.vipName : ''
       }, () => {
-        // app.getUserInfoFn()
+        app.getUserInfoFn()
       })
     }
   },
@@ -40,7 +40,9 @@ Page({
     this.setData({
       sideBarShow: siderState
     }, () => {
-      this.getMsgCountFn();
+      if (siderState) {
+        this.getMsgCountFn();
+      }
     })
   },
   

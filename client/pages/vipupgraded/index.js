@@ -56,9 +56,10 @@ Page({
   vipUpgradeFn(e){
     const $this = this;
     const { vipid } = e.currentTarget.dataset;
-
+    console.log('vipid: ', vipid)
+    console.log('app.userInfo.user: ', app.userInfo.user)
     if (app.userInfo && app.userInfo.user) {
-      if (app.userInfo.user.vipId <= vipid) {
+      if (app.userInfo.user.vipId != null && app.userInfo.user.vipId <= vipid) {
         showModel({
           title: "对不起",
           content: '不能重复购买~'
