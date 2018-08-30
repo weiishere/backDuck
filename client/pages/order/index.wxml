@@ -17,43 +17,48 @@
         </view>
     </view>
     <view class='order_body'>
-      <view class='order_item'
-        wx:for="{{list}}"
-        wx:for-item="item"
-        wx:for-idx="idx"
-        wx:key="idx"
-        catchtap='gotoPage' 
-        data-orderId='{{item.id}}' 
-        data-page='/pages/orderItem/orderItem'>
-        <view class='order_item_header'>
-          <view class='order-no'>订单号：<text class='arrow-icon'>{{item.orderNo}}</text></view>
-          <view class='order-state-name'>{{item.stateName}}</view>
+      <scroll-view
+        scroll-y 
+        style="height: {{scrollHeight}}px;" 
+        bindscrolltolower="lowerFn">
+        <view class='order_item'
+          wx:for="{{list}}"
+          wx:for-item="item"
+          wx:for-idx="idx"
+          wx:key="idx"
+          catchtap='gotoPage' 
+          data-orderId='{{item.id}}' 
+          data-page='/pages/orderItem/orderItem'>
+          <view class='order_item_header'>
+            <view class='order-no'>订单号：<text class='arrow-icon'>{{item.orderNo}}</text></view>
+            <view class='order-state-name'>{{item.stateName}}</view>
+          </view>
+          <view class='order_item_body'
+            wx:for="{{item.orderItems}}"
+            wx:for-item="orderItems"
+            wx:for-idx="itemidx"
+            wx:key="itemidx">
+              <view>
+                  <image src="{{orderItems.realMainPic}}" ></image>
+              </view>
+              <view>
+                  <text>
+                      {{orderItems.itemTitle}}
+                  </text>
+                  <text  class='gray'>
+                      服务项目：{{orderItems.businessType}}
+                  </text>
+              </view>
+              <view>
+                  <text>￥ {{orderItems.realPrice}}</text>
+                  <!-- <text class='gray delete'>￥ 89.00</text> -->
+              </view>
+          </view>
+          <view class='order_item_footer'>
+              <view><text>共{{item.orderItems.length}}件商品 合计：</text><text class='red'>￥{{item.realOrderMoney}}</text></view>
+          </view>
         </view>
-        <view class='order_item_body'
-          wx:for="{{item.orderItems}}"
-          wx:for-item="orderItems"
-          wx:for-idx="itemidx"
-          wx:key="itemidx">
-            <view>
-                <image src="{{orderItems.realMainPic}}" ></image>
-            </view>
-            <view>
-                <text>
-                    {{orderItems.itemTitle}}
-                </text>
-                <text  class='gray'>
-                    服务项目：{{orderItems.businessType}}
-                </text>
-            </view>
-            <view>
-                <text>￥ {{orderItems.realPrice}}</text>
-                <!-- <text class='gray delete'>￥ 89.00</text> -->
-            </view>
-        </view>
-        <view class='order_item_footer'>
-            <view><text>共{{item.orderItems.length}}件商品 合计：</text><text class='red'>￥{{item.realOrderMoney}}</text></view>
-        </view>
-      </view>
+      </scroll-view>
     </view>
     <view class='no-content order' wx:if="{{nocontent}}">
       <image class='icon' src='/assets/no_order_information_@2x.png'></image>

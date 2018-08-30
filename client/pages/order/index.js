@@ -27,12 +27,24 @@ Page({
     wx.showLoading({
       title: '',
     })
+    const that = this;
+    wx.getSystemInfo({
+      success: function(res) {
+        console.log(res)
+        wx.createSelectorQuery().select('.order_body').boundingClientRect(function (rect) {
+          console.log(rect)
+          that.setData({
+            scrollHeight: res.windowHeight - rect.top
+          })
+        }).exec();
+      },
+    })
     this.getOrderListFn()
   },
 
   getOrderListFn (){
     const $this = this;
-    let { list, chooseIndex} = this.data
+    let { list, chooseIndex, currentPage} = this.data
     singleRequest({
       url: config.API.order.list,
       method: 'get',
@@ -47,11 +59,13 @@ Page({
         list = list.concat(data)
         $this.setData({
           list,
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
           nocontent: ($this.data.currentPage == 1 && data.length == 0)
         })
       },
       error(res) {
         $this.setData({
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
           nocontent: ($this.data.currentPage == 1)
         })
       }
@@ -71,5 +85,13 @@ Page({
     wx.navigateTo({
       url: `${page}?orderId=${orderid}`
     });
+  },
+  lowerFn(){
+    const { currentPage} = this.data
+    this.setData({
+      currentPage: currentPage + 1
+    }, ()=>{
+      this.getOrderListFn()
+    })
   }
 })
