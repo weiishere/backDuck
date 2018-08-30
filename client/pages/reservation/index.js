@@ -168,7 +168,6 @@ Page({
     let date = new Date();
     let year2 = date.getFullYear()
     let month2 = date.getMonth() + 1
-
     switch (parseInt(month)) {
       case 1:
       case 3:
@@ -196,6 +195,8 @@ Page({
         days = 30;
         break;
     }
+    console.log('year: ', year, 'month: ', month, 'day: ', day)
+    console.log('year2: ', year2, 'month2: ', month2, 'days: ', days)
     if (year == year2 && month == month2) {
       dayDatas.push(day - 0 + "日")
       for (let i = day; i < days; i++) {
@@ -207,7 +208,7 @@ Page({
         dayDatas.push(i + 1 + "日")
       }
     }
-    console.log(dayDatas)
+    // console.log(dayDatas)
     return dayDatas;
   },
   surplusHour: function (year, month, day, hour) {
@@ -235,87 +236,90 @@ Page({
     // console.log("当前年份" + this.data.month + '修改的列为', e.detail.column, '，值为', e.detail.value);
 
     let surplusHour = this.surplusHour(),
-      surplusMinute = this.surplusMinute();
+        surplusMinute = this.surplusMinute();
       
-    let data = {
-      multiArray: this.data.multiArray,
-      multiIndex: this.data.multiIndex,
-      year: this.data.year,
-      month: this.data.month,
-      day: this.data.day
-    };
-    data.multiIndex[e.detail.column] = e.detail.value;
+    let {
+      multiArray,
+      multiIndex,
+      year,
+      month,
+      day
+    } = this.data;
 
-    data.multiArray[3] = surplusHour
-    data.multiArray[4] = surplusMinute;
-    let surplusDay = this.surplusDay(data.year, data.month, data.day);
-    let hourStr = data.multiArray[e.detail.column][e.detail.value];
+    multiIndex[e.detail.column] = e.detail.value;
+
+    multiArray[3] = surplusHour
+    multiArray[4] = surplusMinute;
+    let hourStr = multiArray[e.detail.column][e.detail.value];
     let hour = hourStr.substring(0, hourStr.length - 1);
     switch (e.detail.column) {
       case 0:
-        let yearStr = data.multiArray[e.detail.column][e.detail.value];
+        let yearStr = multiArray[e.detail.column][e.detail.value];
         let year = yearStr.substring(0, yearStr.length - 1)
-        data.year = parseInt(year);
+        year = parseInt(year);
         let surplusMonth = this.surplusMonth(year);
-        data.multiArray[1] = surplusMonth;
+        multiArray[1] = surplusMonth;
+        multiArray[2] = this.surplusDay(year, month, day);
 
-        if (data.year == year1) {
-          data.month = month1;
+        if (year == year1) {
+          month = month1;
         } else {
-          data.month = 1;
+          month = 1;
         }
-        if (data.year == year1 && month1 == data.month) {
-          data.day = day1;
+        if (year == year1 && month1 == month) {
+          day = day1;
         } else {
-          data.day = 1;
+          day = 1;
         }
 
-        data.multiArray[2] = surplusDay;
 
-        data.multiIndex[1] = 0;
-        data.multiIndex[2] = 0;
-        data.multiIndex[3] = 0;
-        data.multiIndex[4] = 0;
+        multiIndex[1] = 0;
+        multiIndex[2] = 0;
+        multiIndex[3] = 0;
+        multiIndex[4] = 0;
         break;
       case 1:
-        // console.log('选择月份' + data.multiArray[e.detail.column][e.detail.value]);
-        let monthStr = data.multiArray[e.detail.column][e.detail.value];
+        // console.log('选择月份' + multiArray[e.detail.column][e.detail.value]);
+        let monthStr = multiArray[e.detail.column][e.detail.value];
         let month = monthStr.substring(0, monthStr.length - 1);
-        // console.log('monthStr: ', monthStr, 'month: ', month)
-        data.month = month;
-        data.day = 1;
+        month = month;
+        day = 1;
 
-        console.log('data: ', data)
-
-        if (data.year == year1 && month1 == data.month) {
-          data.day = day1;
+        if (year == year1 && month1 == month) {
+          day = day1;
         } else {
-          data.day = 1;
+          day = 1;
         }
 
-        data.multiArray[2] = surplusDay;
-        data.multiIndex[2] = 0;
-        data.multiIndex[3] = 0;
-        data.multiIndex[4] = 0;
+        multiArray[2] = this.surplusDay(year1, month, day);
+        multiIndex[2] = 0;
+        multiIndex[3] = 0;
+        multiIndex[4] = 0;
         break;
       case 2:
-        console.log('选择日' + data.multiArray[e.detail.column][e.detail.value]);
-        let dayStr = data.multiArray[e.detail.column][e.detail.value];
+        console.log('选择日' + multiArray[e.detail.column][e.detail.value]);
+        let dayStr = multiArray[e.detail.column][e.detail.value];
         let day = dayStr.substring(0, dayStr.length - 1);
-        data.day = day;
+        day = day;
 
-        data.multiIndex[3] = 0;
-        data.multiIndex[4] = 0;
+        multiIndex[3] = 0;
+        multiIndex[4] = 0;
         break;
       case 3:
-        // console.log('时间： ' + data.multiArray[e.detail.column][e.detail.value]);
-        data.multiIndex[4] = 0;
+        // console.log('时间： ' + multiArray[e.detail.column][e.detail.value]);
+        multiIndex[4] = 0;
         break;
       case 4:
-        // console.log('分钟： ' + data.multiArray[e.detail.column][e.detail.value]);
+        // console.log('分钟： ' + multiArray[e.detail.column][e.detail.value]);
         break;
     }
-    this.setData(data)
+    this.setData({
+      multiArray,
+      multiIndex,
+      year,
+      month,
+      day
+    })
   },
   bindMultiPickerChange: function (e) {
     const { multiArray, multiIndex} = this.data;

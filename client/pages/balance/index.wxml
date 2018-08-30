@@ -22,7 +22,7 @@
         wx:for-idx="idx"
         wx:key="idx">
         <view class='record-info'>
-          <view class='record-type'>{{item.orderId}} {{item.payTypeName}}</view>
+          <view class='record-type'>{{item.payTypeName}}</view>
           <view class='record-time'>{{item.createTime}}</view>
         </view>
         <view class='record-amount'>

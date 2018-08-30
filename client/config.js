@@ -5,8 +5,8 @@
 // 此处主机域名修改成腾讯云解决方案分配的域名
 const localTest = false;
 //var host = localTest ? "http://localhost:5757" : "https://q0ymddaf.qcloud.la";
-var host = 'http://118.25.217.48:9881';
-// var host = 'https://api.hyazi.com';
+// var host = 'http://118.25.217.48:9881';
+var host = 'https://api.hyazi.com';
 var config = {
   localTest: localTest,
   API: {

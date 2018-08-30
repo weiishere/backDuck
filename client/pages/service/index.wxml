@@ -1,4 +1,4 @@
-<view class="service-warp">
+<!-- <view class="service-warp">
   <view class='service-item' bindtap='serviceClickFn'>
     <image class='big' src='/assets/menu1.png'></image>
   </view>
@@ -16,5 +16,9 @@
       <image class='small' src='/assets/menu5.png'></image>
     </view>
   </view>
+  <Menu></Menu>
+</view> -->
+<view class="page">
+  <image class='bg' src='/assets/fuwuxiangmu.jpg'></image>
   <Menu></Menu>
 </view>
