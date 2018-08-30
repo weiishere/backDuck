@@ -10,12 +10,20 @@ const app = getApp()
 Page({
   data: {
     level: 1,
-    list: []
+    list: [],
+    vipType: ''
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '会员升级',
     })
+
+    if (app.userInfo && app.userInfo.user && app.userInfo.user.vipId != null) {
+      this.setData({
+        vipType: app.userInfo.user.vipId
+      })
+    }
+
     this.getVipList()
   },
   getVipList() {
@@ -56,16 +64,7 @@ Page({
   vipUpgradeFn(e){
     const $this = this;
     const { vipid } = e.currentTarget.dataset;
-    console.log('vipid: ', vipid)
-    console.log('app.userInfo.user: ', app.userInfo.user)
     if (app.userInfo && app.userInfo.user) {
-      if (app.userInfo.user.vipId != null && app.userInfo.user.vipId <= vipid) {
-        showModel({
-          title: "对不起",
-          content: '不能重复购买~'
-        });
-        return false;
-      }
       singleRequest({
         url: config.API.vip.open,
         postData: {
