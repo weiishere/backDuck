@@ -11,7 +11,7 @@ Page({
     vipName: '',
     sideBarShow: false,
     msgCount: 0,
-    nickName: ''
+    nickName: true
   },
   onLoad: function (options) {
     const $this = this;
@@ -33,15 +33,15 @@ Page({
       }, () => {
         // app.getUserInfoFn()
       })
-      this.getMsgCountFn();
     }
   },
   sideBarTrggle: function(e) {
-    console.log(e)
     const siderState = e.currentTarget.dataset.siderState === 'true' ? true : false;
     this.setData({
       sideBarShow: siderState
-    })
+    }, () => {
+      this.getMsgCountFn();
+    }
   },
   
   gotoPage: function(e) {

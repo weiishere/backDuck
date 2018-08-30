@@ -103,7 +103,7 @@ App({
         if (!res.data.nickname) {
           self.addUserInfoFn(self.wechatUserInfo)
         }
-        console.log(`self.userInfo: `, self.userInfo)
+        // console.log(`self.userInfo: `, self.userInfo)
         self.userInfo = Object.assign(self.userInfo, { user: { vipName: res.data.vipName, vipId: res.data.vipId, ...self.wechatUserInfo }})
         // console.log('getUserInfoFn - success: ', res)
         fn && fn()

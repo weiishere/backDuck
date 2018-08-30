@@ -135,7 +135,7 @@ var singleRequest = function({
 }) {
   const app = getApp();
   const { userInfo } = app;
-  console.log(userInfo)
+  // console.log(userInfo)
   if (!postData) postData = {};
   wx.request({
     url: url,
@@ -165,7 +165,7 @@ var singleRequest = function({
         } else {
           showModel({
             title: "",
-            content: '操作失败(' + res.data.status + ')'
+            content: res.data.msg
           });
           error && error(res.data);
         }

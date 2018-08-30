@@ -56,27 +56,34 @@ Page({
   vipUpgradeFn(e){
     const $this = this;
     const { vipid } = e.currentTarget.dataset;
-    console.log(app)
-    if (vipid == app) {
-      return false;
-    }
-    singleRequest({
-      url: config.API.vip.open,
-      postData: {
-        vipId: vipid
-      },
-      method: 'GET',
-      success: (res) => {
-        let data = res.data;
-        $this.payFn(data)
-      },
-      error(res) {
+
+    if (app.userInfo && app.userInfo.user) {
+      if (app.userInfo.user.vipId <= vipid) {
         showModel({
-          title: "错误",
-          content: res.msg || '报错了~'
+          title: "对不起",
+          content: '不能重复购买~'
         });
+        return false;
       }
-    })
+      singleRequest({
+        url: config.API.vip.open,
+        postData: {
+          vipId: vipid
+        },
+        method: 'GET',
+        success: (res) => {
+          let data = res.data;
+          $this.payFn(data)
+        },
+        error(res) {
+          showModel({
+            title: "错误",
+            content: res.msg || '报错了~'
+          });
+        }
+      })
+
+    }
   },
   payFn(data) {
     wx.requestPayment({
