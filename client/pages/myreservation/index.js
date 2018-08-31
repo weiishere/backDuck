@@ -25,10 +25,23 @@ Page({
     wx.setNavigationBarTitle({
       title: '我的预约',
     })
+    const that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+        wx.createSelectorQuery().select('.order_body').boundingClientRect(function (rect) {
+          console.log(rect)
+          that.setData({
+            scrollHeight: res.windowHeight - rect.top
+          })
+        }).exec();
+      },
+    })
     this.getBespeakFn()
   },
   getBespeakFn(){
     const $this = this;
+    const { list, currentPage} = this.data;
     singleRequest({
       url: config.API.bespeak.list,
       postData: {
@@ -55,9 +68,11 @@ Page({
           item.time = formatDateTime(item.takePartTime)
           return item
         })
+        list = list.concat(data)
         $this.setData({
-          list: res.data,
-          nocontent: ($this.data.currentPage == 1 && res.data.length == 0)
+          list, 
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
+          nocontent: (currentPage == 1 && res.data.length == 0)
         })
       }, 
       error(res) {
@@ -97,6 +112,14 @@ Page({
           content: res.msg || '报错了~'
         });
       }
+    })
+  },
+  lowerFn() {
+    const { currentPage } = this.data
+    this.setData({
+      currentPage: currentPage + 1
+    }, () => {
+      this.getBespeakFn()
     })
   }
 })

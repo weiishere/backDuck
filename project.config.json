@@ -12,7 +12,7 @@
 	},
 	"appid": "wx4ed1b737cbd28b19",
 	"projectname": "blackDuck",
-	"libVersion": "2.2.2",
+	"libVersion": "2.2.4",
 	"condition": {
 		"search": {
 			"current": -1,
@@ -30,16 +30,10 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 0,
 			"list": [
 				{
 					"id": 0,
-					"name": "支付密码",
-					"pathName": "pages/paypwd/index",
-					"query": ""
-				},
-				{
-					"id": 1,
 					"name": "子页面",
 					"pathName": "pages/reservation/index",
 					"query": ""

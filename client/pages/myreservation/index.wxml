@@ -1,65 +1,47 @@
 <view class='container myreservation'>
   <view class='myreservation-list'>
-    <view class='myreservation-item clearfix'
-      wx:for="{{list}}" 
-      wx:for-index="idx"
-      wx:for-item="item"
-      wx:key="idx"
-      id="{{item.id}}"
-      data-item="{{item}}"
-      data-id="{{item.id}}"
-      catchtap='addressdetilFn'>
-      <view class='title clearfix'>
-        <view class='num'>预约号：{{item.bespeakNo}}</view>
-        <view 
-          class="status {{(item.state == 0) ? 'delete' : ''}}" 
-          data-id="{{item.id}}"
-          data-state="{{item.state}}"
-          catchtap='deleteItemFn'>
-          {{item.statusText}}
+    <scroll-view
+      scroll-y 
+      style="height: {{scrollHeight}}px;" 
+      bindscrolltolower="lowerFn">
+      <view class='myreservation-item clearfix'
+        wx:for="{{list}}" 
+        wx:for-index="idx"
+        wx:for-item="item"
+        wx:key="idx"
+        id="{{item.id}}"
+        data-item="{{item}}"
+        data-id="{{item.id}}"
+        catchtap='addressdetilFn'>
+        <view class='title clearfix'>
+          <view class='num'>预约号：{{item.bespeakNo}}</view>
+          <view 
+            class="status {{(item.state == 0) ? 'delete' : ''}}" 
+            data-id="{{item.id}}"
+            data-state="{{item.state}}"
+            catchtap='deleteItemFn'>
+            {{item.statusText}}
+          </view>
+        </view>
+        <view class="myreservation-info clearfix">
+          <view class='sub-title'>预约信息</view>
+          <ul class="clearfix">
+            <li class="time">
+              <image class='icon time-icon' src='/assets/time.png'></image>2018-06-19 18:29
+            </li>
+            <li class="user">
+              <image class='icon user-icon' src='/assets/user.png'></image>{{item.address ? item.address.attn : '无'}}
+            </li>
+            <li class="phone">
+              <image class='icon phone-icon' src='/assets/phone.png'></image>{{item.address ? item.address.mobile : '无'}}
+            </li>
+            <li class="address">
+              <image class='icon address-icon' src='/assets/address.png'></image>{{item.address ? item.address.area + item.address.address : '无'}}
+            </li>
+          </ul>
         </view>
       </view>
-      <view class="myreservation-info clearfix">
-        <view class='sub-title'>预约信息</view>
-        <ul class="clearfix">
-          <li class="time">
-            <image class='icon time-icon' src='/assets/time.png'></image>2018-06-19 18:29
-          </li>
-          <li class="user">
-            <image class='icon user-icon' src='/assets/user.png'></image>{{item.address ? item.address.attn : '无'}}
-          </li>
-          <li class="phone">
-            <image class='icon phone-icon' src='/assets/phone.png'></image>{{item.address ? item.address.mobile : '无'}}
-          </li>
-          <li class="address">
-            <image class='icon address-icon' src='/assets/address.png'></image>{{item.address ? item.address.area + item.address.address : '无'}}
-          </li>
-        </ul>
-      </view>
-    </view>
-    <!-- <view class='myreservation-item clearfix'>
-      <view class='title clearfix'>
-        <view class='num'>预约号：14858474415</view>
-        <view class='status'>已取件</view>
-      </view>
-      <view class="myreservation-info clearfix">
-        <view class='sub-title'>预约信息</view>
-        <ul class="clearfix">
-          <li class="time">
-            <image class='icon time-icon' src='/assets/time.png'></image>2018-06-19 18:29
-          </li>
-          <li class="user">
-            <image class='icon user-icon' src='/assets/user.png'></image>罗晶晶
-          </li>
-          <li class="phone">
-            <image class='icon phone-icon' src='/assets/phone.png'></image>18998761111
-          </li>
-          <li class="address">
-            <image class='icon address-icon' src='/assets/address.png'></image>四川省成都市武侯区兆景路139号5-1-1-1101
-          </li>
-        </ul>
-      </view>
-    </view> -->
+    </scroll-view>
   </view>
   <view class='no-content' wx:if="{{nocontent}}">
     <image class='icon' src='/assets/no_shipping_information_@2x.png'></image>

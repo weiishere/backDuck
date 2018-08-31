@@ -12,10 +12,8 @@
     <scroll-view 
       scroll-y 
       id='scrollList'
-      style="height: {{scrollHeight ? scrollHeight+'px' : '200px'}}" 
-      bindscrolltolower="lower"
-      scroll-into-view="{{toView}}" 
-      scroll-top="{{scrollTop}}">
+      style="height: {{scrollHeight ? scrollHeight : '200'}}px" 
+      bindscrolltolower="lower">
       <view class='balance-record-item'
         wx:for="{{records}}"
         wx:for-item="item"

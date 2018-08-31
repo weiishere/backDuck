@@ -18,7 +18,8 @@ Page({
     currentPage: 1,
     pageSize: 10,
     records: [],
-    scrollHeight: ''
+    scrollHeight: '',
+    nocontent: false
   },
 
   /**
@@ -73,6 +74,7 @@ Page({
   //获取交易记录
   getPayRecordsFn() {
     const $this = this;
+    const { records, currentPage} = this.data;
     singleRequest({
       url: config.API.pay.record,
       postData: {
@@ -86,8 +88,11 @@ Page({
           item.createTime = formatDateTime(item.gmtCreate)
           return item
         })
+        records = records.concat(data)
         $this.setData({
-          records: data
+          records,
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
+          nocontent: (currentPage == 1 && res.data.length == 0)
         })
       },
       error(res) {
@@ -105,6 +110,14 @@ Page({
   rechargeClickEventFn(){
     wx.navigateTo({
       url: '/pages/recharge/index'
+    })
+  },
+  lowerFn() {
+    const { currentPage } = this.data
+    this.setData({
+      currentPage: currentPage + 1
+    }, () => {
+      this.getPayRecordsFn()
     })
   }
 })
