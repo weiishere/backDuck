@@ -13,7 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: '',
+    list: [],
     nocontent: false,
     pageSize: 10,
     currentPage: 1
@@ -28,13 +28,9 @@ Page({
     const that = this;
     wx.getSystemInfo({
       success: function (res) {
-        console.log(res)
-        wx.createSelectorQuery().select('.order_body').boundingClientRect(function (rect) {
-          console.log(rect)
-          that.setData({
-            scrollHeight: res.windowHeight - rect.top
-          })
-        }).exec();
+        that.setData({
+          scrollHeight: res.windowHeight
+        })
       },
     })
     this.getBespeakFn()

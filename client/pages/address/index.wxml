@@ -1,28 +1,33 @@
 <view class='container address-wrap'>
-  <view class='address-list'>
-    <view
-      class='address-item' 
-      wx:for="{{list}}" 
-      wx:for-index="idx"
-      wx:for-item="item"
-      wx:key="idx"
-      id="{{item.id}}"
-      data-item="{{item}}"
-      data-id="{{item.id}}"
-      catchtap='addressdetilFn'>
-      <view class='address-info'>
-        <view class='name'>{{item.attn}} {{item.mobile}}</view>
-        <view class='address'>{{item.area + item.address}}</view>
-      </view>
-      <view class='address-tools'>
-        <view class='setdefault' data-item="{{item}}" data-id="{{item.id}}" data-key='default'            catchtap='operationAddressFn'>
-          <view class="default-icon {{item.isDefault == 0 ? 'active' : ''}}"></view>
-          默认地址
+  <view class='address-list' wx:if="{{!nocontent}}">
+    <scroll-view
+      scroll-y 
+      style="height: {{scrollHeight}}px;" 
+      bindscrolltolower="lowerFn">
+      <view
+        class='address-item' 
+        wx:for="{{list}}" 
+        wx:for-index="idx"
+        wx:for-item="item"
+        wx:key="idx"
+        id="{{item.id}}"
+        data-item="{{item}}"
+        data-id="{{item.id}}"
+        catchtap='addressdetilFn'>
+        <view class='address-info'>
+          <view class='name'>{{item.attn}} {{item.mobile}}</view>
+          <view class='address'>{{item.area + item.address}}</view>
         </view>
-        <view class='setedit' data-id="{{item.id}}" data-key='edit' catchtap='operationAddressFn'>编辑</view>
-        <view class='setdelete' data-id="{{item.id}}" data-key='delete' catchtap='operationAddressFn'>删除</view>
+        <view class='address-tools'>
+          <view class='setdefault' data-item="{{item}}" data-id="{{item.id}}" data-key='default'            catchtap='operationAddressFn'>
+            <view class="default-icon {{item.isDefault == 0 ? 'active' : ''}}"></view>
+            默认地址
+          </view>
+          <view class='setedit' data-id="{{item.id}}" data-key='edit' catchtap='operationAddressFn'>编辑</view>
+          <view class='setdelete' data-id="{{item.id}}" data-key='delete' catchtap='operationAddressFn'>删除</view>
+        </view>
       </view>
-    </view>
+    </scroll-view>
   </view>
   <view class='no-content' wx:if="{{nocontent}}">
     <image class='icon' src='/assets/no_shipping_information_@2x.png'></image>

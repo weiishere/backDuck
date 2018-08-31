@@ -31,10 +31,10 @@ Page({
     wx.getSystemInfo({
       success: function(res) {
         console.log(res)
-        wx.createSelectorQuery().select('.order_body').boundingClientRect(function (rect) {
+        wx.createSelectorQuery().select('.order_header').boundingClientRect(function (rect) {
           console.log(rect)
           that.setData({
-            scrollHeight: res.windowHeight - rect.top
+            scrollHeight: res.windowHeight - rect.height
           })
         }).exec();
       },

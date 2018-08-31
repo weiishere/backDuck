@@ -10,18 +10,24 @@ const app = getApp()
 Page({
   data: {
     pageorigin: '',
-    list: '',
+    list: [],
     nocontent: false,
     pageSize: 10,
-    currentPage: 1
+    currentPage: 1,
+    scrollHeight: ''
   },
   onLoad: function (options) {
     wx.setNavigationBarTitle({
       title: '收货地址',
     })
     if ( options && options.pageorigin == "reservation") {
-      this.setData({
-        pageorigin: options.pageorigin
+      wx.getSystemInfo({
+        success: function (res) {
+          that.setData({
+            scrollHeight: res.windowHeight,
+            pageorigin: options.pageorigin
+          })
+        },
       })
     }
   },
@@ -31,6 +37,7 @@ Page({
   //获取列表
   getAddressListFn() {
     const $this = this;
+    let { list, currentPage } = this.data
     singleRequest({
       url: config.API.address.list,
       postData: {
@@ -38,9 +45,13 @@ Page({
       method: 'get',
       success: (res) => {
         const data = res.data;
+        console.log('data: ', data)
+        list = list.concat(data)
+        console.log(list, 'list: ')
         $this.setData({
-          list: data,
-          nocontent: ($this.data.currentPage == 1 && data.length == 0)
+          list,
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
+          nocontent: (currentPage == 1 && data.length == 0)
         })
       },
       error(res) {
@@ -107,6 +118,14 @@ Page({
       error(res) {
         // $this.getAddressListFn()
       }
+    })
+  },
+  lowerFn() {
+    const { currentPage } = this.data
+    this.setData({
+      currentPage: currentPage + 1
+    }, () => {
+      this.getAddressListFn()
     })
   }
 })
