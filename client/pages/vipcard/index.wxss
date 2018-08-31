@@ -60,7 +60,7 @@
   position: absolute;
   bottom: 30rpx;
   right: 65rpx;
-  font-size: 28rpx;
+  font-size: 24rpx;
 }
 .title{
   height: 90rpx;
@@ -100,7 +100,8 @@
 }
 .vipcard-desc tr td,
 .vipcard-desc tr th{
-  text-align: center
+  font-size: 30rpx;
+  text-align: center;
 }
 .vipcard-desc th:first-child,
 .vipcard-desc tr td:first-child{
@@ -112,6 +113,7 @@
   text-align: left;
 }
 .vipcard-tip{
+  font-size: 26rpx;
   text-align: center;
   color: #535353;
 }

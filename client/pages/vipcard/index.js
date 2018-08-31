@@ -17,7 +17,6 @@ Page({
     wx.setNavigationBarTitle({
       title: '会员卡',
     })
-    
   },
   onShow(){
     const that = this;

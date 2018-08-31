@@ -2,20 +2,20 @@
   <view class='vipcard-top'>
     <view class='user-info-wrap'>
       <view class='user-icon-wrap'>
-        <image class='user-icon' src='{{user.avatarUrl ? user.avatarUrl : "https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/ZmLXp4.jpg"}}'></image>
+        <image class='user-icon' src='{{(user && user.avatarUrl) ? user.avatarUrl : "https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/ZmLXp4.jpg"}}'></image>
       </view>
       <view class='user-info'>
          <!-- <view class='signin'>登陆后即可查看会员卡</view>  -->
          <view class='signin'>
-          <view class='user-name'>{{user.nickName ? user.nickName : '黑鸭子'}}</view>
-          <view class='user-type'>{{user.vipName ? user.vipName : '普通会员'}}</view>
+          <view class='user-name'>{{(user && user.nickName) ? user.nickName : '黑鸭子'}}</view>
+          <view class='user-type'>{{(user && user.vipName) ? user.vipName : '普通会员'}}</view>
         </view> 
       </view>
     </view>
     <view class='vipcard-icon-wrap' wx:if="{{user}}">
-      <image class='vipcard-icon' wx:if="{{user.level == 0}}"  src='/assets/img_vip_diamond@2x.png'></image>
-      <image class='vipcard-icon' wx:if="{{user.level == 1}}" src='/assets/img_vip_gold@2x.png'></image>
-      <image class='vipcard-icon' wx:if="{{user.level == 2}}" src='/assets/img_vip_platinum@2x.png'></image>
+      <image class='vipcard-icon' wx:if="{{user.vipType == 1}}"  src='/assets/img_vip_gold@2x.png'></image>
+      <image class='vipcard-icon' wx:if="{{user.vipType == 2}}" src='/assets/img_vip_diamond@2x.png'></image>
+      <image class='vipcard-icon' wx:if="{{user.vipType == 3}}" src='/assets/img_vip_platinum@2x.png'></image>
     </view>
     <view 
       class='login-btn' 

@@ -8,6 +8,9 @@ page{
   line-height: 60rpx;
   margin-top: 20rpx;
 }
+.tui-picker-detail{
+  font-size: 30rpx;
+}
 .reservation-wrap{
   border: #aeaeae 1rpx solid;
   background: #fff;
@@ -36,6 +39,7 @@ page{
 }
 .reservation-wrap .content .user{
   /* color: #000000; */
+  font-size: 32rpx;
 }
 .reservation-wrap .content .address{
   width: 100%;

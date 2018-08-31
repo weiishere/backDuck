@@ -46,7 +46,6 @@ Page({
       },
       method: 'get',
       success: (res) => {
-        console.log('res: ', res)
         let data = res.data
         data.map((item, index) => {
           let statusText = '';

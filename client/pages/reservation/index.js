@@ -28,7 +28,9 @@ Page({
     });
 
     this.setDefaultTimeFn()
+    this.getDefaultAddressFn()
   },
+
   chooseAddressEventFn(){
     wx.navigateTo({
       url: '/pages/address/index?pageorigin=reservation',
@@ -189,7 +191,6 @@ Page({
           days = 28;
           break;
         }
-
       case 4:
       case 6:
       case 9:
@@ -208,7 +209,7 @@ Page({
         dayDatas.push(i + 1 + "日")
       }
     }
-    console.log(dayDatas)
+    // console.log(dayDatas)
     return dayDatas;
   },
   surplusHour (hour = 0) {
@@ -220,6 +221,12 @@ Page({
   },
   surplusMinute(minute = 0){
     const minuteArr = []
+    console.log(minute)
+    if (minute) {
+      minute = minute + 30
+    } else {
+      minute = minute
+    }
     for (let i = minute; i <= 59; i++) {
       if (i%5 == 0) {
         minuteArr.push(i+'分')
@@ -326,7 +333,10 @@ Page({
         let hourStr = data.multiArray[e.detail.column][e.detail.value];
         let hour = hourStr.substring(0, hourStr.length - 1);
         // console.log('时间： ' + data.multiArray[e.detail.column][e.detail.value]);
-        data.multiArray[4] = this.surplusMinute();
+        if (hour1 != hour) {
+          minutes = 0
+        }
+        data.multiArray[4] = this.surplusMinute(minutes);
         data.multiIndex[4] = 0;
         break;
       case 4:
