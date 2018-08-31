@@ -14,8 +14,8 @@
     </view>
     <view class='vipcard-icon-wrap' wx:if="{{user}}">
       <image class='vipcard-icon' wx:if="{{user.vipType == 1}}"  src='/assets/img_vip_gold@2x.png'></image>
-      <image class='vipcard-icon' wx:if="{{user.vipType == 2}}" src='/assets/img_vip_diamond@2x.png'></image>
-      <image class='vipcard-icon' wx:if="{{user.vipType == 3}}" src='/assets/img_vip_platinum@2x.png'></image>
+      <image class='vipcard-icon' wx:if="{{user.vipType == 2}}" src='/assets/img_vip_platinum@2x.png'></image>
+      <image class='vipcard-icon' wx:if="{{user.vipType == 3}}" src='/assets/img_vip_diamond@2x.png'></image>
     </view>
     <view 
       class='login-btn' 
