@@ -14,15 +14,15 @@
         catchtap='chooseRechargeMoneyFn'>
         <image wx:if="{{item.activity}}" class='check-icon' src='/assets/recharge-checked.png'></image>
         <image wx:else class='check-icon' src='/assets/recharge-no-checked.png'></image>
-        冲{{item.realRecharge}}元<text class='give'>送{{item.realGive}}元</text>
+        充{{item.realRecharge}}元<text class='give'>送{{item.realGive}}元</text>
       </dd>
       <!-- <dd class="">
          <image class='check-icon' src='/assets/recharge-no-checked.png'></image> 
-        冲1000元<text class='give'>送200元</text>
+        充1000元<text class='give'>送200元</text>
       </dd>
       <dd class="">
          <image class='check-icon' src='/assets/recharge-no-checked.png'></image> 
-        冲1000元<text class='give'>送200元</text>
+        充1000元<text class='give'>送200元</text>
       </dd> -->
     </dl>
     <button class='btn' bindtap='rechargePayFn'>立即充值</button>
