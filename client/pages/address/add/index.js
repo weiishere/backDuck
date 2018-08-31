@@ -31,6 +31,33 @@ Page({
       title
     })
   },
+  onShow () {
+    wx.getSetting({
+      success(res) {
+        if (!res.authSetting['scope.userLocation']) {
+          console.log(res)
+          // wx.authorize({
+          //   scope: 'scope.userLocation',
+          //   success(res) {
+          //     console.log(res)
+          //     // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
+              
+          //   }
+          // })
+          wx.openSetting({
+            success: (res) => {
+              /*
+               * res.authSetting = {
+               *   "scope.userInfo": true,
+               *   "scope.userLocation": true
+               * }
+               */
+            }
+          })
+        }
+      }
+    })
+  },
   // 根据ID 获取需要编辑的信息
   getAddressById(id) {
     const $this = this;
