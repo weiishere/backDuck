@@ -115,7 +115,7 @@ Page({
       },
       success: (res) => {
         const data = res.data;
-        if (res.code == 0) {
+        if (res.status == 200) {
           if (this.data.pageorigin == 'forgetpaypwd' || this.data.pageorigin == 'setpaypwd') {
             wx.redirectTo({
               url: '/pages/setpaypwd/index',

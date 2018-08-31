@@ -90,8 +90,8 @@ Page({
           title: "成功",
           content: "支付密码设置成功~"
         }, () => {
-          wx.redirectTo({
-            url: '/pages/setup/index',
+          wx.navigateBack({
+            delta: 1
           })
         });
       },

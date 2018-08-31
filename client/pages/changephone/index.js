@@ -105,8 +105,12 @@ Page({
         verificationCode: smsCode
       },
       success: (res) => {
-        const data = res.data;
-        $this.countdownFn()
+        showSuccess('修改手机号成功~');
+        setTimeout(() => {
+          wx.navigateBack({
+            delta: 1
+          })
+        }, 1500);
       },
       error(res) {
         showModel({
