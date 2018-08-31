@@ -39,10 +39,9 @@ Page({
   },
   onGotUserInfo (e) {
     const { errMsg, userInfo, rawData } = e.detail
-    console.log('errMsg: ', errMsg)
-    console.log('userInfo: ', userInfo)
-    console.log('rawData: ', rawData)
-
+    // console.log('errMsg: ', errMsg)
+    // console.log('userInfo: ', userInfo)
+    // console.log('rawData: ', rawData)
     this.setData({
       approved: e.detail.rawData ? true : false
     }, () => {
@@ -56,6 +55,7 @@ Page({
             }
           })
         }
+        console.log('app.userInfo: ', app.userInfo)
         this.submitPhoneBind()
       }
     });
@@ -127,7 +127,7 @@ Page({
     }
 
     if (this.data.sendDone) {
-      console.log(this.data.validateCode);
+      // console.log(this.data.validateCode);
       singleRequest({
         url: config.API.user.bindPhone,
         postData: {

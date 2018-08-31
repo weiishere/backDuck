@@ -30,18 +30,19 @@ Page({
     const that = this;
     wx.getSystemInfo({
       success: function(res) {
-        console.log(res)
+        // console.log(res)
         wx.createSelectorQuery().select('.order_header').boundingClientRect(function (rect) {
-          console.log(rect)
+          // console.log(rect)
           that.setData({
             scrollHeight: res.windowHeight - rect.bottom - 5
           })
         }).exec();
       },
     })
+  },
+  onShow() {
     this.getOrderListFn()
   },
-
   getOrderListFn (paged = false) {
     const $this = this;
     let { list, chooseIndex, currentPage} = this.data

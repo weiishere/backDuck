@@ -10,7 +10,7 @@ App({
     wx.setNavigationBarTitle({
       title: '黑鸭子',
     })
-    this.userLoginFn()
+    // this.userLoginFn()
   },
   userLoginFn(fn){
     let self = this;
@@ -41,8 +41,9 @@ App({
                     if (res.authSetting['scope.userInfo']) {
                       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
                       wx.getUserInfo({
-                        success: function (res) {
-                          self.wechatUserInfo = res.userInfo
+                        success: function (resp) {
+                          // console.log(resp)
+                          self.wechatUserInfo = resp.userInfo
                           self.getUserInfoFn(fn)
                           // self.userInfo = Object.assign(self.userInfo, { user: res.userInfo})
                           // console.log(self.userInfo)
@@ -106,7 +107,7 @@ App({
         // console.log(`self.userInfo: `, self.userInfo)
         self.userInfo = Object.assign(self.userInfo, { user: { vipName: res.data.vipName, vipId: res.data.vipId, ...self.wechatUserInfo, ...res.data }})
         // console.log('getUserInfoFn - success: ', res)
-        fn && fn()
+        fn && fn(res.data)
       },
       error: (res) => {
         // console.log('getUserInfoFn - error: ', res)

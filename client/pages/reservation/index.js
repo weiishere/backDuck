@@ -26,7 +26,8 @@ Page({
     wx.setNavigationBarTitle({
       title: '预约取件',
     });
-
+  },
+  onShow () {
     this.setDefaultTimeFn()
     this.getDefaultAddressFn()
   },

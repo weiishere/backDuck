@@ -20,21 +20,37 @@ Page({
     })
   },
   onShow(){
-    setTimeout(() => {
-      this.setdefaultdataFn()
-    }, 1500)
+    // this.setdefaultdataFn()
+    // app.userInfo.token && app.getUserInfoFn((user) => {
+    //   console.log('user: ', user)
+    //   this.setData({
+    //     avatarUrl: (user && user.avatarUrl) ? user.avatarUrl : '',
+    //     nickName: (user && user.nickName) ? user.nickName : '',
+    //     vipName: (user && user.vipName) ? user.vipName : ''
+    //   })
+    // })
+    app.userLoginFn((user) => {
+      console.log('user: ', user)
+      this.setData({
+        avatarUrl: (user && user.avatarUrl) ? user.avatarUrl : '',
+        nickName: (user && user.nickName) ? user.nickName : '',
+        vipName: (user && user.vipName) ? user.vipName : ''
+      })
+    })
   },
   setdefaultdataFn(){
-    if (app.userInfo.user) {
+    const {user} = app.userInfo
+    // console.log(user)
+    if (user) {
       this.setData({
-        avatarUrl: (app.userInfo && app.userInfo.user) ? app.userInfo.user.avatarUrl : '',
-        nickName: (app.userInfo && app.userInfo.user) ? app.userInfo.user.nickname : '',
-        vipName: app.userInfo.user.vipName ? app.userInfo.user.vipName : ''
+        avatarUrl: (user && user.avatarUrl) ? user.avatarUrl : '',
+        nickName: (user && user.nickName) ? user.nickName : '',
+        vipName: (user && user.vipName) ? user.vipName : ''
       }, () => {
         // app.getUserInfoFn()
       })
     } else {
-      app.getUserInfoFn()
+      app.userInfo.token && app.getUserInfoFn()
     }
   },
   sideBarTrggle: function(e) {
@@ -80,11 +96,14 @@ Page({
     })
   },
   getUserInfoFn(e) {
-    // console.log('getUserInfoFn: ', e)
-    // console.log('getUserInfoFn userInfo: ', app.userInfo)
-    if (!app.userInfo.user && e.detail.errMsg == "getUserInfo:ok") {
-      app.userInfo.user = Object.assign(e.detail.userInfo)
-    }
-    this.setdefaultdataFn()
+    // const { userInfo } = e.detail
+    // // console.log('getUserInfoFn userInfo: ', app.userInfo)
+    // if (!userInfo.user && e.detail.errMsg == "getUserInfo:ok") {
+    //   app.userInfo.user = Object.assign(userInfo)
+    //   this.setData({
+    //     nickName: userInfo.nickName
+    //   })
+    // }
+    // this.setdefaultdataFn()
   }
 })
