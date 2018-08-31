@@ -74,7 +74,7 @@ Page({
   //获取交易记录
   getPayRecordsFn() {
     const $this = this;
-    const { records, currentPage} = this.data;
+    let { records, currentPage} = this.data;
     singleRequest({
       url: config.API.pay.record,
       postData: {

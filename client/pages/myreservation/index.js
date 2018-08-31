@@ -41,7 +41,7 @@ Page({
   },
   getBespeakFn(){
     const $this = this;
-    const { list, currentPage} = this.data;
+    let { list, currentPage} = this.data;
     singleRequest({
       url: config.API.bespeak.list,
       postData: {
