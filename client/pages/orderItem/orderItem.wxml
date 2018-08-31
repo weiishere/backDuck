@@ -73,8 +73,8 @@
         wx:for-idx="idx"
         wx:key="{{idx}}">
         <view class='title'>{{item.itemTitle}}</view>
-        <view class='flex-wrap clearfix'>
-          <scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+        <scroll-view class="scroll-box" scroll-x style="width: 100%">
+          <view class='image-wrap-scroll'>
             <view class='image-wrap'
               wx:for="{{item.realSmallItemPic}}"
               wx:for-item="picItem"
@@ -82,8 +82,8 @@
               wx:key="{{index}}">
               <image class='pic' data-piclist='{{item.realBigItemPic}}' catchtap='lookBigPicFn' src='{{picItem}}'></image>
             </view>
-          </scroll-view>
-        </view>
+          </view>
+        </scroll-view>
       </view>
     </view>
   </view>

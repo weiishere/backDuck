@@ -193,13 +193,22 @@
   padding: 20rpx 0;
   margin: 0 30rpx;
 }
-.image-wrap{
-  flex: 1;
-  text-align: center;
-  /* background: #f1f1f1 */
+.scroll-box{
+  height: 214rpx;
+  display: block;
 }
-.image-wrap .pic{
+.image-wrap-scroll{
+  width: max-content;
+}
+.image-wrap{
   width: 214rpx;
   height: 214rpx;
-  display: inline-block;
+  display: block;
+  margin-right: 20rpx;
+  float: left;
+}
+.image-wrap .pic{
+  width: 100%;
+  height: 100%;
+  display: block;
 }

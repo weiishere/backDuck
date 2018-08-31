@@ -121,7 +121,7 @@ Page({
     this.setData({
       currentPage: currentPage + 1
     }, () => {
-      this.getBespeakFn(paged)
+      this.getBespeakFn(true)
     })
   }
 })
