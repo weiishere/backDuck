@@ -115,15 +115,22 @@ Page({
       },
       success: (res) => {
         const data = res.data;
-        if (this.data.pageorigin == 'forgetpaypwd' || this.data.pageorigin == 'setpaypwd') {
-          wx.redirectTo({
-            url: '/pages/setpaypwd/index',
-          })
-        }
-        if (this.data.pageorigin == 'changephone') {
-          wx.redirectTo({
-            url: '/pages/changephone/index',
-          })
+        if (res.code == 0) {
+          if (this.data.pageorigin == 'forgetpaypwd' || this.data.pageorigin == 'setpaypwd') {
+            wx.redirectTo({
+              url: '/pages/setpaypwd/index',
+            })
+          }
+          if (this.data.pageorigin == 'changephone') {
+            wx.redirectTo({
+              url: '/pages/changephone/index',
+            })
+          }
+        } else {
+          showModel({
+            title: "错误",
+            content: res.msg || '报错了~'
+          });
         }
       },
       error(res) {
