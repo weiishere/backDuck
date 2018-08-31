@@ -16,7 +16,7 @@
             <text>已取消</text>
         </view>
     </view>
-    <view class='order_body'>
+    <view class='order_body' wx:if="{{!nocontent}}">
       <scroll-view
         scroll-y 
         style="height: {{scrollHeight}}px;" 

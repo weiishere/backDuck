@@ -63,8 +63,7 @@ Page({
         }
         $this.setData({
           list,
-          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
-          nocontent: ($this.data.currentPage == 1 && data.length == 0)
+          nocontent: (currentPage == 1 && data.length == 0)
         })
       },
       error(res) {
@@ -79,6 +78,7 @@ Page({
     const index = e.currentTarget.dataset.index;
     this.setData({
       chooseIndex: index,
+      nocontent: false,
       list: []
     }, ()=>{
       this.getOrderListFn()

@@ -35,8 +35,9 @@ Page({
     this.getMessageListFn()
   },
   //获取消息列表
-  getMessageListFn() {
+  getMessageListFn(paged = false) {
     const $this = this;
+    let { list, pageSize, currentPage } = this.data;
     singleRequest({
       url: config.API.message.list,
       postData: {
@@ -63,19 +64,20 @@ Page({
           item.txtStyle = ''
           return item
         })
+        if (paged) {
+          list = list.concat(data);
+        } else {
+          list = data
+        }
         $this.setData({
-          list: data,
-          nocontent: ($this.data.currentPage == 1 && data.length == 0)
+          list,
+          nocontent: (currentPage == 1 && data.length == 0)
         })
       },
       error(res) {
-        // showModel({
-        //   title: "错误",
-        //   content: res.msg || '报错了~'
-        // });
         $this.setData({
-          list: data,
-          nocontent: ($this.data.currentPage == 1)
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
+          nocontent: (currentPage == 1)
         })
       }
     })
@@ -174,5 +176,13 @@ Page({
     //   // item.
     // })
     this.deleteMessageByIdFn(id)
+  },
+  lowerFn() {
+    const { currentPage } = this.data
+    this.setData({
+      currentPage: currentPage + 1
+    }, () => {
+      this.getMessageListFn(true)
+    })
   }
 })

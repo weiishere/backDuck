@@ -1,38 +1,44 @@
 <view class='container notice'>
   <view class='notice-wrap'>
-    <block 
-      wx:for="{{list}}"
-      wx:for-item="item"
-      wx:for-index="idx"
-      wx:key="idx">
-      <view class='notice-time'>06月16日 下午17:56</view>
-      <view class='notice-item-wrap'>
-        <view class='notice-item'
-          bindtouchstart="touchS"
-          bindtouchmove="touchM"
-          bindtouchend="touchE"
-          data-index="{{idx}}"
-          style="{{item.txtStyle}}">
-          <view class='notice-icon-wrap'>
-            <image wx:if="{{item.msgType == 101}}" src='/assets/notice-info.png' class='notice-icon'></image>
-            <image wx:if="{{item.msgType == 104}}" src='/assets/notice-collect.png' class='notice-icon'></image>
-            <image wx:if="{{item.msgType == 103}}" src='/assets/notice-nursing.png' class='notice-icon'></image>
-            <image wx:if="{{item.msgType == 102}}" src='/assets/notice-order.png' class='notice-icon'></image>
-          </view>
-          <view class='notice-content'>
-            <view class='notice-title'>
-              {{item.msgTitle}}
-              <!-- 取件通知 -->
+    <scroll-view
+      wx:if="{{!nocontent}}"
+      scroll-y 
+      style="height: {{scrollHeight}}px;" 
+      bindscrolltolower="lowerFn">
+      <block 
+        wx:for="{{list}}"
+        wx:for-item="item"
+        wx:for-index="idx"
+        wx:key="idx">
+        <view class='notice-time'>06月16日 下午17:56</view>
+        <view class='notice-item-wrap'>
+          <view class='notice-item'
+            bindtouchstart="touchS"
+            bindtouchmove="touchM"
+            bindtouchend="touchE"
+            data-index="{{idx}}"
+            style="{{item.txtStyle}}">
+            <view class='notice-icon-wrap'>
+              <image wx:if="{{item.msgType == 101}}" src='/assets/notice-info.png' class='notice-icon'></image>
+              <image wx:if="{{item.msgType == 104}}" src='/assets/notice-collect.png' class='notice-icon'></image>
+              <image wx:if="{{item.msgType == 103}}" src='/assets/notice-nursing.png' class='notice-icon'></image>
+              <image wx:if="{{item.msgType == 102}}" src='/assets/notice-order.png' class='notice-icon'></image>
             </view>
-            <view class='notice-text'>
-              {{item.msgContent}}
-              <!-- 黑鸭子物流人员【张三】于17:30 已完成上门取件，您的取件码：756230 -->
+            <view class='notice-content'>
+              <view class='notice-title'>
+                {{item.msgTitle}}
+                <!-- 取件通知 -->
+              </view>
+              <view class='notice-text'>
+                {{item.msgContent}}
+                <!-- 黑鸭子物流人员【张三】于17:30 已完成上门取件，您的取件码：756230 -->
+              </view>
             </view>
           </view>
+          <view wx:if="{{item}}" class='tools delete' data-id="{{item.id}}" data-index="{{idx}}" catchtap='delNoticeFn'>删除</view>
         </view>
-        <view wx:if="{{item}}" class='tools delete' data-id="{{item.id}}" data-index="{{idx}}" catchtap='delNoticeFn'>删除</view>
-      </view>
-    </block>
+      </block>
+    </scroll-view>
     <view class='no-content' wx:if="{{nocontent}}">
       <image class='icon' src='/assets/no_information@2x.png'></image>
       <view class='text'>暂无配送信息</view>

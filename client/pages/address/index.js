@@ -53,18 +53,19 @@ Page({
         }
         $this.setData({
           list,
-          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
           nocontent: (currentPage == 1 && data.length == 0)
         })
       },
       error(res) {
         $this.setData({
-          nocontent: ($this.data.currentPage == 1)
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
+          nocontent: (currentPage == 1)
+        }, () => {
+          showModel({
+            title: "错误",
+            content: res.msg || '报错了~'
+          });
         })
-        showModel({
-          title: "错误",
-          content: res.msg || '报错了~'
-        });
       }
     })
   },

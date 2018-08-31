@@ -73,8 +73,7 @@ Page({
         }
         $this.setData({
           list, 
-          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
-          nocontent: (currentPage == 1 && res.data.length == 0)
+          nocontent: (currentPage == 1 && data.length == 0)
         })
       }, 
       error(res) {
@@ -83,6 +82,7 @@ Page({
           content: res.msg || '报错了~'
         });
         $this.setData({
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
           nocontent: ($this.data.currentPage == 1)
         })
       }

@@ -101,10 +101,15 @@ Page({
         })
       },
       error(res) {
-        showModel({
-          title: "错误",
-          content: res.msg || '报错了~'
-        });
+        $this.setData({
+          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
+          nocontent: (currentPage == 1)
+        }, () => {
+          showModel({
+            title: "错误",
+            content: res.msg || '报错了~'
+          });
+        })
       }
     })
   },
