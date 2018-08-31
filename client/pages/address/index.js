@@ -17,6 +17,7 @@ Page({
     scrollHeight: ''
   },
   onLoad: function (options) {
+    const that = this;
     wx.setNavigationBarTitle({
       title: '收货地址',
     })
@@ -35,7 +36,7 @@ Page({
     this.getAddressListFn()
   },
   //获取列表
-  getAddressListFn() {
+  getAddressListFn(paged = false) {
     const $this = this;
     let { list, currentPage } = this.data
     singleRequest({
@@ -45,9 +46,11 @@ Page({
       method: 'get',
       success: (res) => {
         const data = res.data;
-        console.log('data: ', data)
-        list = list.concat(data)
-        console.log(list, 'list: ')
+        if (paged) {
+          list = list.concat(data)
+        } else {
+          list = data
+        }
         $this.setData({
           list,
           currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
@@ -114,9 +117,6 @@ Page({
       },
       success: (res) => {
         $this.getAddressListFn()
-      },
-      error(res) {
-        // $this.getAddressListFn()
       }
     })
   },
@@ -125,7 +125,7 @@ Page({
     this.setData({
       currentPage: currentPage + 1
     }, () => {
-      this.getAddressListFn()
+      this.getAddressListFn(true)
     })
   }
 })

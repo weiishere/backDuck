@@ -34,7 +34,7 @@ Page({
         wx.createSelectorQuery().select('.order_header').boundingClientRect(function (rect) {
           console.log(rect)
           that.setData({
-            scrollHeight: res.windowHeight - rect.height
+            scrollHeight: res.windowHeight - rect.bottom - 5
           })
         }).exec();
       },
@@ -42,7 +42,7 @@ Page({
     this.getOrderListFn()
   },
 
-  getOrderListFn (){
+  getOrderListFn (paged = false) {
     const $this = this;
     let { list, chooseIndex, currentPage} = this.data
     singleRequest({
@@ -56,7 +56,11 @@ Page({
       success: (res) => {
         wx.hideLoading()
         const data = res.data;
-        list = list.concat(data)
+        if (paged) {
+          list = list.concat(data)
+        } else {
+          list = data
+        }
         $this.setData({
           list,
           currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
@@ -91,7 +95,7 @@ Page({
     this.setData({
       currentPage: currentPage + 1
     }, ()=>{
-      this.getOrderListFn()
+      this.getOrderListFn(true)
     })
   }
 })

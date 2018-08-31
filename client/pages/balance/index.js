@@ -39,14 +39,15 @@ Page({
             console.log(rect)
             that.setData({
               scrollHeight: res.windowHeight - rect.top - 20
-            }, () => {
-              that.getMyBalanceFn()
-              that.getPayRecordsFn()
             });
           })
         }).exec();
       }
     });
+  },
+  onShow () {
+    this.getMyBalanceFn()
+    this.getPayRecordsFn()
   },
   //获取账户余额
   getMyBalanceFn() {
@@ -72,14 +73,14 @@ Page({
     })
   },
   //获取交易记录
-  getPayRecordsFn() {
+  getPayRecordsFn (paged = false) {
     const $this = this;
-    let { records, currentPage} = this.data;
+    let { records, currentPage, pageSize } = this.data;
     singleRequest({
       url: config.API.pay.record,
       postData: {
-        pageSize: $this.data.pageSize || 10,
-        currentPage: $this.data.currentPage|| 1
+        pageSize: pageSize || 10,
+        currentPage: currentPage || 1
       },
       method: 'get',
       success: (res) => {
@@ -88,7 +89,11 @@ Page({
           item.createTime = formatDateTime(item.gmtCreate)
           return item
         })
-        records = records.concat(data)
+        if (paged) {
+          records = records.concat(data)
+        } else {
+          records = data
+        }
         $this.setData({
           records,
           currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
@@ -117,7 +122,7 @@ Page({
     this.setData({
       currentPage: currentPage + 1
     }, () => {
-      this.getPayRecordsFn()
+      this.getPayRecordsFn(true)
     })
   }
 })

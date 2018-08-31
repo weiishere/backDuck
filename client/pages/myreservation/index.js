@@ -33,9 +33,11 @@ Page({
         })
       },
     })
+  },
+  onShow () {
     this.getBespeakFn()
   },
-  getBespeakFn(){
+  getBespeakFn (paged = false) {
     const $this = this;
     let { list, currentPage} = this.data;
     singleRequest({
@@ -64,7 +66,11 @@ Page({
           item.time = formatDateTime(item.takePartTime)
           return item
         })
-        list = list.concat(data)
+        if (paged) {
+          list = list.concat(data)
+        } else {
+          list = data
+        }
         $this.setData({
           list, 
           currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
@@ -115,7 +121,7 @@ Page({
     this.setData({
       currentPage: currentPage + 1
     }, () => {
-      this.getBespeakFn()
+      this.getBespeakFn(paged)
     })
   }
 })
