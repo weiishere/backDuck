@@ -31,8 +31,10 @@ Page({
         nickName: app.userInfo.user.nickName,
         vipName: app.userInfo.user.vipName ? app.userInfo.user.vipName : ''
       }, () => {
-        app.getUserInfoFn()
+        // app.getUserInfoFn()
       })
+    } else {
+      app.getUserInfoFn()
     }
   },
   sideBarTrggle: function(e) {

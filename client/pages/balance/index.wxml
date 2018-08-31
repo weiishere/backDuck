@@ -9,24 +9,31 @@
   </view>
   <view class='balance-record-wrap'>
     <view class='title'>使用记录</view>
-    <scroll-view 
-      scroll-y 
-      id='scrollList'
-      style="height: {{scrollHeight ? scrollHeight : '200'}}px" 
-      bindscrolltolower="lower">
-      <view class='balance-record-item'
-        wx:for="{{records}}"
-        wx:for-item="item"
-        wx:for-idx="idx"
-        wx:key="idx">
-        <view class='record-info'>
-          <view class='record-type'>{{item.payTypeName}}</view>
-          <view class='record-time'>{{item.createTime}}</view>
+    <view class='balance-record-box' style="height: {{scrollHeight}}px">
+      <scroll-view 
+        scroll-y 
+        id='scrollList'
+        wx:if="{{!nocontent}}"
+        style="height: {{scrollHeight ? scrollHeight : '200'}}px" 
+        bindscrolltolower="lower">
+        <view class='balance-record-item'
+          wx:for="{{records}}"
+          wx:for-item="item"
+          wx:for-idx="idx"
+          wx:key="idx">
+          <view class='record-info'>
+            <view class='record-type'>{{item.payTypeName}}</view>
+            <view class='record-time'>{{item.createTime}}</view>
+          </view>
+          <view class='record-amount'>
+            {{item.realPayMoney}}元
+          </view>
         </view>
-        <view class='record-amount'>
-          {{item.realPayMoney}}元
-        </view>
+      </scroll-view>
+      <view class='no-content order' wx:if="{{nocontent}}">
+        <image class='icon' src='/assets/no_order_information_@2x.png'></image>
+        <view class='text'>暂无使用记录</view>
       </view>
-    </scroll-view>
+      </view>
   </view> 
 </view>

@@ -115,6 +115,7 @@ Page({
    * 新的时间选择控件
    */
   setDefaultTimeFn: function (options) {
+    let { multiIndex } = this.data;
     let date = new Date();
     let year = date.getFullYear()
     let month = date.getMonth() + 1
@@ -130,6 +131,11 @@ Page({
     let surplusHour = this.surplusHour(hour)
     let surplusMinute = this.surplusMinute(minutes)
 
+    if (minutes >= 30) {
+      surplusMinute = this.surplusMinute()
+      // multiIndex = [0,0,0,0,0]
+    }
+
     this.setData({
       multiArray: [[year + '年', (year + 1) + '年', (year + 2) + '年'],
       surplusMonth,
@@ -139,7 +145,8 @@ Page({
       ],
       year: year,
       month: month,
-      day: day
+      day: day,
+      multiIndex
     })
   },
   surplusMonth: function (year) {
@@ -213,7 +220,18 @@ Page({
     return dayDatas;
   },
   surplusHour (hour = 0) {
+    let date = new Date();
+    const day = date.getDate(),
+          hours = date.getHours(),
+          minutes = date.getMinutes();
     let surplusHours = [];
+
+    if (hours == hour && minutes >= 30) {
+      hour+=1
+    } else {
+      hour = hour
+    }
+    console.log(hour)
     for (let i = hour; i <= 23; i++) {
       surplusHours.push(i+'点')
     }
@@ -221,7 +239,6 @@ Page({
   },
   surplusMinute(minute = 0){
     const minuteArr = []
-    console.log(minute)
     if (minute) {
       minute = minute + 30
     } else {
