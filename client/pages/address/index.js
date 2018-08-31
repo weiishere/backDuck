@@ -53,6 +53,7 @@ Page({
         }
         $this.setData({
           list,
+          currentPage: (currentPage > 1 && data.length == 0) ? (currentPage - 1) : currentPage,
           nocontent: (currentPage == 1 && data.length == 0)
         })
       },

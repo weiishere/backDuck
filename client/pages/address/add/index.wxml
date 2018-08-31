@@ -37,14 +37,17 @@
         <view class='label'>所在地区</view>
       </view>
       <view class='form-item-content'>
-        <picker mode="region" bindchange="bindAreaChange" value="{{area}}" custom-item="{{customItem}}">
+        <!-- <picker mode="region" bindchange="bindAreaChange" value="{{area}}" custom-item="{{customItem}}">
           <view class="picker" wx:if="{{area}}">
             {{id ? area : (area[0] + area[1] + area[2])}}
           </view>
           <view class="picker" wx:if="{{!area}}">
             请选择所在地区
           </view>
-        </picker>
+        </picker> -->
+        <view class="picker" catchtap='chooseLocationFn'  wx:if="{{!area}}">
+          {{addrText ? addrText : '请选择所在地区'}}
+        </view>
       </view>
       <view class='form-item-tools'></view>
     </view>
@@ -57,7 +60,7 @@
           class='form-input'
           placeholder='街道、楼牌号等'
           id='address'
-          value='{{address}}'
+          value='{{addrName}}'
           bindinput='inputChangeFn'>
         </input>
       </view>

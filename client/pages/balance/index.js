@@ -96,7 +96,7 @@ Page({
         }
         $this.setData({
           records,
-          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
+          currentPage: (currentPage > 1 && data.length == 0) ? (currentPage - 1) : currentPage,
           nocontent: (currentPage == 1 && res.data.length == 0)
         })
       },

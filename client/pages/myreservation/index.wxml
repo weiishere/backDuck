@@ -27,7 +27,7 @@
           <view class='sub-title'>预约信息</view>
           <ul class="clearfix">
             <li class="time">
-              <image class='icon time-icon' src='/assets/time.png'></image>2018-06-19 18:29
+              <image class='icon time-icon' src='/assets/time.png'></image>{{item.taskTime ? item.taskTime : '无'}}
             </li>
             <li class="user">
               <image class='icon user-icon' src='/assets/user.png'></image>{{item.address ? item.address.attn : '无'}}

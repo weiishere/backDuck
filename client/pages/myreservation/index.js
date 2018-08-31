@@ -63,7 +63,7 @@ Page({
             statusText = '已下单'
           }
           item.statusText = statusText
-          item.time = formatDateTime(item.takePartTime)
+          item.taskTime = formatDateTime(item.takePartTime)
           return item
         })
         if (paged) {
@@ -72,7 +72,8 @@ Page({
           list = data
         }
         $this.setData({
-          list, 
+          list,
+          currentPage: (currentPage > 1 && data.length == 0) ? (currentPage - 1) : currentPage,
           nocontent: (currentPage == 1 && data.length == 0)
         })
       }, 
@@ -83,7 +84,7 @@ Page({
         });
         $this.setData({
           currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
-          nocontent: ($this.data.currentPage == 1)
+          nocontent: (currentPage == 1)
         })
       }
     })

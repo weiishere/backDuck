@@ -1,4 +1,3 @@
-// pages/address/add/index.js
 import {
   showModel,
   showSuccess,
@@ -14,7 +13,9 @@ Page({
     email: '',
     area: '',
     address: '',
-    isDefault: false
+    isDefault: false,
+    addrName: '',
+    addrText: ''
   },
   onLoad: function (options) {
     console.log(options)
@@ -33,27 +34,17 @@ Page({
   },
   onShow () {
     wx.getSetting({
-      success(res) {
-        if (!res.authSetting['scope.userLocation']) {
-          console.log(res)
-          // wx.authorize({
-          //   scope: 'scope.userLocation',
-          //   success(res) {
-          //     console.log(res)
-          //     // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
-              
-          //   }
-          // })
-          wx.openSetting({
-            success: (res) => {
-              /*
-               * res.authSetting = {
-               *   "scope.userInfo": true,
-               *   "scope.userLocation": true
-               * }
-               */
+      success(resp) {
+        if (!resp.authSetting['scope.userLocation']) {
+          console.log(resp)
+          wx.authorize({
+            scope: 'scope.userLocation',
+            success(res) {
+              console.log(res)
+              // 用户已经同意小程序使用录音功能，后续调用 wx.startRecord 接口不会弹窗询问
             }
           })
+        
         }
       }
     })
@@ -114,7 +105,8 @@ Page({
       mobile,
       email,
       area,
-      address,
+      addrText,
+      addrName,
       isDefault
     } = this.data;
     if (!attn || attn.length < 2) {
@@ -127,23 +119,18 @@ Page({
         title: "错误",
         content: "请输入正确的联系方式~"
       });
-    } else if (!area) {
+    } else if (!addrText || !addrName) {
       showModel({
         title: "错误",
-        content: "请输入选择所在地区~"
-      });
-    } else if (!address) {
-      showModel({
-        title: "错误",
-        content: "请输入详细地址~"
+        content: "请选择所在地区~"
       });
     } else {
       let data = {
         attn,
         mobile,
         email,
-        area: (area instanceof Array ? area.join('') : area),
-        address,
+        area: addrText,
+        address: addrName,
         areaCode: '',
         isDefault: 1
       };
@@ -172,6 +159,31 @@ Page({
       },
       error(res) {
         console.log('错误', res)
+      }
+    })
+  },
+  //选择地址
+  chooseLocationFn(){
+    const that = this;
+    wx.getSetting({
+      success(resp) {
+        // console.log(resp)
+        if (!resp.authSetting['scope.userLocation']) {
+          wx.openSetting({
+            success: (res) => {
+              console.log(res)
+            }
+          })
+        } else {
+          wx.chooseLocation({
+            success: function (res) {
+              that.setData({
+                addrName: res.name,
+                addrText: res.address
+              })
+            }
+          })
+        }
       }
     })
   }

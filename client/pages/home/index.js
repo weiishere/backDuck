@@ -28,7 +28,7 @@ Page({
     if (app.userInfo.user) {
       this.setData({
         avatarUrl: (app.userInfo && app.userInfo.user) ? app.userInfo.user.avatarUrl : '',
-        nickName: (app.userInfo && app.userInfo.user) ? app.userInfo.user.nickName : '',
+        nickName: (app.userInfo && app.userInfo.user) ? app.userInfo.user.nickname : '',
         vipName: app.userInfo.user.vipName ? app.userInfo.user.vipName : ''
       }, () => {
         // app.getUserInfoFn()
