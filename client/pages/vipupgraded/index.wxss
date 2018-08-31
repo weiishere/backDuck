@@ -29,6 +29,7 @@
   right: 30rpx;
   bottom: 30rpx;
   color: #fff;
+  font-size: 26rpx;
 }
 .vipupgraded.gold .buy-btn,
 .vipupgraded.gold .price{
