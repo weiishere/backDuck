@@ -51,11 +51,9 @@
       <view class='home_sider_name'>
         <text>{{nickName ? nickName : '黑鸭子'}}</text>
       </view>
-      <view class='home_sider_level'>
-        <navigator url='/pages/vipcard/index'>
-          <image wx:if="{{vipName}}" src='https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/vip_diamond%403x.png'></image>
-          <text>{{vipName ? vipName : '会员升级'}}</text>
-        </navigator>
+      <view class='home_sider_level' data-url='/pages/vipcard/index'>
+        <image wx:if="{{vipName}}" src='https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/vip_diamond%403x.png'></image>
+        <text>{{vipName ? vipName : '会员升级'}}</text>
       </view>
     </view>
     <view class='home_sider_body'>
@@ -64,43 +62,31 @@
           <i class='icon-leftbar_icon_events'></i>
           <text>最新活动</text>
         </li> -->
-        <li catchtap="gotoPage" data-order='/pages/order/index'>
-          <navigator url='/pages/order/index'>
-            <i class='icon-nav_orders'></i>
-            <text>我的订单</text>
-          </navigator>
+        <li catchtap="gotoPage" data-url='/pages/order/index'>
+          <i class='icon-nav_orders'></i>
+          <text>我的订单</text>
         </li>
-        <li>
-          <navigator url='/pages/myreservation/index'>
-            <i class='icon-leftbar_icon_clock'></i>
-            <text>我的预约</text>
-          </navigator>
+        <li catchtap="gotoPage" data-url='/pages/myreservation/index'>
+          <i class='icon-leftbar_icon_clock'></i>
+          <text>我的预约</text>
         </li>
-        <li>
-          <navigator url='/pages/balance/index'>
-            <i class='icon-leftbar_icon_wallet'></i>
-            <text>账户余额</text>
-            <text class='recharge-btn' catchtap='rechargeBtnFn'>充值</text>
-          </navigator>
+        <li catchtap="gotoPage" data-url='/pages/balance/index'>
+          <i class='icon-leftbar_icon_wallet'></i>
+          <text>账户余额</text>
+          <text class='recharge-btn' catchtap='rechargeBtnFn'>充值</text>
         </li>
-        <li>
-          <navigator url='/pages/notice/index'>
-            <i class='icon-leftbar_icon_mail' style="font-size:26rpx"></i>
-            <text>我的消息</text>
-            <text class='nitice-num' wx:if="{{msgCount > 0}}">{{msgCount}}</text>
-          </navigator>
+        <li catchtap="gotoPage" data-url='/pages/notice/index'>
+          <i class='icon-leftbar_icon_mail' style="font-size:26rpx"></i>
+          <text>我的消息</text>
+          <text class='nitice-num' wx:if="{{msgCount > 0}}">{{msgCount}}</text>
         </li>
-        <li>
-          <navigator url='/pages/address/index'>
-            <i class='icon-leftbar_icon_add'></i>
-            <text>我的地址</text>
-          </navigator>
+        <li catchtap="gotoPage" data-url='/pages/address/index'>
+          <i class='icon-leftbar_icon_add'></i>
+          <text>我的地址</text>
         </li>
-        <li>
-          <navigator url='/pages/setup/index'>
-            <i class='icon-set'></i>
-            <text>设置</text>
-          </navigator>
+        <li catchtap="gotoPage" data-url='/pages/setup/index'>
+          <i class='icon-set'></i>
+          <text>设置</text>
         </li>
       </ul>
     </view>

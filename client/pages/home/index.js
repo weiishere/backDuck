@@ -65,10 +65,15 @@ Page({
   },
   
   gotoPage: function(e) {
-    const page = e.currentTarget.dataset.order;
-    wx.navigateTo({
-      url: page
-    });
+    const url = e.currentTarget.dataset.url;
+    wx.showLoading({
+      title: '',
+      success: function (){
+        wx.navigateTo({
+          url
+        });
+      }
+    })
   },
   callMobildServiceFn () {
     wx.makePhoneCall({
