@@ -36,7 +36,7 @@ Page({
         console.info('height: ', height);
         wx.createSelectorQuery().selectAll('#scrollList').boundingClientRect((rects) => {
           rects.forEach((rect) => {
-            console.log(rect)
+            // console.log(rect)
             that.setData({
               scrollHeight: res.windowHeight - rect.top - 20
             });

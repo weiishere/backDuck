@@ -12,7 +12,7 @@
       <view class='icon-wrap menu' data-sider-state='true' catchtap="sideBarTrggle">
         <i class='icon-nav_menu'></i>
       </view>
-      <view class='icon-wrap order' catchtap="gotoPage" data-order='/pages/order/index'>
+      <view class='icon-wrap order' catchtap="gotoPage" data-url='/pages/order/index'>
         <i class='icon-nav_orders'></i>
       </view>
     </view>
@@ -51,7 +51,7 @@
       <view class='home_sider_name'>
         <text>{{nickName ? nickName : '黑鸭子'}}</text>
       </view>
-      <view class='home_sider_level' data-url='/pages/vipcard/index'>
+      <view class='home_sider_level' catchtap="gotoPage" data-url='/pages/vipcard/index'>
         <image wx:if="{{vipName}}" src='https://xiu-store-1255815795.cos.ap-chengdu.myqcloud.com/blackDuck/vip_diamond%403x.png'></image>
         <text>{{vipName ? vipName : '会员升级'}}</text>
       </view>

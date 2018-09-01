@@ -30,7 +30,7 @@ Page({
     //   })
     // })
     app.userLoginFn((user) => {
-      console.log('user: ', user)
+      // console.log('user: ', user)
       this.setData({
         avatarUrl: (user && user.avatarUrl) ? user.avatarUrl : '',
         nickName: (user && user.nickName) ? user.nickName : '',
