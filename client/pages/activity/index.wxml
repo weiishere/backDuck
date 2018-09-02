@@ -1,0 +1,3 @@
+<view class='activity-page'>
+  <image class="activity-pic" src='{{imgSrc}}'></image>
+</view>

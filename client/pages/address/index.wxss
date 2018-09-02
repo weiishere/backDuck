@@ -2,7 +2,7 @@ page{
   background: #f1f1f1;
 }
 .address-list{
-  padding-bottom: 120rpx
+  /* padding-bottom: 120rpx */
   
 }
 .address-list .address-item{
@@ -61,7 +61,7 @@ page{
   line-height: 90rpx;
   text-align: center;
   width: 100%;
-  position: fixed;
-  bottom: 0px;
+  /* position: fixed; */
+  /* bottom: 0px; */
   color: #fff;
 }

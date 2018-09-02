@@ -70,6 +70,9 @@ var config = {
     order: {
       list: `${host}/order/list`,    //订单列表
       detail: `${host}/order/get`    //订单详情
+    },
+    activity: {
+      get: `${host}/activity/get`,    //最新活动
     }
   },
   // 下面的地址配合云端 Demo 工作

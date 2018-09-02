@@ -22,7 +22,8 @@
     "pages/setpaypwd/index",
     "pages/checkpaypwd/index",
     "pages/priceinfo/index",
-    "pages/service/index"
+    "pages/service/index",
+    "pages/activity/index"
   ],
   "window": {
     "backgroundColor": "#ffffff",

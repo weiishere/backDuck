@@ -28,8 +28,11 @@ Page({
     });
   },
   onShow () {
+    const { currData} = this.data
     this.setDefaultTimeFn()
-    this.getDefaultAddressFn()
+    if (currData == '') {
+      this.getDefaultAddressFn()
+    }
   },
 
   chooseAddressEventFn(){

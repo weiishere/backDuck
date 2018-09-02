@@ -22,7 +22,7 @@ page{
   font-size: 100rpx;
 }
 .balance-top .rechange-btn{
-  color: #000;
+  color: #235379;
   font-size: 34rpx;
   height: 86rpx;
   line-height: 86rpx;

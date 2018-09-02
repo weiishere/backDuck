@@ -39,12 +39,12 @@ Page({
   },
   getBespeakFn (paged = false) {
     const $this = this;
-    let { list, currentPage} = this.data;
+    let { list, currentPage, pageSize} = this.data;
     singleRequest({
       url: config.API.bespeak.list,
       postData: {
-        pageSize: $this.data.pageSize || 10,
-        currentPage: $this.data.currentPage || 1
+        pageSize: pageSize || 10,
+        currentPage: currentPage || 1
       },
       method: 'get',
       success: (res) => {

@@ -4,13 +4,13 @@
           <text>全部</text>
       </view>
       <view class="{{chooseIndex==='0'&&'active'}}" catchtap="orderTypeChoose" data-type='waitDo' data-index='0'>
-          <text>待处理</text>
+          <text>服务中</text>
       </view>
       <view class="{{chooseIndex==='1'&&'active'}}" catchtap="orderTypeChoose" data-type='waitOut' data-index='1'>
           <text>待收件</text>
       </view>
       <view class="{{chooseIndex==='2'&&'active'}}" catchtap="orderTypeChoose" data-type='done' data-index='2'>
-          <text>已完成</text>
+          <text>已签收</text>
       </view>
       <view class="{{chooseIndex==='3'&&'active'}}" catchtap="orderTypeChoose" data-type='cacle' data-index='3'>
           <text>已取消</text>

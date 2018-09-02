@@ -58,10 +58,10 @@
     </view>
     <view class='home_sider_body'>
       <ul>
-        <!-- <li>
+        <li class="new-activity" catchtap="gotoPage" data-url='/pages/activity/index'>
           <i class='icon-leftbar_icon_events'></i>
           <text>最新活动</text>
-        </li> -->
+        </li>
         <li catchtap="gotoPage" data-url='/pages/order/index'>
           <i class='icon-nav_orders'></i>
           <text>我的订单</text>

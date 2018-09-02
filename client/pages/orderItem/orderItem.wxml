@@ -42,7 +42,11 @@
         wx:for-idx="idx"
         wx:key="{{idx}}">
         <image class='isurgent' wx:if="{{item.isUrgent == 1}}" src='/assets/isurgent.png'></image>
-        <image class='isobtained' wx:if="{{item.state == 1}}" src='/assets/isobtained.png'></image>
+        <!-- <image class='isobtained' wx:if="{{item.state == 0}}" src='/assets/isobtained.png'></image> -->
+        <image class='isobtained' wx:if="{{item.state == 2}}" src='/assets/canceled.png'></image>
+        <image class='isobtained' wx:if="{{item.state == 3}}" src='/assets/isnursing.png'></image>
+        <image class='isobtained' wx:if="{{item.state == 4}}" src='/assets/nursed.png'></image>
+        <image class='isobtained' wx:if="{{item.state == 1}}" src='/assets/takeit.png'></image>
         <view class='pic-wrap'>
           <image class='pic' src="{{item.realMainPic}}"></image>
         </view>

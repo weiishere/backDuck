@@ -22,26 +22,31 @@ Page({
       title: '收货地址',
     })
     if ( options && options.pageorigin == "reservation") {
-      wx.getSystemInfo({
-        success: function (res) {
-          that.setData({
-            scrollHeight: res.windowHeight,
-            pageorigin: options.pageorigin
-          })
-        },
+      that.setData({
+        pageorigin: options.pageorigin
       })
     }
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          scrollHeight: res.windowHeight - 38
+        })
+      },
+    })
   },
-  onShow(){
+  onShow (options) {
+    // console.log(options)
     this.getAddressListFn()
   },
   //获取列表
   getAddressListFn(paged = false) {
     const $this = this;
-    let { list, currentPage } = this.data
+    let { list, pageSize, currentPage } = this.data
     singleRequest({
       url: config.API.address.list,
       postData: {
+        pageSize: pageSize || 10,
+        currentPage: currentPage || 1
       },
       method: 'get',
       success: (res) => {
@@ -124,6 +129,7 @@ Page({
   },
   lowerFn() {
     const { currentPage } = this.data
+    console.log(1)
     this.setData({
       currentPage: currentPage + 1
     }, () => {
