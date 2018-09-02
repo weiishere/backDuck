@@ -42,29 +42,33 @@ Page({
   getAddressListFn(paged = false) {
     const $this = this;
     let { list, pageSize, currentPage } = this.data
+    const param = {
+      pageSize: pageSize || 10,
+      currentPage: currentPage || 1
+    };
     singleRequest({
       url: config.API.address.list,
-      postData: {
-        pageSize: pageSize || 10,
-        currentPage: currentPage || 1
-      },
+      postData: {},
       method: 'get',
       success: (res) => {
         const data = res.data;
-        if (paged) {
-          list = list.concat(data)
-        } else {
+        // if (paged) {
+        //   list = list.concat(data)
+        // } else {
           list = data
-        }
+        // }
+        // $this.setData({
+        //   list,
+        //   currentPage: (currentPage > 1 && data.length == 0) ? (currentPage - 1) : currentPage,
+        //   nocontent: (currentPage == 1 && data.length == 0)
+        // })
         $this.setData({
           list,
-          currentPage: (currentPage > 1 && data.length == 0) ? (currentPage - 1) : currentPage,
-          nocontent: (currentPage == 1 && data.length == 0)
+          nocontent: (data.length == 0)
         })
       },
       error(res) {
         $this.setData({
-          currentPage: currentPage > 1 ? (currentPage - 1) : currentPage,
           nocontent: (currentPage == 1)
         }, () => {
           showModel({
@@ -133,7 +137,7 @@ Page({
     this.setData({
       currentPage: currentPage + 1
     }, () => {
-      this.getAddressListFn(true)
+      // this.getAddressListFn(true)
     })
   }
 })

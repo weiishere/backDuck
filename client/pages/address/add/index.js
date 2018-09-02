@@ -177,6 +177,7 @@ Page({
         } else {
           wx.chooseLocation({
             success: function (res) {
+              console.log(res)
               that.setData({
                 addrName: res.name,
                 addrText: res.address
