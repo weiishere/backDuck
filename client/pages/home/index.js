@@ -33,7 +33,7 @@ Page({
       // console.log('user: ', user)
       this.setData({
         avatarUrl: (user && user.avatarUrl) ? user.avatarUrl : '',
-        nickName: (user && user.nickName) ? user.nickName : '',
+        nickName: (user && (user.nickName || user.nickname)) ? (user.nickName || user.nickname) : '',
         vipName: (user && user.vipName) ? user.vipName : ''
       })
     })
