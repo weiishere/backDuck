@@ -29,7 +29,7 @@ Page({
         const data = res.data;
         console.log(data)
         $this.setData({
-          imgSrc: data[0]
+          imgSrc: data
         })
       },
       error(res) {

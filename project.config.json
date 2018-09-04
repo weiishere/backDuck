@@ -12,7 +12,7 @@
 	},
 	"appid": "wx4ed1b737cbd28b19",
 	"projectname": "blackDuck",
-	"libVersion": "2.2.4",
+	"libVersion": "2.2.5",
 	"condition": {
 		"search": {
 			"current": -1,
