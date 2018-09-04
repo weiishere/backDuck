@@ -31,3 +31,7 @@ page {
 .space{
   padding: 0 10px;
 }
+.btn {
+  width: auto;
+  margin: 30rpx 52rpx 0;
+}

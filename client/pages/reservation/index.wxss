@@ -52,5 +52,5 @@ page{
 
 .reservation .btn{
   width: auto;
-  margin: 76rpx 46rpx 0;
+  margin: 30rpx 28rpx 0;
 }

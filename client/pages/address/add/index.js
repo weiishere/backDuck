@@ -105,8 +105,7 @@ Page({
       mobile,
       email,
       area,
-      addrText,
-      addrName,
+      address,
       isDefault
     } = this.data;
     if (!attn || attn.length < 2) {
@@ -119,7 +118,7 @@ Page({
         title: "错误",
         content: "请输入正确的联系方式~"
       });
-    } else if (!addrText || !addrName) {
+    } else if (!area || !address) {
       showModel({
         title: "错误",
         content: "请选择所在地区~"
@@ -129,8 +128,8 @@ Page({
         attn,
         mobile,
         email,
-        area: addrText,
-        address: addrName,
+        area,
+        address,
         areaCode: '',
         isDefault: 1
       };
@@ -179,8 +178,8 @@ Page({
             success: function (res) {
               console.log(res)
               that.setData({
-                addrName: res.name,
-                addrText: res.address
+                area: res.name,
+                address: res.address
               })
             }
           })
