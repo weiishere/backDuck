@@ -61,7 +61,7 @@ page{
   line-height: 90rpx;
   text-align: center;
   width: 100%;
-  /* position: fixed; */
-  /* bottom: 0px; */
+  position: fixed;
+  bottom: 0px;
   color: #fff;
 }

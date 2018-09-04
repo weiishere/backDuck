@@ -29,7 +29,7 @@ Page({
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
-          scrollHeight: res.windowHeight - 50
+          scrollHeight: res.windowHeight - 38
         })
       },
     })
