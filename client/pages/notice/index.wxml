@@ -10,7 +10,7 @@
         wx:for-item="item"
         wx:for-index="idx"
         wx:key="idx">
-        <view class='notice-time'>06月16日 下午17:56</view>
+        <view class='notice-time'>{{item.gmtCreate}}</view>
         <view class='notice-item-wrap'>
           <view class='notice-item'
             bindtouchstart="touchS"

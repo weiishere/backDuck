@@ -49,7 +49,7 @@ page{
 .notice-item .notice-content .notice-text{
   color: #666;
   font-size: 24rpx;
-  height: 70rpx;
+  height: 66rpx;
   word-break: break-all;
   text-overflow: ellipsis;
   overflow: hidden;
