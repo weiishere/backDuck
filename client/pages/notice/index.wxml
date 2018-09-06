@@ -36,6 +36,7 @@
             </view>
           </view>
           <view wx:if="{{item}}" class='tools delete' data-id="{{item.id}}" data-index="{{idx}}" catchtap='delNoticeFn'>删除</view>
+          <view class='clearfix'></view>
         </view>
       </block>
     </scroll-view>

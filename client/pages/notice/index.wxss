@@ -16,7 +16,7 @@ page{
   margin-bottom: 18rpx;
   position: relative;
   overflow: hidden;
-  height: 210rpx;
+  min-height: 270rpx;
 }
 .notice-wrap .notice-item{
   width: 650rpx;
@@ -49,7 +49,7 @@ page{
 .notice-item .notice-content .notice-text{
   color: #666;
   font-size: 24rpx;
-  height: 66rpx;
+  min-height: 66rpx;
   word-break: break-all;
   text-overflow: ellipsis;
   overflow: hidden;
