@@ -63,7 +63,9 @@ var showSuccess = text => wx.showToast({
 // 显示失败提示
 var showModel = (opts, fn) => {
   wx.hideToast();
-
+  if (!opts.title && !opts.content) {
+    return false
+  }
   wx.showModal({
     title: opts.title,
     // content: JSON.stringify(opts.content || '暂无异常信息~'), // 为什么要用JSON 转换下 ？？
