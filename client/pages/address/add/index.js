@@ -52,6 +52,9 @@ Page({
   // 根据ID 获取需要编辑的信息
   getAddressById(id) {
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.address.getAddressByid+'/'+id,
       method: 'GET',
@@ -141,6 +144,9 @@ Page({
   },
   // 提交数据
   addAddressFn(parameter) {
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: parameter.id ? config.API.address.edit : config.API.address.add,
       postData: {

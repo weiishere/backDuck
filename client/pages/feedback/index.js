@@ -24,6 +24,9 @@ Page({
   },
   opinionSubmitFn() {
     const { opinion } = this.data
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.opinion,
       postData: {

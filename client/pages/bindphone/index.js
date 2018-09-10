@@ -79,6 +79,9 @@ Page({
       return false;
     } else {
       if (this.data.countNum == 60) {
+        wx.showLoading({
+          title: '',
+        })
         singleRequest({
           url: config.API.user.verification + '/' + this.data.phoneInputValue,
           method: 'GET',
@@ -128,6 +131,9 @@ Page({
 
     if (this.data.sendDone) {
       // console.log(this.data.validateCode);
+      wx.showLoading({
+        title: '',
+      })
       singleRequest({
         url: config.API.user.bindPhone,
         postData: {

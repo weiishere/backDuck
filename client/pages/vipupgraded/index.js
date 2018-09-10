@@ -29,6 +29,9 @@ Page({
   },
   getVipList() {
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.vip.list,
       postData: {
@@ -66,6 +69,9 @@ Page({
     const $this = this;
     const { vipid } = e.currentTarget.dataset;
     if (app.userInfo && app.userInfo.user) {
+      wx.showLoading({
+        title: '',
+      })
       singleRequest({
         url: config.API.vip.open,
         postData: {

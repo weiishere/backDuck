@@ -45,6 +45,9 @@ Page({
   //获取会员信息
   getRechargeListFn() {
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.recharge.activity,
       postData: {

@@ -40,6 +40,9 @@ Page({
   getBespeakFn (paged = false) {
     const $this = this;
     let { list, currentPage, pageSize} = this.data;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.bespeak.list,
       postData: {
@@ -95,6 +98,9 @@ Page({
     //只有状态不是1 的才能继续删除
     if (state != 0) return false;
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.bespeak.cancel,
       postData: {

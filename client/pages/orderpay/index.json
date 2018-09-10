@@ -2,6 +2,7 @@
   "component": true,
   "usingComponents": {
     "ModalBox": "/components/modal/index",
-    "PayPWD": "/components/pay-item/index"
+    "PayPWD": "/components/pay-item/index",
+    "toast": "/components/toast/index"
   }
 }

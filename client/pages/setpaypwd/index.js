@@ -80,6 +80,9 @@ Page({
   //获取会员信息
   savePayPWDFn(PayPWD) {
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.setting.setPayPWD,
       postData: {

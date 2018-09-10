@@ -38,8 +38,13 @@ Page({
     if (this.data.countNum == 60) {
       this.setData({
         btnIsClick: true
+      }, () => {
+        wx.showLoading({
+          title: '',
+        })
+
+        this.getSMSCodeFn()
       })
-      this.getSMSCodeFn()
     }
   },
   countdownFn(){
@@ -102,7 +107,11 @@ Page({
         content: '短信验证码错误~'
       });
     } else {
+      wx.showLoading({
+        title: '',
+      })
       this.checkSMSCodeFn(mobile, smsCode)
+
     }
   },
   checkSMSCodeFn(mobile, smsCode){

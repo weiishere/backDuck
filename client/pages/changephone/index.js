@@ -62,6 +62,9 @@ Page({
       });
       return false
     }
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: `${config.API.verification.sendSMSCode}/${mobile}`,
       postData: {
@@ -98,6 +101,9 @@ Page({
   },
   checkSMSCodeFn(mobile, smsCode){
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.verification.checkSMSCode,
       postData: {

@@ -57,7 +57,9 @@ Page({
   getDefaultAddressFn() {
     const timestamp = Date.parse(new Date()),
       { currData } = this.data;
-
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.address.getDefaultAddress,
       method: 'GET',
@@ -79,8 +81,9 @@ Page({
   // 提交数据
   addBespeakFn(){
     const { currData, timestamp } = this.data;
-    // console.log(this.data)
-    // return false;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.bespeak.add,
       postData: {
@@ -95,7 +98,6 @@ Page({
         })
       },
       success: (res) => {
-
         showModel({
           title: "成功",
           content: '预约取件成功'

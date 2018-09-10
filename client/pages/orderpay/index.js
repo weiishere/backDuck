@@ -18,17 +18,25 @@ Page({
     paypwd: '',
     payBtnLock: true,
     modalshow: true,
-    havePayPWD: false
+    havePayPWD: false,
+    realAccountBalance: 0
   },
   onLoad: function (options) {
+    const that = this;
     wx.setNavigationBarTitle({
       title: '订单支付'
+    })
+    wx.showLoading({
+      title: '',
     })
     if (options.money && options.orderId && options.orderNo) {
       this.setData({
         money: options.money,
         orderId: options.orderId,
         orderNo: options.orderNo
+      }, () => {
+        that.havePayPWDFn()
+        that.getMyBalanceFn()
       })
     } else {
       showModel({
@@ -40,19 +48,43 @@ Page({
         })
       });
     }
-    this.havePayPWDFn()
   },
   togglePayWayFn(e) {
-    const {  payway } = this.data;
+    const { payway, havePayPWD, realAccountBalance } = this.data;
     const { way } = e.currentTarget.dataset
+    wx.showLoading({
+      title: '',
+    })
+    if ((!havePayPWD || realAccountBalance == 0) && way == 'blanace') {
+      wx.hideLoading()
+      let title = "",
+          content =  '';
+      if (!havePayPWD) {
+        title = "未设置支付密码",
+        content = '请设置支付密码~';
+      }
+      if (realAccountBalance == 0) {
+        title = "账户余额为零",
+        content = '不能使用余额支付~';
+      }
+      showModel({
+        title,
+        content
+      }, () => {
+        wx.redirectTo({
+          url: '/pages/checkSMSCode/index?pageorigin=setpaypwd'
+        })
+      });
+      return false;
+    }
+    wx.hideLoading()
     this.setData({
       payway: way,
       payBtnLock: (way == payway) ? false : true
     })
-    console.log(way)
   },
   payBtnClickFn(){
-    const $this = this
+    const that = this
     const { payBtnLock, payway } = this.data;
     if (!payBtnLock) return false;
     this.setData({
@@ -61,7 +93,7 @@ Page({
       if (payway == 'wechat') {
         this.payFn()
       } else {
-        $this.balancePayModelFn()
+        that.balancePayModelFn()
       }
     })
   },
@@ -72,7 +104,7 @@ Page({
     })
   },
   payFn() {
-    const $this = this;
+    const that = this;
     const { payway, orderId, paypwd } = this.data;
     let url = '';
     let jsondata = {
@@ -84,12 +116,15 @@ Page({
       url = config.API.pay.balancePay
       jsondata['payPassword'] = hexMD5(paypwd)
     }
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url,
       postData: jsondata,
       success: (res) => {
         if (payway == 'wechat') {
-          $this.wechatPayFn(res.data)
+          that.wechatPayFn(res.data)
         } else {
           showModel({
             title: "成功",
@@ -148,7 +183,7 @@ Page({
   },
   //获取用户是否有支付密码
   havePayPWDFn() {
-    const $this = this;
+    const that = this;
     singleRequest({
       url: config.API.setting.isHavePayPWD,
       postData: {
@@ -156,10 +191,33 @@ Page({
       method: 'GET',
       success: (res) => {
         let data = res.data;
-        $this.setData({
+        that.setData({
           havePayPWD: data
         })
       }
     })
-  }
+  },
+  //获取账户余额
+  getMyBalanceFn() {
+    const that = this;
+    singleRequest({
+      url: config.API.mybalance,
+      postData: {
+      },
+      method: 'get',
+      success: (res) => {
+        const data = res.data;
+        console.log('getMyBalanceFn: ', data)
+        that.setData({
+          realAccountBalance: data.realAccountBalance,
+        })
+      },
+      error(res) {
+        showModel({
+          title: "错误",
+          content: res.msg || '报错了~'
+        });
+      }
+    })
+  },
 })

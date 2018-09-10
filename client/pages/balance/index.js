@@ -52,6 +52,9 @@ Page({
   //获取账户余额
   getMyBalanceFn() {
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.mybalance,
       postData: {
@@ -76,6 +79,9 @@ Page({
   getPayRecordsFn (paged = false) {
     const $this = this;
     let { records, currentPage, pageSize } = this.data;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.pay.record,
       postData: {

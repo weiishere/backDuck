@@ -46,6 +46,9 @@ Page({
       pageSize: pageSize || 10,
       currentPage: currentPage || 1
     };
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.address.list,
       postData: {},
@@ -121,6 +124,9 @@ Page({
     if (key == 'default') {
       url = config.API.address.setdefault;
     }
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url,
       postData: {

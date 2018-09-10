@@ -17,9 +17,12 @@ Page({
   onShow() {
     this.getActivityFn()
   },
-  //获取账户余额
+  //获取活动信息
   getActivityFn() {
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.activity.get,
       postData: {

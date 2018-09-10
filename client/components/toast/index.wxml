@@ -1,0 +1,4 @@
+<view class='toast' wx:if="{{toastText}}">
+  <view class='toast-mask'></view>
+  <view class='toast-text'>{{toastText}}</view>
+</view>

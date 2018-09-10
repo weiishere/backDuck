@@ -38,6 +38,9 @@ Page({
   getMessageListFn(paged = false) {
     const $this = this;
     let { list, pageSize, currentPage } = this.data;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.message.list,
       postData: {
@@ -85,6 +88,9 @@ Page({
   //获取消息列表
   deleteMessageByIdFn(id) {
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.message.deleteByMsgId,
       postData: {

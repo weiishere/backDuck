@@ -9,32 +9,30 @@ import * as config from '../../config.js';
 const app = getApp()
 
 Page({
-
-    /**
-     * 页面的初始数据
-     */
-    data: {
-      orderId: '',
-      chooseIndex: "0",
-      namemobile:'',
-      address: '',
-      orderNo: '' ,
-      gmtCreate: '',
-      orderItems: '',
-      state: '',
-      stateDes: '',
-      realOrderMoney: '0.00'
-    },
-    orderTypeChoose: function (e) {
-      const index = e.currentTarget.dataset.index;
-      this.setData({
-          chooseIndex: index
-      })
-    },
+  data: {
+    orderId: '',
+    chooseIndex: "0",
+    namemobile:'',
+    address: '',
+    orderNo: '' ,
+    gmtCreate: '',
+    orderItems: '',
+    state: '',
+    stateDes: '',
+    realOrderMoney: '0.00'
+  },
+  orderTypeChoose: function (e) {
+    const index = e.currentTarget.dataset.index;
+    this.setData({
+        chooseIndex: index
+    })
+  },
   onLoad: function (options) {
-    // this.getOrderDetailFn(options.orderId)
     wx.setNavigationBarTitle({
       title: '订单详情'
+    })
+    wx.showLoading({
+      title: '',
     })
     if (options.orderId) {
       this.setData({

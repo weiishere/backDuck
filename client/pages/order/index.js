@@ -45,7 +45,10 @@ Page({
   },
   getOrderListFn (paged = false) {
     const $this = this;
-    let { list, chooseIndex, currentPage} = this.data
+    let { list, chooseIndex, currentPage } = this.data
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.order.list,
       method: 'get',

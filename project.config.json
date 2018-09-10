@@ -35,7 +35,7 @@
 				{
 					"id": 0,
 					"name": "子页面",
-					"pathName": "pages/address/add/index",
+					"pathName": "pages/orderpay/index",
 					"query": ""
 				}
 			]

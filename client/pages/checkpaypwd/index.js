@@ -72,9 +72,6 @@ Page({
     })
   },
   nextBtnClickFn(){
-    // wx.redirectTo({
-    //   url: '/pages/setpaypwd/index'
-    // })
     const { inputStr} = this.data;
     console.log(this.data)
     if (inputStr < 6) {
@@ -84,6 +81,9 @@ Page({
       });
       return false
     }
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.setting.checkPayPWD,
       postData: {

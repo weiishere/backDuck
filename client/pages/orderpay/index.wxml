@@ -51,7 +51,7 @@
         </image>
       </view>
     </view>
-    <view class='paytype-item blanacepay' data-way="blanace" wx:if="{{havePayPWD}}" catchtap='togglePayWayFn'>
+    <view class='paytype-item blanacepay' data-way="blanace" catchtap='togglePayWayFn'>
       <view class='paytype-item-left'>
         <image 
           class='paytype-item-type-icon'
@@ -83,4 +83,5 @@
     </view>
     <PayPWD bindInputEventFn="completeFn"></PayPWD>
   </ModalBox>
+  <toast text="toastText">1231321</toast>
 </view>

@@ -21,6 +21,9 @@ Page({
   },
   getRechargeListFn() {
     const $this = this;
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.recharge.activity,
       postData: {
@@ -59,6 +62,9 @@ Page({
       });
       return false;
     }
+    wx.showLoading({
+      title: '',
+    })
     singleRequest({
       url: config.API.pay.recharge,
       postData: {
