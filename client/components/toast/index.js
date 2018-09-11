@@ -15,7 +15,6 @@ Component({
   },
   methods: {
     onLoad: function () {
-      console.log('toast')
       this.hide()
     },
     hide(){

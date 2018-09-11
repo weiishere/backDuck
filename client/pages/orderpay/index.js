@@ -62,8 +62,7 @@ Page({
       if (!havePayPWD) {
         title = "未设置支付密码",
         content = '请设置支付密码~';
-      }
-      if (realAccountBalance == 0) {
+      } else if (realAccountBalance == 0) {
         title = "账户余额为零",
         content = '不能使用余额支付~';
       }
@@ -71,9 +70,15 @@ Page({
         title,
         content
       }, () => {
-        wx.redirectTo({
-          url: '/pages/checkSMSCode/index?pageorigin=setpaypwd'
-        })
+        if (!havePayPWD) {
+          wx.redirectTo({
+            url: '/pages/checkSMSCode/index?pageorigin=setpaypwd'
+          })
+        } else if (realAccountBalance == 0) {
+          wx.redirectTo({
+            url: '/pages/recharge/index'
+          })
+        }
       });
       return false;
     }
